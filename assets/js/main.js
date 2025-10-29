@@ -167,6 +167,8 @@
     const heroCards = heroDiscovery.querySelectorAll('.hero-card');
     let heroIndex = 0;
     let heroTimer = null;
+    const INTERVAL = 8000;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const setHeroSlide = (index) => {
       const slide = heroSlides[index];
@@ -179,30 +181,50 @@
       heroDiscoveryLink.href = slide.href;
 
       heroCards.forEach((card) => {
-        if (card.dataset.index === String(index)) {
-          card.classList.add('is-active');
-          card.setAttribute('aria-current', 'true');
-        } else {
-          card.classList.remove('is-active');
-          card.setAttribute('aria-current', 'false');
-        }
+        const active = card.dataset.index === String(index);
+        card.classList.toggle('is-active', active);
+        card.setAttribute('aria-current', active ? 'true' : 'false');
       });
     };
 
-    const advanceHero = () => {
-      const nextIndex = (heroIndex + 1) % heroSlides.length;
-      setHeroSlide(nextIndex);
+    const advanceHero = () => setHeroSlide((heroIndex + 1) % heroSlides.length);
+
+    const startHeroTimer = () => {
+      if (prefersReducedMotion) return null;
+      return window.setInterval(advanceHero, INTERVAL);
     };
 
-    const startHeroTimer = () => window.setInterval(advanceHero, 7000);
+    const stopHeroTimer = () => {
+      if (heroTimer) {
+        window.clearInterval(heroTimer);
+        heroTimer = null;
+      }
+    };
+
+    // Start after first interaction to avoid immediate motion
+    let started = false;
+    const kickOff = () => {
+      if (!started && !prefersReducedMotion) {
+        started = true;
+        heroTimer = startHeroTimer();
+      }
+    };
+
+    heroDiscovery.addEventListener('mouseenter', stopHeroTimer);
+    heroDiscovery.addEventListener('mouseleave', () => { if (started) heroTimer = startHeroTimer(); });
+    heroDiscovery.addEventListener('focusin', stopHeroTimer);
+    heroDiscovery.addEventListener('focusout', () => { if (started) heroTimer = startHeroTimer(); });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopHeroTimer();
+      else if (started) heroTimer = startHeroTimer();
+    });
 
     heroCards.forEach((card) => {
       card.addEventListener('click', () => {
         const index = Number.parseInt(card.dataset.index || '0', 10);
         setHeroSlide(index);
-        if (heroTimer) {
-          window.clearInterval(heroTimer);
-        }
+        stopHeroTimer();
         heroTimer = startHeroTimer();
       });
 
@@ -212,9 +234,12 @@
           card.click();
         }
       });
+
+      // Treat first hover/click as consent to motion
+      card.addEventListener('pointerenter', kickOff, { once: true });
+      card.addEventListener('click', kickOff, { once: true });
     });
 
     setHeroSlide(0);
-    heroTimer = startHeroTimer();
   }
 })();

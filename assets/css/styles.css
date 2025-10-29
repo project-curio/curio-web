@@ -100,9 +100,9 @@ a:focus-visible {
   top: 0;
   inset-inline: 0;
   z-index: 999;
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(9, 33, 36, 0.1);
 }
 
 .header-inner {
@@ -118,7 +118,7 @@ a:focus-visible {
   gap: var(--space-2xs);
   font-weight: 600;
   font-size: 1.625rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   color: var(--color-primary);
   text-decoration: none;
 }
@@ -233,7 +233,7 @@ a:focus-visible {
   gap: var(--space-xs);
   padding: var(--space-2xs);
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(9, 33, 36, 0.12);
   border-radius: var(--radius-pill);
 }
 
@@ -317,7 +317,9 @@ a:focus-visible {
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   position: relative;
-  min-height: 320px;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  isolation: isolate;
 }
 
 .hero-media img {
@@ -331,7 +333,11 @@ a:focus-visible {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(13, 71, 78, 0.15), rgba(12, 71, 78, 0.05) 60%, rgba(255, 255, 255, 0.2));
+  background:
+    radial-gradient(120% 100% at 10% 85%, rgba(8, 51, 56, 0.45) 10%, rgba(8, 51, 56, 0.2) 40%, rgba(8, 51, 56, 0.08) 70%, transparent 100%),
+    linear-gradient(180deg, rgba(8, 51, 56, 0.25) 0%, rgba(8, 51, 56, 0.05) 60%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-media-badge {
@@ -345,13 +351,17 @@ a:focus-visible {
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.04em;
+  z-index: 2;
+  backdrop-filter: saturate(120%) blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
 }
 
 .hero-body {
   grid-column: span 6;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
+  display: grid;
+  gap: var(--space-md);
+  align-content: start;
 }
 
 .hero-body h1 {
@@ -360,10 +370,21 @@ a:focus-visible {
   letter-spacing: -0.02em;
 }
 
+@media (min-width: 1200px) {
+  .hero-body h1 {
+    font-size: clamp(2.6rem, 3.8vw, 3.9rem);
+  }
+}
+
 .hero-body p {
   font-size: 1.1rem;
   color: var(--color-muted);
   max-width: 48ch;
+}
+
+.hero-body p.lead {
+  font-size: 1.125rem;
+  max-width: 56ch;
 }
 
 .tags {
@@ -375,7 +396,8 @@ a:focus-visible {
 .tag {
   padding: var(--space-2xs) var(--space-sm);
   border-radius: var(--radius-pill);
-  background-color: rgba(13, 71, 78, 0.08);
+  background-color: rgba(13, 71, 78, 0.1);
+  border: 1px solid rgba(13, 71, 78, 0.12);
   color: var(--color-primary-strong);
   font-size: 0.85rem;
   font-weight: 500;
@@ -388,27 +410,29 @@ a:focus-visible {
 
 .hero-discovery {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   flex-wrap: wrap;
   overflow-x: auto;
   padding-bottom: var(--space-xs);
+  scroll-snap-type: x proximity;
 }
 
 .hero-card {
   display: grid;
   gap: var(--space-2xs);
-  width: 160px;
+  width: 200px;
   cursor: pointer;
   border-radius: var(--radius-md);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  scroll-snap-align: start;
 }
 
 .hero-card img {
   width: 100%;
-  height: 100px;
+  height: 120px;
   object-fit: cover;
   display: block;
 }
@@ -438,9 +462,9 @@ a:focus-visible {
 }
 
 .hero-card.is-active {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(6, 47, 52, 0.16);
-  border: 1px solid rgba(12, 71, 78, 0.15);
+  border: 1px solid rgba(12, 71, 78, 0.22);
+  box-shadow: 0 18px 44px rgba(6, 47, 52, 0.18);
+  transform: translateY(-3px);
 }
 
 .hero-card:focus-visible {
@@ -451,14 +475,14 @@ a:focus-visible {
 .hero-discovery-cta {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   font-size: 0.95rem;
   flex-wrap: wrap;
 }
 
 .hero-discovery-title {
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
 }
 
@@ -475,7 +499,7 @@ a:focus-visible {
 .hero-search {
   background-color: var(--color-surface);
   border-radius: var(--radius-lg);
-  padding: var(--space-md);
+  padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
   display: grid;
   gap: var(--space-sm);
@@ -484,6 +508,14 @@ a:focus-visible {
 .hero-search form {
   display: grid;
   gap: var(--space-sm);
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .hero-search form {
+    grid-template-columns: 1fr;
+  }
 }
 
 .input-group {
@@ -512,6 +544,11 @@ a:focus-visible {
   box-shadow: 0 0 0 4px rgba(13, 71, 78, 0.12);
 }
 
+.input-control--xl {
+  padding: 0.9rem 1.1rem;
+  font-size: 1.05rem;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -532,6 +569,11 @@ a:focus-visible {
 .btn:focus-visible {
   background-color: var(--color-primary-strong);
   transform: translateY(-1px);
+}
+
+.btn--xl {
+  padding: 0.9rem 1.25rem;
+  font-size: 1.05rem;
 }
 
 .form-feedback {
@@ -801,7 +843,7 @@ a:focus-visible {
 }
 
 .map-shell--home .map-canvas {
-  height: 360px;
+  height: 380px;
 }
 
 .map-fallback {
@@ -1226,6 +1268,11 @@ a:focus-visible {
   }
 
   .site-nav {
+    transition: none;
+  }
+
+  .hero-card,
+  .hero-card.is-active {
     transition: none;
   }
 }
