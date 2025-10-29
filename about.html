@@ -53,29 +53,152 @@
       </div>
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
-      <section class="section" aria-labelledby="about-heading">
-        <div class="container">
-          <p class="eyebrow">Our mission</p>
-          <h1 id="about-heading">Curio builds a reflection-first discovery platform for cultural explorers.</h1>
-          <p class="lead">We design with accessibility, transparency, and belonging in mind — so every visitor and institution feels seen.</p>
-        </div>
-      </section>
-      <section class="section" aria-labelledby="about-pillars">
-        <div class="container">
-          <div class="grid two">
-            <article class="card">
-              <p class="badge">Stage update</p>
-              <h2 id="about-pillars">What to expect next</h2>
-              <p>Upcoming stages will introduce full narrative content about Curio’s founding story, team, advisory council, and product roadmap for the MVP.</p>
-            </article>
-            <article class="card">
-              <h3>Accessibility & data ethics</h3>
-              <p>WCAG 2.1 AA is our baseline. We are documenting data practices that prioritize consent, community context, and transparent moderation workflows.</p>
-              <p class="form-feedback">Full copy lands in Stage 5 alongside our accessibility statement.</p>
-            </article>
+      <article class="place-layout">
+        <section class="place-hero" aria-labelledby="about-heading">
+          <div class="container">
+            <div class="place-hero-headline">
+              <p class="eyebrow">Our mission</p>
+              <h1 id="about-heading">Curio elevates reflections over ratings so cultural experiences feel personal, contextual, and inclusive.</h1>
+              <p class="lead">We help visitors discover places through stories that honor feeling, access, and community care — while giving institutions tools to share their values.</p>
+              <p>Built by museum practitioners, designers, and community archivists, Curio prioritizes accessibility, data transparency, and joyful discovery at every step.</p>
+            </div>
+            <div class="place-meta">
+              <div class="meta-card">
+                <span class="meta-label">Founded</span>
+                <span class="meta-value">2024 · Prototype City</span>
+                <p class="form-feedback">Independent public interest studio led by cultural sector veterans.</p>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Focus</span>
+                <span class="meta-value">Reflection-first discovery</span>
+                <p class="form-feedback">Centering qualitative insights, accessibility, and institutional transparency.</p>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Stage</span>
+                <span class="meta-value">Front-end MVP</span>
+                <p class="form-feedback">Static build on GitHub Pages → React + Supabase + Mapbox (Phase 2).</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="place-section" aria-labelledby="about-values">
+          <div class="container">
+            <div class="section-intro">
+              <h2 id="about-values">Why “reflections, not reviews”?</h2>
+              <p class="lead">Traditional review platforms reward hot takes. Cultural experiences deserve nuance. Curio’s guided prompts invite visitors to articulate how a place made them feel, who it served, and what they would recommend.</p>
+            </div>
+            <div class="reflection-grid">
+              <article class="reflection-card">
+                <p class="badge">Belonging</p>
+                <blockquote>Curiosity should feel welcoming — whether you are a first-time museum visitor, a disabled researcher, or a family exploring together.</blockquote>
+                <footer>We collaborate with community advisors and access consultants to keep the platform hospitable.</footer>
+              </article>
+              <article class="reflection-card">
+                <p class="badge">Transparency</p>
+                <blockquote>Institutions deserve space to articulate mission, access notes, and interpretive choices alongside visitor reflections.</blockquote>
+                <footer>Everything from moderation practices to data stewardship lives in plain language dashboards.</footer>
+              </article>
+              <article class="reflection-card">
+                <p class="badge">Reciprocity</p>
+                <blockquote>Reflections travel back to cultural partners so they can adapt programming, celebrate staff labor, and share impact stories.</blockquote>
+                <footer>We design in partnership with museums, gardens, archives, and artist-run spaces.</footer>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="place-section" aria-labelledby="about-team">
+          <div class="container">
+            <div class="section-intro">
+              <h2 id="about-team">Team & advisory cadence</h2>
+              <p class="lead">Curio’s core team spans exhibition design, civic tech, and accessibility advocacy. An advisory council of museum educators, archivists, and community organizers meets quarterly to stress-test features.</p>
+            </div>
+            <div class="info-panels">
+              <section class="info-card" aria-labelledby="team-core">
+                <div>
+                  <p class="badge" id="team-core">Core studio</p>
+                </div>
+                <ul class="info-list" role="list">
+                  <li>Product &amp; design lead with 10+ years in museum digital strategy.</li>
+                  <li>Accessibility researcher focused on sensory-friendly practices.</li>
+                  <li>Storytelling engineer building reflection prompts &amp; data ethics.</li>
+                </ul>
+              </section>
+              <section class="info-card" aria-labelledby="team-advisory">
+                <div>
+                  <p class="badge" id="team-advisory">Advisory council</p>
+                </div>
+                <ul class="info-list" role="list">
+                  <li>Museum educators from Detroit, Minneapolis, and Toronto.</li>
+                  <li>Community archivists and independent curators.</li>
+                  <li>Disability justice advocates and language access specialists.</li>
+                </ul>
+                <div class="notice">Interested in advising? Email <a href="mailto:hello@curio.city">hello@curio.city</a> with your practice and place-based interests.</div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="place-section" aria-labelledby="about-commitments">
+          <div class="container">
+            <div class="section-intro">
+              <h2 id="about-commitments">Accessibility &amp; data commitments</h2>
+              <p class="lead">We design with WCAG 2.1 AA as baseline, layering on inclusive research, community review, and transparent governance.</p>
+            </div>
+            <div class="card-grid place-grid">
+              <article class="card place-card">
+                <h3>Accessibility first</h3>
+                <p>Interface verified through automated tooling, manual audits, and user testing with disabled cultural workers.</p>
+                <div class="place-card-tags">
+                  <span class="tag">WCAG 2.1 AA</span>
+                  <span class="tag">Keyboard-first</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Consent-centered data</h3>
+                <p>Reflections are anonymized by default, with opt-in attribution. Institutions receive aggregated insights, not personal data.</p>
+                <div class="place-card-tags">
+                  <span class="tag">Privacy</span>
+                  <span class="tag">Community</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Moderation with care</h3>
+                <p>Guidelines developed with advisors; reflective prompts help deter bias and extractive reviews. Staff respond within 48 hours.</p>
+                <div class="place-card-tags">
+                  <span class="tag">Care</span>
+                  <span class="tag">Moderation</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Roadmap transparency</h3>
+                <p>Upcoming features (React app, Supabase reflections, Mapbox maps) will ship with public changelog and accessibility notes.</p>
+                <div class="place-card-tags">
+                  <span class="tag">Roadmap</span>
+                  <span class="tag">Open build</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="place-section" aria-labelledby="about-invite">
+          <div class="container">
+            <div class="card">
+              <p class="eyebrow" id="about-invite">Build with Curio</p>
+              <h2>Let’s shape reflective cultural discovery together.</h2>
+              <p class="lead">We’re piloting with museums, gardens, archives, and arts organizations across Detroit, Chicago, Toronto, Minneapolis, and NYC. We’d love to hear your perspective.</p>
+              <div class="reflection-tags">
+                <span class="tag">Beta partnerships</span>
+                <span class="tag">Research interviews</span>
+                <span class="tag">Advisory circles</span>
+              </div>
+              <a class="btn" href="mailto:hello@curio.city">Join the beta list</a>
+            </div>
+          </div>
+        </section>
+      </article>
     </main>
     <footer class="footer" role="contentinfo">
       <div class="container footer-inner">
