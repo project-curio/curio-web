@@ -89,6 +89,9 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: ci
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -105,9 +108,9 @@ jobs:
 
       - name: Minify assets (esbuild)
         run: |
-          npx esbuild assets/css/styles.css --minify --outfile=assets/css/styles.css || true
-          npx esbuild assets/js/main.js --minify --outfile=assets/js/main.js || true
-          npx esbuild assets/js/map.js --minify --outfile=assets/js/map.js || true
+          npx esbuild assets/css/styles.css --minify --allow-overwrite --outfile=assets/css/styles.css || true
+          npx esbuild assets/js/main.js --minify --allow-overwrite --outfile=assets/js/main.js || true
+          npx esbuild assets/js/map.js --minify --allow-overwrite --outfile=assets/js/map.js || true
 
       - name: Prepare artifact
         run: |
