@@ -879,6 +879,14 @@ a:focus-visible {
   .city-photo {
     grid-column: span 6;
   }
+
+  .place-hero {
+    padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  }
+
+  .place-meta {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
 }
 
 @media (max-width: 960px) {

@@ -1,0 +1,20 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 1,
+      "url": [
+        "http://localhost:8080/index.html",
+        "http://localhost:8080/about.html",
+        "http://localhost:8080/partners.html",
+        "http://localhost:8080/cities/detroit.html"
+      ]
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", {"minScore": 0.85}],
+        "categories:accessibility": ["error", {"minScore": 0.9}],
+        "categories:seo": ["error", {"minScore": 0.9}]
+      }
+    }
+  }
+}

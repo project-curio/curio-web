@@ -1,0 +1,116 @@
+name: CI + CD — Curio Web (GitHub Pages)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Lint • A11y • SEO • Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dev tools
+        run: npm ci
+
+      - name: Lint HTML
+        run: npx htmlhint "**/*.html" || true
+
+      - name: Lint CSS
+        run: npx stylelint "**/*.css"
+
+      - name: Lint JS
+        run: npx eslint "assets/js/**/*.js"
+
+      - name: Start local server
+        run: npx http-server -p 8080 -c-1 .
+        env:
+          NODE_ENV: test
+        timeout-minutes: 1
+
+      - name: Accessibility (pa11y-ci)
+        run: npx pa11y-ci
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:8080/index.html
+            http://localhost:8080/about.html
+            http://localhost:8080/partners.html
+            http://localhost:8080/cities/detroit.html
+          configPath: .lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Link Check (Lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --no-progress
+            --exclude-mail
+            --accept 200,206,302,429
+            "./**/*.html"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: Build • Deploy to GitHub Pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dev tools
+        run: npm ci
+
+      - name: Minify assets (esbuild)
+        run: |
+          npx esbuild assets/css/styles.css --minify --outfile=assets/css/styles.css || true
+          npx esbuild assets/js/main.js --minify --outfile=assets/js/main.js || true
+          npx esbuild assets/js/map.js --minify --outfile=assets/js/map.js || true
+
+      - name: Prepare artifact
+        run: |
+          mkdir -p dist
+          rsync -a --delete \
+            --exclude ".git" \
+            --exclude ".github" \
+            ./ dist/
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
