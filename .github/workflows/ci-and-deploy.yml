@@ -70,6 +70,9 @@ jobs:
           args: >
             --no-progress
             --accept 200,206,302,429
+            --exclude "https://curio\\.city"
+            --exclude "https://images\\.unsplash\\.com"
+            --exclude-path "node_modules"
             "./**/*.html"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

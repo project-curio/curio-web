@@ -1276,3 +1276,67 @@ a:focus-visible {
     transition: none;
   }
 }
+
+/* ===== CURIO HERO POLISH — APPEND ONLY ===== */
+
+/* HERO: hierarchy & layout */
+.hero-inner { align-items: center; }
+.hero-body { grid-column: span 6; display: grid; gap: var(--space-md); align-content: start; }
+@media (min-width: 1200px) {
+  .hero-body h1 { font-size: clamp(2.6rem, 3.8vw, 3.9rem); }
+}
+.hero-body p.lead { font-size: 1.125rem; max-width: 56ch; }
+
+/* HERO MEDIA: stable aspect & legibility */
+.hero-media { grid-column: span 6; aspect-ratio: 4 / 3; min-height: 0; isolation: isolate; }
+.hero-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 100% at 10% 85%, rgba(8,51,56,0.45) 10%, rgba(8,51,56,0.20) 40%, rgba(8,51,56,0.08) 70%, transparent 100%),
+    linear-gradient(180deg, rgba(8,51,56,0.25) 0%, rgba(8,51,56,0.05) 60%, rgba(255,255,255,0.00) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-media-badge {
+  z-index: 2;
+  backdrop-filter: saturate(120%) blur(6px);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.18);
+}
+
+/* TAGS: calmer chip style */
+.tag { background-color: rgba(13,71,78,0.10); border: 1px solid rgba(13,71,78,0.12); }
+
+/* SEARCH: scale up in hero */
+.hero-search { padding: var(--space-lg); }
+.input-control--xl { padding: 0.9rem 1.1rem; font-size: 1.05rem; }
+.btn--xl { padding: 0.9rem 1.25rem; font-size: 1.05rem; }
+.hero-search form { grid-template-columns: 1fr auto; align-items: center; }
+@media (max-width: 640px) { .hero-search form { grid-template-columns: 1fr; } }
+
+/* DISCOVERY CARDS: confident strip */
+.hero-discovery { gap: var(--space-md); scroll-snap-type: x proximity; }
+.hero-card { width: 200px; scroll-snap-align: start; }
+.hero-card img { height: 120px; }
+.hero-card.is-active {
+  border: 1px solid rgba(12,71,78,0.22);
+  box-shadow: 0 18px 44px rgba(6,47,52,0.18);
+  transform: translateY(-3px);
+}
+.hero-discovery-cta { gap: var(--space-xs); }
+.hero-discovery-title { font-weight: 700; }
+
+/* HEADER: subtle contrast */
+.site-header { background-color: rgba(255,255,255,0.86); border-bottom: 1px solid rgba(9,33,36,0.10); }
+.nav-search { border-color: rgba(9,33,36,0.12); }
+
+/* LOGO: slightly tighter wordmark feel */
+.logo { letter-spacing: 0.3px; }
+
+/* MAP home height harmony */
+.section-map .map-shell--home .map-canvas { height: 380px; }
+
+/* Reduced motion hygiene */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card, .hero-card.is-active { transition: none; }
+}
