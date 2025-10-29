@@ -22,6 +22,46 @@
     <link rel="manifest" href="../manifest.json">
     <link rel="stylesheet" href="../assets/css/normalize.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        "name": "Sample Institution",
+        "description": "Curio prototype cultural venue highlighting reflection-first storytelling.",
+        "url": "https://curio.city/places/sample-institution.html",
+        "image": [
+          "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Curio Way",
+          "addressLocality": "Prototype City",
+          "addressRegion": "XX",
+          "postalCode": "00000",
+          "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "opens": "10:00",
+            "closes": "18:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/projectcurio",
+          "https://www.linkedin.com/company/project-curio"
+        ]
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -53,22 +93,151 @@
       </div>
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
-      <section class="section" aria-labelledby="sample-heading">
-        <div class="container">
-          <p class="eyebrow">Institution preview</p>
-          <h1 id="sample-heading">Sample Institution</h1>
-          <p class="lead">This page demonstrates how Curio will present institution narratives, reflection highlights, and visit information.</p>
-        </div>
-      </section>
-      <section class="section" aria-labelledby="sample-details">
-        <div class="container">
-          <div class="card">
-            <h2 id="sample-details">What’s coming in Stage 4</h2>
-            <p>Expect structured sections for reflection index, visit planning, accessibility details, and related tags. We will also introduce media galleries and JSON-LD structured data for SEO.</p>
-            <p class="form-feedback">Full institution layout launches in Stage 4.</p>
+      <article class="place-layout">
+        <section class="place-hero" aria-labelledby="sample-heading">
+          <div class="container">
+            <div class="place-hero-headline">
+              <p class="eyebrow">Prototype institution</p>
+              <h1 id="sample-heading">Sample Institution</h1>
+              <p class="lead">A reflection-driven cultural hub blending art, archives, and community programs. This Stage&nbsp;4 prototype shows how Curio will surface narratives, accessibility, and planning details.</p>
+              <p>The structure below anchors the Reflection Index, visit essentials, and inclusion commitments that every Curio place page will support.</p>
+            </div>
+            <div class="place-meta">
+              <div class="meta-card">
+                <span class="meta-label">Type</span>
+                <span class="meta-value">Museum &amp; community space</span>
+                <p class="form-feedback">Focus: Contemporary art, civic histories, participatory design.</p>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Current exhibition</span>
+                <span class="meta-value">“Constellations of Care”</span>
+                <p class="form-feedback">Runs through October • Featuring 12 artists across two floors.</p>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Reflection highlights</span>
+                <span class="meta-value">Community impact, sensory experiences, intergenerational storytelling</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="place-section" aria-labelledby="reflection-index">
+          <div class="container">
+            <div class="section-intro">
+              <h2 id="reflection-index">Reflection Index (pilot data)</h2>
+              <p class="lead">Curio captures guided reflections that center feelings, context, and recommendations—not star ratings.</p>
+            </div>
+            <div class="reflection-grid">
+              <article class="reflection-card">
+                <p class="badge">Feeling • Resonance</p>
+                <blockquote>“The listening lounge helped me process the exhibit through sound. I left thinking about who nurtures creative rest in my community.”</blockquote>
+                <div class="reflection-tags">
+                  <span class="tag">Soundscapes</span>
+                  <span class="tag">Community care</span>
+                </div>
+                <footer>Suggested for: visitors seeking restorative space · Shared by Avery (they/she)</footer>
+              </article>
+              <article class="reflection-card">
+                <p class="badge">Learning • Context</p>
+                <blockquote>“Archival labels made it clear who curated the story. I appreciated the transparency about gaps and invited to add my own.”</blockquote>
+                <div class="reflection-tags">
+                  <span class="tag">Archives</span>
+                  <span class="tag">Transparency</span>
+                </div>
+                <footer>Suggested for: educators, emerging designers · Shared by Malik (he/him)</footer>
+              </article>
+              <article class="reflection-card">
+                <p class="badge">Access • Planning</p>
+                <blockquote>“Quiet mornings paired with tactile guides allowed my partner to engage fully. Staff checked in with care.”</blockquote>
+                <div class="reflection-tags">
+                  <span class="tag">Sensory-friendly</span>
+                  <span class="tag">Staff support</span>
+                </div>
+                <footer>Suggested for: neurodivergent visitors, families · Shared by Priya (she/her)</footer>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="place-section" aria-labelledby="visit-info">
+          <div class="container">
+            <div class="section-intro">
+              <h2 id="visit-info">Visit information</h2>
+              <p class="lead">Stage&nbsp;4 outlines how we’ll surface essential planning details and accessibility commitments.</p>
+            </div>
+            <div class="info-panels">
+              <section class="info-card" aria-labelledby="plan-your-visit">
+                <div>
+                  <p class="badge" id="plan-your-visit">Plan your visit</p>
+                </div>
+                <dl class="info-list">
+                  <dt>Hours</dt>
+                  <dd>Tuesday–Saturday 10 a.m.–6 p.m. | Thursday late hours until 8 p.m.</dd>
+                  <dt>Admission</dt>
+                  <dd>Suggested $15 • Pay-what-you-can every Wednesday • Youth under 18 free</dd>
+                  <dt>Programs</dt>
+                  <dd>Guided tours at 11 a.m. &amp; 2 p.m. • Reflection salons every first Friday</dd>
+                  <dt>Getting there</dt>
+                  <dd>Closest transit: Route 2 + 5 • Bike corral on Curio Way • Limited on-site parking</dd>
+                </dl>
+                <a class="btn" href="mailto:hello@curio.city">Request group booking</a>
+              </section>
+              <section class="info-card" aria-labelledby="accessibility-overview">
+                <div>
+                  <p class="badge" id="accessibility-overview">Accessibility &amp; inclusion</p>
+                </div>
+                <ul class="info-list" role="list">
+                  <li>Ramp entrance with automatic doors on Curio Way.</li>
+                  <li>Wheelchair-accessible restrooms on every floor.</li>
+                  <li>Assistive listening devices and printed transcripts for audio experiences.</li>
+                  <li>Sensory-friendly hours every Saturday 9–10 a.m.</li>
+                  <li>Staff trained on inclusive communication and trauma-informed care.</li>
+                </ul>
+                <div class="notice">Need additional support? Email <a href="mailto:access@curio.city">access@curio.city</a> 5+ days before your visit and we’ll coordinate.</div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="place-section" aria-labelledby="place-gallery">
+          <div class="container">
+            <div class="section-intro">
+              <h2 id="place-gallery">Gallery &amp; atmosphere</h2>
+              <p class="lead">Static imagery today; Stage&nbsp;4+ will integrate dynamically curated galleries and visitor-submitted media.</p>
+            </div>
+            <div class="gallery-grid">
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=80" alt="Sunlit atrium with hanging installations and visitors sketching">
+                <figcaption class="gallery-caption">Atrium with reflective installation and communal sketching tables.</figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80" alt="Gallery wall with contemporary paintings and accessible labels">
+                <figcaption class="gallery-caption">Current exhibition pairing community commentary with artist notes.</figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80" alt="Outdoor garden with people reading beside native plants">
+                <figcaption class="gallery-caption">Outdoor mindfulness garden open during warm months.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="place-section" aria-labelledby="next-steps">
+          <div class="container">
+            <div class="card">
+              <p class="eyebrow" id="next-steps">Next steps</p>
+              <h2>Institution partner? Let’s prepare your Curio page.</h2>
+              <p class="lead">Pilot institutions can collaborate on reflection prompts, visitor pathways, and accessibility audits ahead of the public beta.</p>
+              <div class="reflection-tags">
+                <span class="tag">Claim your profile</span>
+                <span class="tag">Share data ethics</span>
+                <span class="tag">Co-design prompts</span>
+              </div>
+              <a class="btn" href="mailto:partners@curio.city">Start onboarding</a>
+            </div>
+          </div>
+        </section>
+      </article>
     </main>
     <footer class="footer" role="contentinfo">
       <div class="container footer-inner">
