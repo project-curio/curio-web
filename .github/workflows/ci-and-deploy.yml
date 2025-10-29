@@ -49,7 +49,7 @@ jobs:
 
       - name: Accessibility (pa11y-ci)
         env:
-          PA11Y_CHROME_LAUNCH_CONFIG: '{"args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage"]}'
+          PA11Y_CHROME_LAUNCH_CONFIG: '{"args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage","--disable-gpu","--disable-software-rasterizer","--disable-extensions","--no-zygote"]}'
         run: npx pa11y-ci
 
       - name: Lighthouse CI
