@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Curio logo</title>
+  <desc id="desc">Rounded teal square with the word curio and a copper period.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d474e" />
+      <stop offset="100%" stop-color="#0a3a3f" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" />
+  <text x="28" y="76" font-family="Outfit, 'Inter', sans-serif" font-size="44" font-weight="600" fill="#ffffff" letter-spacing="-1">curio</text>
+  <circle cx="100" cy="48" r="8" fill="#c46a2b" />
+</svg>

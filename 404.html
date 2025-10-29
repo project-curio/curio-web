@@ -4,18 +4,67 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Page not found — Curio helps you discover culture near you.">
+    <meta name="theme-color" content="#0d474e">
     <title>Page not found | Curio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/styles.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="site-header" role="banner">
-      <div class="container">
-        <div class="logo" aria-label="Curio home">
-          <a href="index.html">curio.</a>
+    <header class="site-header" role="banner" data-js="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html" aria-label="Curio home">
+          curio<span class="logo-accent">.</span>
+        </a>
+        <button class="nav-toggle" type="button" data-js="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <nav id="primary-nav" class="site-nav" aria-label="Primary navigation">
+          <form class="nav-search" data-js="search-form" action="#" method="get" role="search" aria-label="Search cultural places">
+            <label class="sr-only" for="nav-search">Search places</label>
+            <input id="nav-search" name="q" type="search" placeholder="Search museums, galleries, gardens..." autocomplete="off">
+            <button type="submit">Search</button>
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+          </form>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cities/detroit.html">Cities</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <a class="nav-cta" href="mailto:hello@curio.city">Share your reflection</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content" class="site-main" tabindex="-1">
+      <section class="section">
+        <div class="container">
+          <h1>We couldn't find that page.</h1>
+          <p>Please use the navigation links above or return to the <a href="index.html">homepage</a>.</p>
         </div>
-        <nav class="site-nav" aria-label="Primary navigation">
+      </section>
+      <section class="section">
+        <div class="container">
+          <p>If you believe this is an error, contact <a href="mailto:support@curio.city">support@curio.city</a>.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer" role="contentinfo">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            curio<span class="logo-accent">.</span>
+          </a>
+          <p>Curio helps explorers find cultural places that resonate — and gives institutions thoughtful ways to connect with their communities.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="cities/detroit.html">Cities</a></li>
@@ -24,23 +73,13 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
+        <div class="footer-meta">
+          <p><strong>Stay curious.</strong> <span class="highlight">Reflections, not reviews.</span></p>
+          <p>Email <a href="mailto:hello@curio.city">hello@curio.city</a> or <a href="mailto:partners@curio.city">partners@curio.city</a>.</p>
+          <p><a href="robots.txt">Robots directives</a> · <a href="sitemap.xml">Sitemap</a></p>
+        </div>
       </div>
-    </header>
-    <main id="main-content" class="site-main" tabindex="-1">
-      <section class="page-header">
-        <div class="container">
-          <h1>We couldn't find that page.</h1>
-          <p>Please use the navigation links above or return to the <a href="index.html">homepage</a>.</p>
-        </div>
-      </section>
-      <section class="placeholder-section">
-        <div class="container">
-          <p>If you believe this is an error, contact <a href="mailto:support@curio.city">support@curio.city</a>.</p>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer" role="contentinfo">
-      <div class="container">
+      <div class="footer-bottom">
         <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
       </div>
     </footer>
