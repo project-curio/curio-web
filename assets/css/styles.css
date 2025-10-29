@@ -531,6 +531,7 @@ a:focus-visible {
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin: 0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6), 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-lead {
@@ -637,7 +638,7 @@ a:focus-visible {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-accent);
+  color: #8d3f16;
   font-weight: 600;
   margin: 0 0 var(--space-2xs);
 }
@@ -1284,7 +1285,7 @@ a:focus-visible {
 }
 
 .footer-heart {
-  color: var(--color-accent);
+  color: #8d3f16;
 }
 
 @media (min-width: 768px) {
