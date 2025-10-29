@@ -30,167 +30,257 @@
         <a class="logo" href="index.html" aria-label="Curio home">
           curio<span class="logo-accent">.</span>
         </a>
+        <div class="header-search header-search--desktop" role="search" aria-label="Curio search">
+          <form class="header-search-form" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="nav-search-keyword">Search experiences</label>
+            <svg class="header-search-icon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M21 21l-4.35-4.35m1.35-3.65a6 6 0 1 0-12 0 6 6 0 0 0 12 0Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <input id="nav-search-keyword" name="q" type="search" placeholder="Museums, galleries, gardens…" autocomplete="off">
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+          </form>
+          <form class="header-search-form header-search-form--location" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="nav-search-location">Search by city</label>
+            <svg class="header-search-icon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="12" cy="11" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+            </svg>
+            <input id="nav-search-location" name="location" type="search" placeholder="Detroit, Chicago, Toronto…" autocomplete="off">
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+          </form>
+          <button class="header-search-submit" type="submit" aria-label="Search Curio">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="header-actions">
+          <a class="header-link" href="#partners">For institutions</a>
+          <a class="header-link" href="#contact">Log in</a>
+          <a class="header-cta" href="mailto:hello@curio.city">Share reflection</a>
+        </div>
         <button class="nav-toggle" type="button" data-js="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
           <span class="sr-only">Toggle navigation</span>
           <span class="nav-toggle-icon" aria-hidden="true"></span>
         </button>
-        <nav id="primary-nav" class="site-nav" aria-label="Primary navigation">
-          <form class="nav-search" data-js="search-form" action="#" method="get" role="search" aria-label="Search cultural places">
-            <label class="sr-only" for="nav-search">Search places</label>
-            <input id="nav-search" name="q" type="search" placeholder="Search museums, galleries, gardens..." autocomplete="off">
-            <button type="submit">Search</button>
+      </div>
+      <nav id="primary-nav" class="site-nav" aria-label="Primary navigation">
+        <div class="mobile-search" role="search" aria-label="Curio search">
+          <form class="mobile-search-form" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="mobile-search-keyword">Search experiences</label>
+            <input id="mobile-search-keyword" name="q" type="search" placeholder="Find museums, galleries…" autocomplete="off">
             <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
           </form>
-          <ul class="nav-links">
-            <li><a href="index.html" aria-current="page">Home</a></li>
-            <li><a href="cities/detroit.html">Cities</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="partners.html">Partners</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-          <a class="nav-cta" href="mailto:hello@curio.city">Share your reflection</a>
-        </nav>
-      </div>
+          <form class="mobile-search-form" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="mobile-search-location">Search by city</label>
+            <input id="mobile-search-location" name="location" type="search" placeholder="Detroit, Chicago…" autocomplete="off">
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+          </form>
+          <button class="mobile-search-submit" type="submit">Search</button>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home" aria-current="page">Home</a></li>
+          <li><a href="#cities">Pilot cities</a></li>
+          <li><a href="#map">Map</a></li>
+          <li><a href="#partners">Partner with us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="nav-cta" href="mailto:hello@curio.city">Share your reflection</a>
+      </nav>
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
-      <section class="hero" aria-labelledby="hero-heading">
-        <div class="container hero-inner">
-          <div class="hero-media" aria-hidden="true" data-js="hero-media">
-            <img data-js="hero-media-image" src="https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=1440&q=80" alt="Visitors exploring Rivera Court at the Detroit Institute of Arts" loading="lazy" decoding="async">
-            <div class="hero-media-badge" data-js="hero-media-badge">Winter spotlight · Detroit</div>
-          </div>
+      <section class="hero" id="home" aria-labelledby="hero-heading">
+        <div class="hero-media" aria-hidden="true" data-js="hero-media">
+          <img data-js="hero-media-image" src="https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=1440&q=80" alt="Visitors exploring Rivera Court at the Detroit Institute of Arts" loading="lazy" decoding="async">
+          <div class="hero-media-badge" data-js="hero-media-badge">Winter spotlight · Detroit</div>
+        </div>
+        <div class="container hero-content">
           <div class="hero-body">
-            <p class="eyebrow">Discover culture near you</p>
+            <p class="hero-eyebrow">Discover culture near you</p>
             <h1 id="hero-heading">Discover culture near you.</h1>
-            <p class="lead">Reflections, not reviews. Curio connects people with museums, galleries, gardens, and historic places—helping you explore, reflect, and share what resonates.</p>
-            <div class="tags" aria-label="Top cultural themes">
+            <p class="hero-lead">Reflections, not reviews. Curio connects people with museums, galleries, gardens, and historic places—helping you explore, reflect, and share what resonates.</p>
+            <div class="hero-tags tags" aria-label="Top cultural themes">
               <span class="tag">Art & design</span>
               <span class="tag">History & heritage</span>
               <span class="tag">Gardens & nature</span>
             </div>
             <div class="hero-search">
-              <form data-js="search-form" action="#" method="get">
-                <div class="input-group">
+              <form class="hero-search-form" data-js="search-form" action="#" method="get">
+                <div class="hero-search-field">
                   <label class="sr-only" for="hero-search">Search cultural places</label>
-                  <input id="hero-search" class="input-control input-control--xl" type="search" name="q" placeholder="Try “quiet morning in Minneapolis” or “design in Detroit”" autocomplete="off" inputmode="search" enterkeyhint="search">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M21 21l-4.35-4.35m1.35-3.65a6 6 0 1 0-12 0 6 6 0 0 0 12 0Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                  <input id="hero-search" type="search" name="q" placeholder="Try “quiet morning in Minneapolis” or “design in Detroit”" autocomplete="off" inputmode="search" enterkeyhint="search">
                 </div>
-                <button class="btn btn--xl" type="submit">Find places to explore</button>
+                <button class="hero-search-button" type="submit">Find places to explore</button>
                 <p class="form-feedback" data-js="search-feedback" role="status" aria-live="polite"></p>
               </form>
             </div>
-            <div class="hero-discovery" data-js="hero-discovery" aria-label="Seasonal discovery cards"></div>
-            <div class="hero-discovery-cta" data-js="hero-discovery-cta">
-              <p class="hero-discovery-title" data-js="hero-discovery-title">Rivera Court reflections</p>
-              <a class="hero-discovery-link" data-js="hero-discovery-link" href="cities/detroit.html">See Detroit reflections</a>
+          </div>
+        </div>
+      </section>
+      <section class="discovery" aria-labelledby="section-discovery">
+        <div class="container discovery-inner">
+          <div class="discovery-header">
+            <div>
+              <p class="section-eyebrow">Featured experiences</p>
+              <h2 id="section-discovery">Discover seasonal spotlights</h2>
+            </div>
+            <div class="discovery-controls">
+              <button class="discovery-control discovery-control--prev" type="button" aria-label="Scroll left" data-js="discovery-prev">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="discovery-control discovery-control--next" type="button" aria-label="Scroll right" data-js="discovery-next">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
             </div>
           </div>
-        </div>
-      </section>
-      <section class="section" aria-labelledby="section-cities">
-        <div class="container">
-          <div class="section-heading">
-            <h2 id="section-cities">Pilot cities in focus</h2>
-            <a class="badge" href="cities/detroit.html">View all cities</a>
-          </div>
-          <div class="city-strip" role="list">
-            <article class="card city-card" role="listitem">
-              <figure class="card-media">
-                <img src="https://images.unsplash.com/photo-1529429617124-aee6199d0fde?auto=format&fit=crop&w=900&q=80" alt="Detroit skyline at dusk with the riverfront in view" loading="lazy" decoding="async">
-              </figure>
-              <div class="card-body">
-                <h3>Detroit</h3>
-                <p class="lead">Industrial stories, Motown rhythms, and radical imagination from the Midwest’s cultural powerhouse.</p>
-                <a href="cities/detroit.html">Explore Detroit</a>
-              </div>
-            </article>
-            <article class="card city-card" role="listitem">
-              <figure class="card-media">
-                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Chicago skyline and waterfront on a sunny day" loading="lazy" decoding="async">
-              </figure>
-              <div class="card-body">
-                <h3>Chicago</h3>
-                <p class="lead">Architecture icons, neighborhood galleries, and waterfront museums along Lake Michigan.</p>
-                <a href="cities/chicago.html">Explore Chicago</a>
-              </div>
-            </article>
-            <article class="card city-card" role="listitem">
-              <figure class="card-media">
-                <img src="https://images.unsplash.com/photo-1505739543684-20a59a4ea045?auto=format&fit=crop&w=900&q=80" alt="Toronto skyline with the CN Tower reflecting at sunset" loading="lazy" decoding="async">
-              </figure>
-              <div class="card-body">
-                <h3>Toronto</h3>
-                <p class="lead">Cross-border energy with Indigenous-led spaces, design hubs, and curiosity for everyone.</p>
-                <a href="cities/toronto.html">Explore Toronto</a>
-              </div>
-            </article>
-            <article class="card city-card" role="listitem">
-              <figure class="card-media">
-                <img src="https://images.unsplash.com/photo-1501618669935-18b6ecb13d29?auto=format&fit=crop&w=900&q=80" alt="Stone Arch Bridge spanning the Mississippi River in Minneapolis" loading="lazy" decoding="async">
-              </figure>
-              <div class="card-body">
-                <h3>Minneapolis</h3>
-                <p class="lead">Riverfront history, community gardens, and contemporary art spaces across the Twin Cities.</p>
-                <a href="cities/minneapolis.html">Explore Minneapolis</a>
-              </div>
-            </article>
-            <article class="card city-card" role="listitem">
-              <figure class="card-media">
-                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80" alt="New York City skyline glowing at sunset" loading="lazy" decoding="async">
-              </figure>
-              <div class="card-body">
-                <h3>New York City</h3>
-                <p class="lead">From uptown icons to outer borough incubators, discover reflections across NYC’s cultural constellation.</p>
-                <a href="cities/nyc.html">Explore New York City</a>
-              </div>
-            </article>
+          <div class="discovery-carousel" data-js="hero-discovery" aria-label="Seasonal discovery cards"></div>
+          <div class="discovery-footer" data-js="hero-discovery-cta">
+            <p class="discovery-title" data-js="hero-discovery-title">Rivera Court reflections</p>
+            <a class="discovery-link" data-js="hero-discovery-link" href="cities/detroit.html">See Detroit reflections</a>
           </div>
         </div>
       </section>
-      <section class="section" aria-labelledby="section-reflections">
+      <section class="section section-cities" id="cities" aria-labelledby="section-cities">
         <div class="container">
-          <div class="section-heading">
+          <div class="section-intro section-intro--center">
+            <p class="section-eyebrow">Pilot cities</p>
+            <h2 id="section-cities">Explore where Curio lives</h2>
+            <p class="section-lead">Each city brings its own cultural landscape. Start exploring reflections from our pilot communities.</p>
+          </div>
+          <div class="city-carousel" role="list">
+            <article class="city-card" role="listitem">
+              <div class="city-card-media">
+                <img src="https://images.unsplash.com/photo-1730137568296-a25fd5a3bc84?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXRyb2l0JTIwZG93bnRvd24lMjBza3lsaW5lfGVufDF8fHx8MTc2MTc2NzUyNnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Detroit skyline looking over the river at dusk" loading="lazy" decoding="async">
+                <div class="city-card-overlay"></div>
+                <h3 class="city-card-title">Detroit</h3>
+              </div>
+              <div class="city-card-body">
+                <p>Industrial heritage meets contemporary renaissance in America’s most resilient cultural landscape.</p>
+                <a class="city-card-link" href="cities/detroit.html">
+                  Explore Detroit
+                  <span aria-hidden="true" class="city-card-arrow">→</span>
+                </a>
+              </div>
+            </article>
+            <article class="city-card" role="listitem">
+              <div class="city-card-media">
+                <img src="https://images.unsplash.com/photo-1705268867990-4f90c7883ab4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGljYWdvJTIwYXJjaGl0ZWN0dXJlfGVufDF8fHx8MTc2MTY3ODkyOHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Chicago skyline viewed from the lakefront under golden light" loading="lazy" decoding="async">
+                <div class="city-card-overlay"></div>
+                <h3 class="city-card-title">Chicago</h3>
+              </div>
+              <div class="city-card-body">
+                <p>World-class museums, lakefront architecture, and diverse cultural narratives across iconic neighborhoods.</p>
+                <a class="city-card-link" href="cities/chicago.html">
+                  Explore Chicago
+                  <span aria-hidden="true" class="city-card-arrow">→</span>
+                </a>
+              </div>
+            </article>
+            <article class="city-card" role="listitem">
+              <div class="city-card-media">
+                <img src="https://images.unsplash.com/photo-1704925052413-f4b9a3d467f7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0b3JvbnRvJTIwY2l0eXNjYXBlfGVufDF8fHx8MTc2MTY3MTkxOXww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Toronto skyline with the CN Tower above the harbourfront at sunset" loading="lazy" decoding="async">
+                <div class="city-card-overlay"></div>
+                <h3 class="city-card-title">Toronto</h3>
+              </div>
+              <div class="city-card-body">
+                <p>A global hub where galleries, gardens, and historic sites reflect multicultural exploration and exchange.</p>
+                <a class="city-card-link" href="cities/toronto.html">
+                  Explore Toronto
+                  <span aria-hidden="true" class="city-card-arrow">→</span>
+                </a>
+              </div>
+            </article>
+            <article class="city-card" role="listitem">
+              <div class="city-card-media">
+                <img src="https://images.unsplash.com/photo-1680461659354-7cc1aa9a6f39?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5uZWFwb2xpcyUyMHVyYmFufGVufDF8fHx8MTc2MTc2NzUyN3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Outdoor sculpture and skyline in Minneapolis under a pink dusk sky" loading="lazy" decoding="async">
+                <div class="city-card-overlay"></div>
+                <h3 class="city-card-title">Minneapolis</h3>
+              </div>
+              <div class="city-card-body">
+                <p>Sculpture gardens, theater districts, and waterfront trails woven into a creative urban fabric.</p>
+                <a class="city-card-link" href="cities/minneapolis.html">
+                  Explore Minneapolis
+                  <span aria-hidden="true" class="city-card-arrow">→</span>
+                </a>
+              </div>
+            </article>
+            <article class="city-card" role="listitem">
+              <div class="city-card-media">
+                <img src="https://images.unsplash.com/photo-1576606960628-0ceb8e99bb31?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXclMjB5b3JrJTIwY2l0eSUyMGN1bHR1cmV8ZW58MXx8fHwxNzYxNzY3NTI3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="New York skyline at dusk with city lights beginning to glow" loading="lazy" decoding="async">
+                <div class="city-card-overlay"></div>
+                <h3 class="city-card-title">New York</h3>
+              </div>
+              <div class="city-card-body">
+                <p>Unparalleled density of cultural institutions — from world-renowned museums to hidden historic gems.</p>
+                <a class="city-card-link" href="cities/nyc.html">
+                  Explore New York
+                  <span aria-hidden="true" class="city-card-arrow">→</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section section-reflections" aria-labelledby="section-reflections">
+        <div class="container">
+          <div class="section-intro section-intro--center">
+            <p class="section-eyebrow">Community Voices</p>
             <h2 id="section-reflections">Reflections, not reviews</h2>
-            <p class="lead">Curio’s guided prompts elevate context over ratings. Here’s a glimpse at how reflections surface feeling, learning, and access across our pilot cities.</p>
+            <p class="section-lead">Curio invites people to share how cultural experiences made them feel, what they learned, and how accessible spaces truly are.</p>
           </div>
-          <div class="reflection-grid reflection-grid--home">
+          <div class="reflection-grid">
             <article class="reflection-card">
-              <p class="badge">Detroit · Feeling</p>
-              <blockquote>“Rivera Court sounds different at dusk. The audio guide layered labor songs with visitor voices—it felt like Motown history humming beside me.”</blockquote>
-              <div class="reflection-top-tags" aria-label="Top tags">
+              <span class="badge badge--muted">Detroit · Feeling</span>
+              <blockquote>
+                “Standing in Rivera Court, I felt surrounded by stories of work, dignity, and creation. The murals don’t just show industry — they honor the people who built this city.”
+              </blockquote>
+              <div class="reflection-tags" aria-label="Top tags">
                 <span class="tag tag--small">Soundscapes</span>
-                <span class="tag tag--small">Community care</span>
-                <span class="tag tag--small">Rest</span>
+                <span class="tag tag--small">History</span>
+                <span class="tag tag--small">Community Care</span>
               </div>
               <footer>Shared in the Detroit Institute of Arts · Reflection Index beta</footer>
             </article>
             <article class="reflection-card">
-              <p class="badge">Chicago · Learning</p>
-              <blockquote>“Walking through the Hyde Park Art Center, every wall text named the community collaborators. It changed how I plan to write about my own neighborhood.”</blockquote>
-              <div class="reflection-top-tags" aria-label="Top tags">
-                <span class="tag tag--small">Neighborhood stories</span>
+              <span class="badge badge--muted">Chicago · Learning</span>
+              <blockquote>
+                “Walking the lakefront, I learned how architecture shapes our relationship with nature. Each building tells a story about what we value — and what we’ve overlooked.”
+              </blockquote>
+              <div class="reflection-tags" aria-label="Top tags">
                 <span class="tag tag--small">Architecture</span>
-                <span class="tag tag--small">Access notes</span>
+                <span class="tag tag--small">Environment</span>
+                <span class="tag tag--small">Urban Design</span>
               </div>
-              <footer>Highlight from Chicago partner cohort · Spring field study</footer>
+              <footer>Walking salon at the Chicago Lakefront Trail</footer>
             </article>
             <article class="reflection-card">
-              <p class="badge">Toronto · Access</p>
-              <blockquote>“The AGO’s quiet mornings plus tactile labels meant my dad could take in the show slowly. We left with a zine that asked us to add our own stories.”</blockquote>
-              <div class="reflection-top-tags" aria-label="Top tags">
-                <span class="tag tag--small">Sensory-friendly</span>
-                <span class="tag tag--small">Co-creation</span>
-                <span class="tag tag--small">Indigenous stewardship</span>
+              <span class="badge badge--muted">Toronto · Access</span>
+              <blockquote>
+                “The night market made me realize how cultural spaces can belong to everyone. It wasn’t about who knows what — it was about gathering, sharing, and feeling welcome.”
+              </blockquote>
+              <div class="reflection-tags" aria-label="Top tags">
+                <span class="tag tag--small">Accessibility</span>
+                <span class="tag tag--small">Community</span>
+                <span class="tag tag--small">Celebration</span>
               </div>
-              <footer>Toronto reflection pilot · Accessibility salon series</footer>
+              <footer>Harbourfront Centre · Reflection Index beta</footer>
             </article>
           </div>
         </div>
       </section>
-      <section class="section section-map" aria-labelledby="section-map">
+      <section class="section section-map" id="map" aria-labelledby="section-map">
         <div class="container">
-          <div class="section-heading">
+          <div class="section-intro section-intro--center">
+            <p class="section-eyebrow">Our Network</p>
             <h2 id="section-map">See our pilot cities at a glance</h2>
-            <p class="lead">Each pin reveals where reflections are taking shape across the Curio network.</p>
+            <p class="section-lead">Each pin reveals where reflections are taking shape across the Curio network.</p>
           </div>
           <div class="map-shell map-shell--home">
             <div
@@ -203,44 +293,141 @@
               data-places='[{"name":"Detroit","lat":42.3314,"lng":-83.0458,"description":"Motown reflections and Rivera Court prompts"},{"name":"Chicago","lat":41.8781,"lng":-87.6298,"description":"Architecture walks and neighborhood storytelling"},{"name":"Toronto","lat":43.6532,"lng":-79.3832,"description":"Waterfront galleries and Indigenous-led spaces"},{"name":"Minneapolis","lat":44.9778,"lng":-93.2650,"description":"Riverfront history and sensory-friendly mornings"},{"name":"New York City","lat":40.7128,"lng":-74.0060,"description":"Borough-based reflections from Weeksville to Queens"}]'
             ></div>
           </div>
+          <div class="map-city-list" role="group" aria-label="Pilot city list">
+            <a class="map-city-button is-active" href="cities/detroit.html">Detroit</a>
+            <a class="map-city-button" href="cities/chicago.html">Chicago</a>
+            <a class="map-city-button" href="cities/toronto.html">Toronto</a>
+            <a class="map-city-button" href="cities/minneapolis.html">Minneapolis</a>
+            <a class="map-city-button" href="cities/nyc.html">New York</a>
+          </div>
         </div>
       </section>
-      <section class="section" aria-labelledby="section-newsletter">
+      <section class="section section-partners" id="partners" aria-labelledby="section-newsletter">
         <div class="container">
-          <div class="card">
-            <p class="eyebrow">Build with us</p>
-            <h2 id="section-newsletter">Institution? Community curator? Let’s collaborate.</h2>
-            <p class="lead">Stage 3 will introduce interactive maps and city storytelling hubs. Share your interest and we’ll reach out as pilot features roll out.</p>
-            <a class="btn" href="mailto:partners@curio.city">Partner with Curio</a>
+          <div class="partner-card">
+            <div class="partner-card-content">
+              <p class="section-eyebrow">Partner with us</p>
+              <h2 id="section-newsletter">Institution? Community curator? Let’s collaborate.</h2>
+              <p class="section-lead">Stage 3 will introduce interactive maps and city storytelling hubs. Share your interest and we’ll reach out as pilot features roll out.</p>
+              <div class="partner-points">
+                <div class="partner-point">
+                  <div class="partner-icon partner-icon--primary" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 21V7.5a2 2 0 0 1 1-1.73l5-2.9a2 2 0 0 1 2 0l5 2.9A2 2 0 0 1 19 7.5V21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Cultural Institutions</h3>
+                    <p>Museums, galleries, gardens, and archives looking to deepen community engagement.</p>
+                  </div>
+                </div>
+                <div class="partner-point">
+                  <div class="partner-icon partner-icon--accent" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="9" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+                      <circle cx="17" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+                      <path d="M3 21a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                      <path d="M14 21a6 6 0 0 1 7-5.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Community Leaders</h3>
+                    <p>Local guides, educators, and cultural advocates shaping how people explore.</p>
+                  </div>
+                </div>
+                <div class="partner-point">
+                  <div class="partner-icon partner-icon--primary" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M3 6.5 10.5 3l7 3.5L21 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M10.5 3v15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                      <path d="M3 6.5v11l7.5 3.5 7-3.5 3.5-1.5v-9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>City Storytellers</h3>
+                    <p>Organizations curating place-based narratives and cultural pathways.</p>
+                  </div>
+                </div>
+              </div>
+              <a class="btn partner-btn" href="mailto:partners@curio.city">Partner with Curio</a>
+            </div>
+            <div class="partner-card-visual" aria-hidden="true">
+              <div class="partner-visual">
+                <svg class="partner-orbits" viewBox="0 0 400 400">
+                  <circle cx="80" cy="90" r="55" fill="#FFFFFF" opacity="0.08"></circle>
+                  <circle cx="300" cy="140" r="85" fill="#FFFFFF" opacity="0.08"></circle>
+                  <circle cx="200" cy="280" r="70" fill="#FFFFFF" opacity="0.08"></circle>
+                  <circle cx="320" cy="320" r="45" fill="#FFFFFF" opacity="0.08"></circle>
+                </svg>
+                <div class="partner-visual-copy">
+                  <svg viewBox="0 0 48 48">
+                    <path d="M10 42h28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                    <path d="M18 42V20h12v22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                    <path d="M14 20l10-8 10 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                  </svg>
+                  <p>Building the future of cultural discovery together.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
-    <footer class="footer" role="contentinfo">
+    <footer class="footer" id="contact" role="contentinfo">
       <div class="container footer-inner">
         <div class="footer-brand">
           <a class="logo" href="index.html">
             curio<span class="logo-accent">.</span>
           </a>
-          <p>Curio helps explorers find cultural places that resonate — and gives institutions thoughtful ways to connect with their communities.</p>
+          <p>Discover and share cultural experiences that inspire curiosity, reflection, and community.</p>
+          <p class="footer-tagline">Reflections, not reviews.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
+          <h3>Explore</h3>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cities/detroit.html">Cities</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="partners.html">Partners</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#cities">Pilot Cities</a></li>
+            <li><a href="#map">Map</a></li>
+            <li><a href="#partners">Partner With Us</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <div class="footer-meta">
-          <p><strong>Stay curious.</strong> <span class="highlight">Reflections, not reviews.</span></p>
-          <p>Email <a href="mailto:hello@curio.city">hello@curio.city</a> or <a href="mailto:partners@curio.city">partners@curio.city</a>.</p>
-          <p><a href="robots.txt">Robots directives</a> · <a href="sitemap.xml">Sitemap</a></p>
+        <div class="footer-connect">
+          <h3>Connect</h3>
+          <div class="footer-links">
+            <a href="mailto:hello@curio.city">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="m4 7 8 5 8-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+              hello@curio.city
+            </a>
+            <a href="mailto:partners@curio.city">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="m4 7 8 5 8-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+              partners@curio.city
+            </a>
+          </div>
+          <div class="footer-badges">
+            <span>Stage 2: Reflection Index beta</span>
+            <span>Coming soon: Interactive city maps</span>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
+        <div class="container footer-bottom-inner">
+          <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
+          <div class="footer-bottom-links">
+            <a href="sitemap.xml">Sitemap</a>
+            <span aria-hidden="true">·</span>
+            <a href="robots.txt">Robots</a>
+            <span aria-hidden="true">·</span>
+            <span>Made with <span class="footer-heart" aria-hidden="true">♥</span> for culture</span>
+          </div>
+        </div>
       </div>
     </footer>
     <script src="assets/js/map.js" defer></script>

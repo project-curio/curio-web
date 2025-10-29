@@ -241,5 +241,22 @@
     });
 
     setHeroSlide(0);
+
+    const discoveryPrev = document.querySelector('[data-js="discovery-prev"]');
+    const discoveryNext = document.querySelector('[data-js="discovery-next"]');
+    const scrollCarousel = (direction) => {
+      heroDiscovery.scrollBy({
+        left: direction * 340,
+        behavior: 'smooth'
+      });
+    };
+
+    if (discoveryPrev) {
+      discoveryPrev.addEventListener('click', () => scrollCarousel(-1));
+    }
+
+    if (discoveryNext) {
+      discoveryNext.addEventListener('click', () => scrollCarousel(1));
+    }
   }
 })();
