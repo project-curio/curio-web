@@ -1,6 +1,6 @@
 {
   "name": "curio-web",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Curio front-end MVP static prototype.",
   "private": true,
   "scripts": {

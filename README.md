@@ -1,6 +1,6 @@
 # Curio — Front-End MVP
 
-![Version](https://img.shields.io/badge/version-1.0.0-0D474E?labelColor=0B1F24&style=flat-square)
+![Version](https://img.shields.io/badge/version-0.1.0-0D474E?labelColor=0B1F24&style=flat-square)
 ![CI](https://github.com/project-curio/curio-web/actions/workflows/ci-and-deploy.yml/badge.svg)
 
 Curio is a cultural discovery prototype that centers reflections over ratings. This static MVP locks in UI/UX for the future React + Supabase + Mapbox build. Pages showcase discovery flows for cities, place detail storytelling, and partner onboarding.
