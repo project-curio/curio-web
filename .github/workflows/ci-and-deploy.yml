@@ -42,10 +42,10 @@ jobs:
         run: npx eslint "assets/js/**/*.js"
 
       - name: Start local server
-        run: npx http-server -p 8080 -c-1 .
-        env:
-          NODE_ENV: test
-        timeout-minutes: 1
+        run: |
+          npx http-server -p 8080 -c-1 . &
+          echo $! > /tmp/http-server-pid
+          sleep 2
 
       - name: Accessibility (pa11y-ci)
         run: npx pa11y-ci
@@ -72,6 +72,13 @@ jobs:
             "./**/*.html"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Stop local server
+        if: always()
+        run: |
+          if [ -f /tmp/http-server-pid ]; then
+            kill "$(cat /tmp/http-server-pid)"
+          fi
 
   deploy:
     name: Build • Deploy to GitHub Pages
