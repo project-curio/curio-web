@@ -1,0 +1,10 @@
+{
+  "name": "Curio",
+  "short_name": "Curio",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0d474e",
+  "theme_color": "#0d474e",
+  "description": "Curio connects people with museums, galleries, gardens, and historic places.",
+  "icons": []
+}

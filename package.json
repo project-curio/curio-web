@@ -1,0 +1,30 @@
+{
+  "name": "curio-web",
+  "version": "1.0.0",
+  "description": "Curio front-end MVP static prototype.",
+  "private": true,
+  "scripts": {
+    "lint:html": "htmlhint \"**/*.html\"",
+    "serve:test": "http-server -p 8080 -c-1 .",
+    "a11y:run": "pa11y-ci --config pa11yci.json",
+    "a11y": "start-server-and-test serve:test http://localhost:8080 a11y:run",
+    "stage1:validate": "npm run lint:html && npm run a11y"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/project-curio/curio-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/project-curio/curio-web/issues"
+  },
+  "homepage": "https://github.com/project-curio/curio-web#readme",
+  "devDependencies": {
+    "htmlhint": "^1.7.1",
+    "http-server": "^14.1.1",
+    "pa11y-ci": "^3.1.0",
+    "start-server-and-test": "^2.1.2"
+  }
+}

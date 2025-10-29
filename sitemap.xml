@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.com/index.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/about.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/partners.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/contact.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/cities/detroit.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/cities/chicago.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/cities/toronto.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/cities/minneapolis.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/cities/nyc.html</loc>
+  </url>
+  <url>
+    <loc>https://example.com/places/sample-institution.html</loc>
+  </url>
+</urlset>
