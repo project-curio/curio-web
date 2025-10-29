@@ -48,7 +48,9 @@ jobs:
           sleep 2
 
       - name: Accessibility (pa11y-ci)
-        run: npx pa11y-ci --chrome-launch-flags=\"--no-sandbox,--disable-setuid-sandbox,--disable-dev-shm-usage\"
+        env:
+          PA11Y_CHROME_LAUNCH_CONFIG: '{"args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage"]}'
+        run: npx pa11y-ci
 
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
