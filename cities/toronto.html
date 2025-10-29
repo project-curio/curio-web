@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="../assets/css/normalize.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
@@ -53,22 +54,115 @@
       </div>
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
-      <section class="section" aria-labelledby="toronto-heading">
-        <div class="container">
-          <p class="eyebrow">Pilot city</p>
-          <h1 id="toronto-heading">Toronto</h1>
-          <p class="lead">Curio highlights the layered cultural landscape of Tkaronto/Toronto, from Indigenous-led spaces to contemporary design hubs.</p>
-        </div>
-      </section>
-      <section class="section" aria-labelledby="toronto-preview">
-        <div class="container">
-          <div class="card">
-            <h2 id="toronto-preview">What’s coming in Stage 3</h2>
-            <p>Detailed discovery cards and reflection prompts will celebrate multilingual storytelling, diasporic art, and waterfront institutions.</p>
-            <p class="form-feedback">Interactive map layers and curated tags debut next stage.</p>
+      <article class="city-layout">
+        <section class="city-hero" aria-labelledby="toronto-heading">
+          <div class="container city-hero-grid">
+            <div class="city-hero-body">
+              <p class="eyebrow">Pilot city</p>
+              <h1 id="toronto-heading">Toronto</h1>
+              <p class="lead">Multilingual storytelling, Indigenous-led spaces, and waterfront experiences define Toronto’s cultural mix.</p>
+              <p>Curio spotlights reflections that honor land, community, and design across the city.</p>
+              <ul class="city-highlights" aria-label="Toronto cultural highlights">
+                <li>Indigenous &amp; settler histories</li>
+                <li>Design &amp; architecture</li>
+                <li>Waterfront and ravine culture</li>
+              </ul>
+            </div>
+            <figure class="city-photo">
+              <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1440&q=80" alt="Toronto skyline viewed from the waterfront" loading="lazy" decoding="async">
+              <figcaption>Toronto’s skyline from the harbourfront</figcaption>
+            </figure>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="city-map" aria-labelledby="toronto-map-heading">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="toronto-map-heading">Explore Toronto’s cultural constellation</h2>
+              <p class="lead">Prototype map highlighting reflective stops across the city.</p>
+            </div>
+            <div class="map-shell">
+              <div
+                class="map-canvas js-city-map"
+                role="region"
+                aria-label="Map showing Toronto cultural highlights"
+                tabindex="0"
+                data-lat="43.6532"
+                data-lng="-79.3832"
+                data-zoom="12"
+                data-places='[{"name":"Royal Ontario Museum","lat":43.6677,"lng":-79.3948,"description":"Global collections with Indigenous perspectives"},{"name":"Art Gallery of Ontario","lat":43.6536,"lng":-79.3925,"description":"Canadian art and stories anchored in equity"},{"name":"Evergreen Brick Works","lat":43.6841,"lng":-79.3653,"description":"Community hub merging ecology and design"}]'
+              ></div>
+            </div>
+            <div class="map-key">
+              <h3>Highlights</h3>
+              <ul>
+                <li><strong>ROM</strong> — Reflections trace layered histories and stewardship.</li>
+                <li><strong>AGO</strong> — Artists’ voices center identity, intimacy, and materiality.</li>
+                <li><strong>Brick Works</strong> — Visitors consider climate, access, and city-building.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="toronto-discovery">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="toronto-discovery">Discovery cards in progress</h2>
+              <p class="lead">Toronto reflections uplift cross-border collaboration and everyday curiosity.</p>
+            </div>
+            <div class="card-grid place-grid">
+              <article class="card place-card">
+                <h3>Royal Ontario Museum</h3>
+                <p>Reflections look at how galleries balance colonial legacies with new stewardship practices.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Bloor-Yorkville</span>
+                  <span>Reflection cue: Whose stories felt centered in the exhibit you explored?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">History</span>
+                  <span class="tag">Stewardship</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Art Gallery of Ontario</h3>
+                <p>Newly expanded collections invite visitors to reflect on representation and resonance.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Grange Park</span>
+                  <span>Reflection cue: Which piece offered a mirror or a window for you?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Art</span>
+                  <span class="tag">Equity</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Aga Khan Museum</h3>
+                <p>Architecture, music, and programming spark reflections on pluralism and design.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Don Mills</span>
+                  <span>Reflection cue: How did the space help you slow down and listen?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Architecture</span>
+                  <span class="tag">Pluralism</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Harbourfront Centre</h3>
+                <p>Waterfront programming blends performance, craft, and food for collective reflection.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Harbourfront</span>
+                  <span>Reflection cue: What senses or memories were sparked by this visit?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Performance</span>
+                  <span class="tag">Community</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </article>
     </main>
     <footer class="footer" role="contentinfo">
       <div class="container footer-inner">
@@ -97,6 +191,8 @@
         <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
       </div>
     </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="../assets/js/map.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
   </body>
 </html>

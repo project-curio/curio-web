@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="../assets/css/normalize.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
@@ -53,22 +54,115 @@
       </div>
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
-      <section class="section" aria-labelledby="minneapolis-heading">
-        <div class="container">
-          <p class="eyebrow">Pilot city</p>
-          <h1 id="minneapolis-heading">Minneapolis</h1>
-          <p class="lead">Curio will surface reflections from the Mississippi riverfront to community-centered galleries across Minneapolis.</p>
-        </div>
-      </section>
-      <section class="section" aria-labelledby="minneapolis-preview">
-        <div class="container">
-          <div class="card">
-            <h2 id="minneapolis-preview">What’s coming in Stage 3</h2>
-            <p>Discovery cards will highlight institutions, sensory-friendly resources, and reflective prompts to connect visitors with place.</p>
-            <p class="form-feedback">Map prototypes and story tiles arrive next stage.</p>
+      <article class="city-layout">
+        <section class="city-hero" aria-labelledby="minneapolis-heading">
+          <div class="container city-hero-grid">
+            <div class="city-hero-body">
+              <p class="eyebrow">Pilot city</p>
+              <h1 id="minneapolis-heading">Minneapolis</h1>
+              <p class="lead">Mississippi riverfront history, contemporary art, and community gardens inspire reflection across Minneapolis.</p>
+              <p>Curio surfaces stories that tie together creativity, activism, and restorative space.</p>
+              <ul class="city-highlights" aria-label="Minneapolis cultural highlights">
+                <li>Riverfront heritage</li>
+                <li>Design &amp; sculpture</li>
+                <li>Neighborhood storytelling</li>
+              </ul>
+            </div>
+            <figure class="city-photo">
+              <img src="https://images.unsplash.com/photo-1542317854-0d6cb060a9ee?auto=format&fit=crop&w=1440&q=80" alt="Stone Arch Bridge over the Mississippi River in Minneapolis" loading="lazy" decoding="async">
+              <figcaption>Stone Arch Bridge looking toward downtown Minneapolis</figcaption>
+            </figure>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="city-map" aria-labelledby="minneapolis-map-heading">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="minneapolis-map-heading">Discover Minneapolis cultural stops</h2>
+              <p class="lead">Prototype map connecting art, architecture, and community hubs.</p>
+            </div>
+            <div class="map-shell">
+              <div
+                class="map-canvas js-city-map"
+                role="region"
+                aria-label="Map showing Minneapolis cultural highlights"
+                tabindex="0"
+                data-lat="44.9778"
+                data-lng="-93.2650"
+                data-zoom="12"
+                data-places='[{"name":"Walker Art Center","lat":44.9683,"lng":-93.288,"description":"Contemporary art and the Minneapolis Sculpture Garden"},{"name":"American Swedish Institute","lat":44.9585,"lng":-93.2695,"description":"Cultural center blending heritage and design"},{"name":"Mill City Museum","lat":44.978,"lng":-93.2575,"description":"Riverfront stories of labor and innovation"}]'
+              ></div>
+            </div>
+            <div class="map-key">
+              <h3>Highlights</h3>
+              <ul>
+                <li><strong>Walker Art Center</strong> — Reflections consider public art and civic gathering.</li>
+                <li><strong>American Swedish Institute</strong> — Visitors connect migration stories with contemporary craft.</li>
+                <li><strong>Mill City Museum</strong> — Riverfront narratives foreground labor, grain, and place.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="minneapolis-discovery">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="minneapolis-discovery">Discovery cards in progress</h2>
+              <p class="lead">Minneapolis reflections highlight healing, land, and creative collaboration.</p>
+            </div>
+            <div class="card-grid place-grid">
+              <article class="card place-card">
+                <h3>Walker Art Center &amp; Sculpture Garden</h3>
+                <p>Reflections explore how public art shapes gathering, memory, and playful curiosity.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Lowry Hill</span>
+                  <span>Reflection cue: Which sculpture changed the way you see this city?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Art</span>
+                  <span class="tag">Public space</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Midtown Global Market</h3>
+                <p>Food stories and entrepreneurship highlight cultural resilience and mutual aid.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Phillips</span>
+                  <span>Reflection cue: What flavors carry a story you’ll retell?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Foodways</span>
+                  <span class="tag">Community</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Weisman Art Museum</h3>
+                <p>Frank Gehry’s architecture and campus exhibitions spark conversations on design futures.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: University of Minnesota</span>
+                  <span>Reflection cue: How does architecture influence your experience inside?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Architecture</span>
+                  <span class="tag">Futures</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Father Hennepin Bluff Park</h3>
+                <p>Guided walks emphasize Indigenous histories, ecology, and river care.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Marcy-Holmes</span>
+                  <span>Reflection cue: What did you notice when you slowed down here?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Nature</span>
+                  <span class="tag">Land acknowledgment</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </article>
     </main>
     <footer class="footer" role="contentinfo">
       <div class="container footer-inner">
@@ -97,6 +191,8 @@
         <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
       </div>
     </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="../assets/js/map.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
   </body>
 </html>

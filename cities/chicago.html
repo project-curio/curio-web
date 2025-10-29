@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0d474e">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Chicago Culture Guide | Curio">
-    <meta property="og:description" content="Preview Curio’s reflection-driven discovery experience across Chicago’s museums and cultural corridors.">
+    <meta property="og:description" content="Preview Curio’s reflection-driven discovery experience across Chicago’s neighborhoods.">
     <meta property="og:url" content="https://curio.city/cities/chicago.html">
     <meta property="og:image" content="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80">
     <meta name="twitter:card" content="summary_large_image">
@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="../assets/css/normalize.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
@@ -53,22 +54,115 @@
       </div>
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
-      <section class="section" aria-labelledby="chicago-heading">
-        <div class="container">
-          <p class="eyebrow">Pilot city</p>
-          <h1 id="chicago-heading">Chicago</h1>
-          <p class="lead">From the South Side to the lakefront, Curio will surface reflections across Chicago’s museums, archives, and grassroots cultural spaces.</p>
-        </div>
-      </section>
-      <section class="section" aria-labelledby="chicago-preview">
-        <div class="container">
-          <div class="card">
-            <h2 id="chicago-preview">What’s coming in Stage 3</h2>
-            <p>Expect discovery cards outlining institutions, access details, and the reflective prompts that encourage visitors to consider context and impact.</p>
-            <p class="form-feedback">Interactive map embeds arrive in the next stage.</p>
+      <article class="city-layout">
+        <section class="city-hero" aria-labelledby="chicago-heading">
+          <div class="container city-hero-grid">
+            <div class="city-hero-body">
+              <p class="eyebrow">Pilot city</p>
+              <h1 id="chicago-heading">Chicago</h1>
+              <p class="lead">Architecture, neighborhood galleries, and waterfront museums spark layered storytelling across the city.</p>
+              <p>Curio curates reflections that connect Chicago’s creative hubs with the communities they serve.</p>
+              <ul class="city-highlights" aria-label="Chicago cultural highlights">
+                <li>Architecture &amp; design</li>
+                <li>Community-driven art</li>
+                <li>Lakeshore experiences</li>
+              </ul>
+            </div>
+            <figure class="city-photo">
+              <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1440&q=80" alt="Chicago skyline overlooking Millennium Park at sunset" loading="lazy" decoding="async">
+              <figcaption>Millennium Park and the Chicago skyline</figcaption>
+            </figure>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="city-map" aria-labelledby="chicago-map-heading">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="chicago-map-heading">Navigate Chicago’s cultural corridors</h2>
+              <p class="lead">Prototype map featuring anchor institutions that inspire reflective storytelling.</p>
+            </div>
+            <div class="map-shell">
+              <div
+                class="map-canvas js-city-map"
+                role="region"
+                aria-label="Map showing Chicago cultural highlights"
+                tabindex="0"
+                data-lat="41.8781"
+                data-lng="-87.6298"
+                data-zoom="12"
+                data-places='[{"name":"Art Institute of Chicago","lat":41.8796,"lng":-87.6237,"description":"Landmark collection with civic storytelling"},{"name":"Museum of Contemporary Art","lat":41.8972,"lng":-87.6216,"description":"Contemporary voices exploring global narratives"},{"name":"National Museum of Mexican Art","lat":41.8549,"lng":-87.6727,"description":"Pilsen anchor for community-rooted art"}]'
+              ></div>
+            </div>
+            <div class="map-key">
+              <h3>Highlights</h3>
+              <ul>
+                <li><strong>Art Institute</strong> — Reflection prompts bridge impressionist classics with lived experience.</li>
+                <li><strong>MCA</strong> — Artist-led responses explore identity, futures, and social practice.</li>
+                <li><strong>NMMA</strong> — Community voices center heritage and intergenerational storytelling.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="chicago-discovery">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="chicago-discovery">Discovery cards in progress</h2>
+              <p class="lead">Chicago reflections emphasize context, access, and the stories behind each exhibit.</p>
+            </div>
+            <div class="card-grid place-grid">
+              <article class="card place-card">
+                <h3>Art Institute of Chicago</h3>
+                <p>Visitors reflect on how galleries connect the city’s architecture with art history.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Loop</span>
+                  <span>Reflection cue: Which gallery sparked a conversation you want to keep going?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Art</span>
+                  <span class="tag">Architecture</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Hyde Park Art Center</h3>
+                <p>Community-focused exhibitions highlight Black and brown artists shaping Chicago’s future.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Hyde Park</span>
+                  <span>Reflection cue: How do these works echo experiences in your own neighborhood?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Community</span>
+                  <span class="tag">Emerging artists</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>DuSable Black History Museum</h3>
+                <p>Narratives foreground Black resilience and joy, inviting thoughtful reflection on civic memory.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Washington Park</span>
+                  <span>Reflection cue: What story will you share with someone after this visit?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">History</span>
+                  <span class="tag">Justice</span>
+                </div>
+              </article>
+              <article class="card place-card">
+                <h3>Chicago Cultural Center</h3>
+                <p>Free programming and architecture tours invite visitors to reflect on public access and design.</p>
+                <div class="place-card-meta">
+                  <span>Neighborhood: Loop</span>
+                  <span>Reflection cue: How does this space feel open to you?</span>
+                </div>
+                <div class="place-card-tags">
+                  <span class="tag">Civic</span>
+                  <span class="tag">Access</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </article>
     </main>
     <footer class="footer" role="contentinfo">
       <div class="container footer-inner">
@@ -97,6 +191,8 @@
         <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
       </div>
     </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="../assets/js/map.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
   </body>
 </html>
