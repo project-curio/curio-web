@@ -69,7 +69,6 @@ jobs:
         with:
           args: >
             --no-progress
-            --exclude-mail
             --accept 200,206,302,429
             "./**/*.html"
         env:
