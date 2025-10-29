@@ -55,8 +55,9 @@
     <main id="main-content" class="site-main" tabindex="-1">
       <section class="hero" aria-labelledby="hero-heading">
         <div class="container hero-inner">
-          <div class="hero-media" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=1440&q=80" alt="" loading="lazy" decoding="async">
+          <div class="hero-media" aria-hidden="true" data-js="hero-media">
+            <img data-js="hero-media-image" src="https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=1440&q=80" alt="Visitors exploring Rivera Court at the Detroit Institute of Arts" loading="lazy" decoding="async">
+            <div class="hero-media-badge" data-js="hero-media-badge">Winter spotlight · Detroit</div>
           </div>
           <div class="hero-body">
             <p class="eyebrow">Discover culture near you</p>
@@ -77,6 +78,11 @@
                 <p class="form-feedback" data-js="search-feedback" role="status" aria-live="polite"></p>
               </form>
             </div>
+            <div class="hero-discovery" data-js="hero-discovery" aria-label="Seasonal discovery cards"></div>
+            <div class="hero-discovery-cta" data-js="hero-discovery-cta">
+              <p class="hero-discovery-title" data-js="hero-discovery-title">Rivera Court reflections</p>
+              <a class="hero-discovery-link" data-js="hero-discovery-link" href="cities/detroit.html">See Detroit reflections</a>
+            </div>
           </div>
         </div>
       </section>
@@ -86,21 +92,56 @@
             <h2 id="section-cities">Pilot cities in focus</h2>
             <a class="badge" href="cities/detroit.html">View all cities</a>
           </div>
-          <div class="card-grid">
-            <article class="card">
-              <h3>Detroit</h3>
-              <p class="lead">Industrial stories, Motown rhythms, and radical imagination from the Midwest’s cultural powerhouse.</p>
-              <a href="cities/detroit.html">Explore Detroit</a>
+          <div class="city-strip" role="list">
+            <article class="card city-card" role="listitem">
+              <figure class="card-media">
+                <img src="https://images.unsplash.com/photo-1529429617124-aee6199d0fde?auto=format&fit=crop&w=900&q=80" alt="Detroit skyline at dusk with the riverfront in view" loading="lazy" decoding="async">
+              </figure>
+              <div class="card-body">
+                <h3>Detroit</h3>
+                <p class="lead">Industrial stories, Motown rhythms, and radical imagination from the Midwest’s cultural powerhouse.</p>
+                <a href="cities/detroit.html">Explore Detroit</a>
+              </div>
             </article>
-            <article class="card">
-              <h3>Chicago</h3>
-              <p class="lead">Architecture icons, neighborhood galleries, and waterfront museums along Lake Michigan.</p>
-              <a href="cities/chicago.html">Explore Chicago</a>
+            <article class="card city-card" role="listitem">
+              <figure class="card-media">
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Chicago skyline and waterfront on a sunny day" loading="lazy" decoding="async">
+              </figure>
+              <div class="card-body">
+                <h3>Chicago</h3>
+                <p class="lead">Architecture icons, neighborhood galleries, and waterfront museums along Lake Michigan.</p>
+                <a href="cities/chicago.html">Explore Chicago</a>
+              </div>
             </article>
-            <article class="card">
-              <h3>Toronto</h3>
-              <p class="lead">Cross-border energy with Indigenous-led spaces, design hubs, and curiosity for everyone.</p>
-              <a href="cities/toronto.html">Explore Toronto</a>
+            <article class="card city-card" role="listitem">
+              <figure class="card-media">
+                <img src="https://images.unsplash.com/photo-1505739543684-20a59a4ea045?auto=format&fit=crop&w=900&q=80" alt="Toronto skyline with the CN Tower reflecting at sunset" loading="lazy" decoding="async">
+              </figure>
+              <div class="card-body">
+                <h3>Toronto</h3>
+                <p class="lead">Cross-border energy with Indigenous-led spaces, design hubs, and curiosity for everyone.</p>
+                <a href="cities/toronto.html">Explore Toronto</a>
+              </div>
+            </article>
+            <article class="card city-card" role="listitem">
+              <figure class="card-media">
+                <img src="https://images.unsplash.com/photo-1501618669935-18b6ecb13d29?auto=format&fit=crop&w=900&q=80" alt="Stone Arch Bridge spanning the Mississippi River in Minneapolis" loading="lazy" decoding="async">
+              </figure>
+              <div class="card-body">
+                <h3>Minneapolis</h3>
+                <p class="lead">Riverfront history, community gardens, and contemporary art spaces across the Twin Cities.</p>
+                <a href="cities/minneapolis.html">Explore Minneapolis</a>
+              </div>
+            </article>
+            <article class="card city-card" role="listitem">
+              <figure class="card-media">
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80" alt="New York City skyline glowing at sunset" loading="lazy" decoding="async">
+              </figure>
+              <div class="card-body">
+                <h3>New York City</h3>
+                <p class="lead">From uptown icons to outer borough incubators, discover reflections across NYC’s cultural constellation.</p>
+                <a href="cities/nyc.html">Explore New York City</a>
+              </div>
             </article>
           </div>
         </div>
@@ -109,19 +150,58 @@
         <div class="container">
           <div class="section-heading">
             <h2 id="section-reflections">Reflections, not reviews</h2>
-            <p class="lead">Curio invites deeper storytelling. Upcoming releases will spotlight thoughtful visitor reflections and the contexts that shaped them.</p>
+            <p class="lead">Curio’s guided prompts elevate context over ratings. Here’s a glimpse at how reflections surface feeling, learning, and access across our pilot cities.</p>
           </div>
-          <div class="grid two">
-            <div class="card">
-              <p class="badge">Reflection format</p>
-              <h3>Guided prompts that center feeling + impact</h3>
-              <p>Every reflection prompts visitors to share what moved them, what they learned, and who they recommend the experience for — building a more intentional discovery map.</p>
-            </div>
-            <div class="card">
-              <p class="badge">Institution partners</p>
-              <h3>Curio for Culture tiers</h3>
-              <p>Institutions can highlight accessibility notes, community programs, and interpretation values so visitors can align their expectations with your mission.</p>
-            </div>
+          <div class="reflection-grid reflection-grid--home">
+            <article class="reflection-card">
+              <p class="badge">Detroit · Feeling</p>
+              <blockquote>“Rivera Court sounds different at dusk. The audio guide layered labor songs with visitor voices—it felt like Motown history humming beside me.”</blockquote>
+              <div class="reflection-top-tags" aria-label="Top tags">
+                <span class="tag tag--small">Soundscapes</span>
+                <span class="tag tag--small">Community care</span>
+                <span class="tag tag--small">Rest</span>
+              </div>
+              <footer>Shared in the Detroit Institute of Arts · Reflection Index beta</footer>
+            </article>
+            <article class="reflection-card">
+              <p class="badge">Chicago · Learning</p>
+              <blockquote>“Walking through the Hyde Park Art Center, every wall text named the community collaborators. It changed how I plan to write about my own neighborhood.”</blockquote>
+              <div class="reflection-top-tags" aria-label="Top tags">
+                <span class="tag tag--small">Neighborhood stories</span>
+                <span class="tag tag--small">Architecture</span>
+                <span class="tag tag--small">Access notes</span>
+              </div>
+              <footer>Highlight from Chicago partner cohort · Spring field study</footer>
+            </article>
+            <article class="reflection-card">
+              <p class="badge">Toronto · Access</p>
+              <blockquote>“The AGO’s quiet mornings plus tactile labels meant my dad could take in the show slowly. We left with a zine that asked us to add our own stories.”</blockquote>
+              <div class="reflection-top-tags" aria-label="Top tags">
+                <span class="tag tag--small">Sensory-friendly</span>
+                <span class="tag tag--small">Co-creation</span>
+                <span class="tag tag--small">Indigenous stewardship</span>
+              </div>
+              <footer>Toronto reflection pilot · Accessibility salon series</footer>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section section-map" aria-labelledby="section-map">
+        <div class="container">
+          <div class="section-heading">
+            <h2 id="section-map">See our pilot cities at a glance</h2>
+            <p class="lead">Each pin reveals where reflections are taking shape across the Curio network.</p>
+          </div>
+          <div class="map-shell map-shell--home">
+            <div
+              class="map-canvas js-home-map"
+              role="region"
+              aria-label="Map of Curio pilot cities"
+              data-lat="43.5"
+              data-lng="-84.5"
+              data-zoom="4"
+              data-places='[{"name":"Detroit","lat":42.3314,"lng":-83.0458,"description":"Motown reflections and Rivera Court prompts"},{"name":"Chicago","lat":41.8781,"lng":-87.6298,"description":"Architecture walks and neighborhood storytelling"},{"name":"Toronto","lat":43.6532,"lng":-79.3832,"description":"Waterfront galleries and Indigenous-led spaces"},{"name":"Minneapolis","lat":44.9778,"lng":-93.2650,"description":"Riverfront history and sensory-friendly mornings"},{"name":"New York City","lat":40.7128,"lng":-74.0060,"description":"Borough-based reflections from Weeksville to Queens"}]'
+            ></div>
           </div>
         </div>
       </section>
@@ -163,6 +243,7 @@
         <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
       </div>
     </footer>
+    <script src="assets/js/map.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>

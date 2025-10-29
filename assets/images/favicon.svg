@@ -8,6 +8,6 @@
     </linearGradient>
   </defs>
   <rect width="128" height="128" rx="28" fill="url(#bg)" />
-  <text x="28" y="76" font-family="Outfit, 'Inter', sans-serif" font-size="44" font-weight="600" fill="#ffffff" letter-spacing="-1">curio</text>
-  <circle cx="100" cy="48" r="8" fill="#c46a2b" />
+  <text x="28" y="76" font-family="Outfit, 'Inter', sans-serif" font-size="44" font-weight="600" fill="#ffffff" letter-spacing="0.5">curio</text>
+  <circle cx="100" cy="48" r="8" fill="#c47a4b" />
 </svg>

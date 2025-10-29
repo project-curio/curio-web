@@ -77,4 +77,144 @@
       }
     });
   });
+
+  const heroSlides = [
+    {
+      id: 'detroit',
+      title: 'Rivera Court reflections',
+      description: 'Evening prompts and Motown listening salon.',
+      badge: 'Winter spotlight · Detroit',
+      image: 'https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=1440&q=80',
+      thumb: 'https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=540&q=80',
+      alt: 'Visitors exploring Rivera Court at the Detroit Institute of Arts',
+      href: 'cities/detroit.html',
+      linkLabel: 'See Detroit reflections'
+    },
+    {
+      id: 'chicago',
+      title: 'Lakefront architecture walk',
+      description: 'Neighbourhood storytelling along the Riverwalk.',
+      badge: 'Early spring · Chicago',
+      image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1440&q=80',
+      thumb: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=540&q=80',
+      alt: 'Chicago skyline reflecting in the river at sunset',
+      href: 'cities/chicago.html',
+      linkLabel: 'See Chicago reflections'
+    },
+    {
+      id: 'toronto',
+      title: 'Harbourfront night market',
+      description: 'Reflections on waterfront performance and design.',
+      badge: 'Summer evenings · Toronto',
+      image: 'https://images.unsplash.com/photo-1505847512223-4bdf76f86f78?auto=format&fit=crop&w=1440&q=80',
+      thumb: 'https://images.unsplash.com/photo-1505847512223-4bdf76f86f78?auto=format&fit=crop&w=540&q=80',
+      alt: 'Toronto skyline illuminated at night from the harbourfront',
+      href: 'cities/toronto.html',
+      linkLabel: 'See Toronto reflections'
+    },
+    {
+      id: 'minneapolis',
+      title: 'Stone Arch sunrise walk',
+      description: 'Mindful mornings along the Mississippi riverfront.',
+      badge: 'Early fall · Minneapolis',
+      image: 'https://images.unsplash.com/photo-1501618669935-18b6ecb13d29?auto=format&fit=crop&w=1440&q=80',
+      thumb: 'https://images.unsplash.com/photo-1501618669935-18b6ecb13d29?auto=format&fit=crop&w=540&q=80',
+      alt: 'Sunrise over the Stone Arch Bridge in Minneapolis',
+      href: 'cities/minneapolis.html',
+      linkLabel: 'See Minneapolis reflections'
+    }
+  ];
+
+  const heroMedia = document.querySelector('[data-js="hero-media"]');
+  const heroMediaImage = document.querySelector('[data-js="hero-media-image"]');
+  const heroMediaBadge = document.querySelector('[data-js="hero-media-badge"]');
+  const heroDiscovery = document.querySelector('[data-js="hero-discovery"]');
+  const heroDiscoveryTitle = document.querySelector('[data-js="hero-discovery-title"]');
+  const heroDiscoveryLink = document.querySelector('[data-js="hero-discovery-link"]');
+
+  if (heroMedia && heroMediaImage && heroMediaBadge && heroDiscovery && heroDiscoveryTitle && heroDiscoveryLink && heroSlides.length) {
+    heroDiscovery.innerHTML = '';
+    heroSlides.forEach((slide, index) => {
+      const card = document.createElement('article');
+      card.className = 'hero-card';
+      card.setAttribute('tabindex', '0');
+      card.dataset.index = String(index);
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-current', 'false');
+      card.setAttribute('aria-label', `${slide.title} · ${slide.description}`);
+
+      const cardImage = document.createElement('img');
+      cardImage.src = slide.thumb;
+      cardImage.alt = slide.alt;
+      cardImage.loading = 'lazy';
+
+      const cardBody = document.createElement('div');
+      cardBody.className = 'hero-card-body';
+
+      const cardTitle = document.createElement('p');
+      cardTitle.className = 'hero-card-title';
+      cardTitle.textContent = slide.title;
+
+      const cardDesc = document.createElement('p');
+      cardDesc.className = 'hero-card-desc';
+      cardDesc.textContent = slide.description;
+
+      cardBody.append(cardTitle, cardDesc);
+      card.append(cardImage, cardBody);
+      heroDiscovery.append(card);
+    });
+
+    const heroCards = heroDiscovery.querySelectorAll('.hero-card');
+    let heroIndex = 0;
+    let heroTimer = null;
+
+    const setHeroSlide = (index) => {
+      const slide = heroSlides[index];
+      heroIndex = index;
+      heroMediaImage.src = slide.image;
+      heroMediaImage.alt = slide.alt;
+      heroMediaBadge.textContent = slide.badge;
+      heroDiscoveryTitle.textContent = slide.title;
+      heroDiscoveryLink.textContent = slide.linkLabel || 'Explore reflections';
+      heroDiscoveryLink.href = slide.href;
+
+      heroCards.forEach((card) => {
+        if (card.dataset.index === String(index)) {
+          card.classList.add('is-active');
+          card.setAttribute('aria-current', 'true');
+        } else {
+          card.classList.remove('is-active');
+          card.setAttribute('aria-current', 'false');
+        }
+      });
+    };
+
+    const advanceHero = () => {
+      const nextIndex = (heroIndex + 1) % heroSlides.length;
+      setHeroSlide(nextIndex);
+    };
+
+    const startHeroTimer = () => window.setInterval(advanceHero, 7000);
+
+    heroCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const index = Number.parseInt(card.dataset.index || '0', 10);
+        setHeroSlide(index);
+        if (heroTimer) {
+          window.clearInterval(heroTimer);
+        }
+        heroTimer = startHeroTimer();
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          card.click();
+        }
+      });
+    });
+
+    setHeroSlide(0);
+    heroTimer = startHeroTimer();
+  }
 })();

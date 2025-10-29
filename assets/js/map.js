@@ -1,5 +1,5 @@
 (function () {
-  const mapElements = document.querySelectorAll('.js-city-map');
+  const mapElements = document.querySelectorAll('.js-city-map, .js-home-map');
   if (!mapElements.length) {
     return;
   }
@@ -31,6 +31,7 @@
     });
 
   mapElements.forEach((node) => {
+    const isHomeMap = node.classList.contains('js-home-map');
     const lat = Number.parseFloat(node.dataset.lat ?? '');
     const lng = Number.parseFloat(node.dataset.lng ?? '');
     const zoom = Number.parseInt(node.dataset.zoom ?? '', 10) || 12;
@@ -50,7 +51,7 @@
     })();
 
     const mapInstance = L.map(node, {
-      scrollWheelZoom: false,
+      scrollWheelZoom: isHomeMap,
       tap: false,
       keyboard: true
     }).setView([lat, lng], zoom);
@@ -114,8 +115,10 @@
     if (bounds.length > 1) {
       mapInstance.fitBounds(bounds, {
         padding: [32, 32],
-        maxZoom: Math.max(zoom, 14)
+        maxZoom: isHomeMap ? Math.max(zoom, 8) : Math.max(zoom, 14)
       });
+    } else if (!bounds.length) {
+      mapInstance.setView([lat, lng], zoom);
     }
 
     mapInstance.whenReady(() => {
