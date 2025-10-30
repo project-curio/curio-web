@@ -3,7 +3,7 @@ class HeroSlider {
     this.root = root;
     this.slides = Array.from(root.querySelectorAll(".hero-slider__slide"));
     this.dots = Array.from(root.querySelectorAll(".hero-slider__dot"));
-    this.autoAdvanceDelay = config.autoAdvanceDelay || 5000;
+    this.autoAdvanceDelay = config.autoAdvanceDelay || 7000;
     this.manualPauseDelay = config.manualPauseDelay || 10000;
     this.advanceTimer = null;
     this.currentIndex = Math.max(
@@ -153,7 +153,17 @@ class HeroSlider {
         const cta = document.createElement("a");
         cta.className = "hero-slider__cta";
         cta.href = slide.ctaHref || "#";
-        cta.textContent = slide.ctaText;
+
+        const label = document.createElement("span");
+        label.className = "hero-slider__cta-label";
+        label.textContent = slide.ctaText;
+        cta.appendChild(label);
+
+        const icon = this.createIcon(slide.ctaIcon);
+        if (icon) {
+          cta.appendChild(icon);
+        }
+
         content.appendChild(cta);
       }
 
@@ -311,6 +321,31 @@ class HeroSlider {
     this.root.removeEventListener("mouseleave", this.handlePointerLeave);
     this.root.removeEventListener("focusin", this.handlePointerEnter);
     this.root.removeEventListener("focusout", this.handlePointerLeave);
+  }
+
+  createIcon(name) {
+    const icons = {
+      "arrow-right": ["M5 12h14", "M12 5l7 7-7 7"]
+    };
+
+    const paths = icons[name] || icons["arrow-right"];
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "hero-slider__cta-icon");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+
+    paths.forEach((d) => {
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", d);
+      path.setAttribute("fill", "none");
+      path.setAttribute("stroke", "currentColor");
+      path.setAttribute("stroke-width", "1.5");
+      path.setAttribute("stroke-linecap", "round");
+      path.setAttribute("stroke-linejoin", "round");
+      svg.appendChild(path);
+    });
+
+    return svg;
   }
 
   createSearchForm(slide, index) {

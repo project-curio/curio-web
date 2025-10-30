@@ -11,7 +11,8 @@
       "Gardens & nature"
     ],
     "includeSearch": true,
-    "ctaText": "Browse cultural experiences",
+    "ctaText": "Discover",
+    "ctaIcon": "arrow-right",
     "ctaHref": "#section-discovery",
     "image": "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=2000&q=80",
     "credit": "Photo: Daniil Vnoutchkov on Unsplash"
@@ -22,7 +23,8 @@
     "eyebrow": "Seasonal Spotlight",
     "title": "Celebrate Native American Heritage Month",
     "tagline": "Experience storytelling, artifacts, and community-led exhibitions honoring Indigenous history and culture.",
-    "ctaText": "Explore Indigenous History and Culture during Native American Heritage Month",
+    "ctaText": "Honor",
+    "ctaIcon": "arrow-right",
     "ctaHref": "cities/detroit.html",
     "image": "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=2000&q=80",
     "credit": "Photo: Andrew James on Unsplash"
@@ -33,7 +35,8 @@
     "eyebrow": "Close to Home",
     "title": "This Month in Your City",
     "tagline": "From open-studio nights to neighborhood walking tours, uncover cultural happenings right around the corner.",
-    "ctaText": "Explore Indigenous History and Culture during Native American Heritage Month",
+    "ctaText": "Explore",
+    "ctaIcon": "arrow-right",
     "ctaHref": "#section-cities",
     "image": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80",
     "credit": "Photo: Jezael Melgoza on Unsplash"
@@ -44,7 +47,8 @@
     "eyebrow": "Immersive Guides",
     "title": "Digital & Immersive Experiences",
     "tagline": "Step into virtual galleries, soundscapes, and interactive archives that bring cultural heritage to life.",
-    "ctaText": "Explore Indigenous History and Culture during Native American Heritage Month",
+    "ctaText": "Immerse",
+    "ctaIcon": "arrow-right",
     "ctaHref": "places/sample-institution.html",
     "image": "https://images.unsplash.com/photo-1484662020986-75935d767cc4?auto=format&fit=crop&w=2000&q=80",
     "credit": "Photo: Stella Jacob on Unsplash"
