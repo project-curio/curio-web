@@ -13,6 +13,10 @@ class HeroSlider {
     this.isDocumentVisible = document.visibilityState === "visible";
     this.dataUrl = config.dataUrl || root.dataset.heroSource || "assets/data/hero-slides.json";
     this.prefetchedSlides = Array.isArray(config.slides) ? config.slides : null;
+
+    this.handlePointerEnter = this.handlePointerEnter.bind(this);
+    this.handlePointerLeave = this.handlePointerLeave.bind(this);
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
   }
 
   async init() {
@@ -234,24 +238,24 @@ class HeroSlider {
     this.scheduleAdvance(this.manualPauseDelay);
   }
 
-  handlePointerEnter = () => {
+  handlePointerEnter() {
     this.clearTimer();
-  };
+  }
 
-  handlePointerLeave = () => {
+  handlePointerLeave() {
     if (!this.advanceTimer) {
       this.scheduleAdvance(this.autoAdvanceDelay);
     }
-  };
+  }
 
-  handleVisibilityChange = () => {
+  handleVisibilityChange() {
     this.isDocumentVisible = document.visibilityState === "visible";
     if (this.isDocumentVisible) {
       this.scheduleAdvance(this.autoAdvanceDelay);
     } else {
       this.clearTimer();
     }
-  };
+  }
 
   setActiveSlide(index) {
     if (index === this.currentIndex || index < 0 || index >= this.slides.length) {
