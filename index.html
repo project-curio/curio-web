@@ -22,6 +22,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/hero-slider.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -104,36 +105,15 @@
       </nav>
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
-      <section class="hero" id="home" aria-labelledby="hero-heading">
-        <div class="hero-media" aria-hidden="true" data-js="hero-media">
-          <img data-js="hero-media-image" src="https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=1440&q=80" alt="Visitors exploring Rivera Court at the Detroit Institute of Arts" loading="lazy" decoding="async">
-          <div class="hero-media-badge" data-js="hero-media-badge">Winter spotlight · Detroit</div>
-        </div>
-        <div class="container hero-content">
-          <div class="hero-body">
-            <p class="hero-eyebrow">Discover culture near you</p>
-            <h1 id="hero-heading">Discover culture near you.</h1>
-            <p class="hero-lead">Reflections, not reviews. Curio connects people with museums, galleries, gardens, and historic places—helping you explore, reflect, and share what resonates.</p>
-            <div class="hero-tags tags" aria-label="Top cultural themes">
-              <span class="tag">Art & design</span>
-              <span class="tag">History & heritage</span>
-              <span class="tag">Gardens & nature</span>
-            </div>
-            <div class="hero-search">
-              <form class="hero-search-form" data-js="search-form" action="#" method="get">
-                <div class="hero-search-field">
-                  <label class="sr-only" for="hero-search">Search cultural places</label>
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="M21 21l-4.35-4.35m1.35-3.65a6 6 0 1 0-12 0 6 6 0 0 0 12 0Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                  </svg>
-                  <input id="hero-search" type="search" name="q" placeholder="Try “quiet morning in Minneapolis” or “design in Detroit”" autocomplete="off" inputmode="search" enterkeyhint="search">
-                </div>
-                <button class="hero-search-button" type="submit">Find places to explore</button>
-                <p class="form-feedback" data-js="search-feedback" role="status" aria-live="polite"></p>
-              </form>
-            </div>
-          </div>
-        </div>
+      <section
+        class="hero-slider"
+        id="home"
+        role="region"
+        aria-roledescription="carousel"
+        aria-live="polite"
+        data-hero-source="assets/data/hero-slides.json"
+      >
+        <div class="hero-slider__slides"></div>
       </section>
       <section class="discovery" aria-labelledby="section-discovery">
         <div class="container discovery-inner">
@@ -445,6 +425,7 @@
         </div>
       </div>
     </footer>
+    <script src="assets/js/HeroSlider.js" defer></script>
     <script src="assets/js/map.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curio Hero Slider</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    .hero-slider {
+      --hero-bg: rgba(0, 0, 0, 0.45);
+      --hero-text: #fff;
+      --hero-accent: rgba(255, 255, 255, 0.95);
+      --hero-dot: rgba(255, 255, 255, 0.35);
+      --hero-dot-active: rgba(255, 255, 255, 1);
+      --transition-speed: 0.6s;
+      --hero-height: 75vh;
+      position: relative;
+      color: var(--hero-text);
+      height: clamp(520px, var(--hero-height), 820px);
+      display: grid;
+      place-items: stretch;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-slider__slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slider__slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: end;
+      padding: 0;
+      background-color: #0b1423;
+      background-image:
+        linear-gradient(180deg, rgba(5, 16, 31, 0.82) 0%, rgba(5, 16, 31, 0.65) 55%, rgba(5, 16, 31, 0.75) 100%),
+        var(--hero-image);
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity var(--transition-speed) ease,
+        transform var(--transition-speed) ease;
+      pointer-events: none;
+    }
+
+    .hero-slider__slide.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slider__slide {
+        transform: none !important;
+        transition:
+          opacity var(--transition-speed) ease;
+      }
+    }
+
+    .hero-slider__content {
+      position: relative;
+      padding: 3.5rem 3rem 6.5rem;
+      max-width: min(580px, 92vw);
+      z-index: 2;
+    }
+
+    .hero-slider__eyebrow {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--hero-accent);
+      margin-bottom: 0.85rem;
+      display: inline-block;
+    }
+
+    .hero-slider__title {
+      margin: 0 0 1rem;
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .hero-slider__tagline {
+      margin: 0 0 2rem;
+      font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 0 0 2rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-tags .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background-color: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: #fff;
+      font-size: 0.85rem;
+      letter-spacing: 0.015em;
+    }
+
+    .hero-slider__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0b1423;
+      background: var(--hero-accent);
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .hero-slider__cta:hover,
+    .hero-slider__cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-slider__cta:focus-visible {
+      outline: 2px solid var(--hero-accent);
+      outline-offset: 3px;
+    }
+
+    .hero-search {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 2rem;
+    }
+
+    .hero-search-form {
+      display: grid;
+      gap: 0.85rem;
+      width: min(560px, 100%);
+      padding: 0.85rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 40px 80px rgba(6, 47, 52, 0.35);
+    }
+
+    @media (min-width: 640px) {
+      .hero-search-form {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+    }
+
+    .hero-search-field {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding-left: 2.75rem;
+    }
+
+    .hero-search-field svg {
+      position: absolute;
+      left: 1rem;
+      width: 1.1rem;
+      height: 1.1rem;
+      color: rgba(12, 71, 78, 0.55);
+    }
+
+    .hero-search-field input {
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      padding: 0.9rem 0.8rem;
+      font-size: 1rem;
+      color: #0b1423;
+    }
+
+    .hero-search-field input::placeholder {
+      color: rgba(12, 71, 78, 0.5);
+    }
+
+    .hero-search-button {
+      border: none;
+      border-radius: 14px;
+      padding: 0.95rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #0d474e, #12989f);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hero-search-button:hover,
+    .hero-search-button:focus-visible {
+      box-shadow: 0 18px 36px rgba(12, 71, 78, 0.22);
+    }
+
+    .form-feedback {
+      margin: 0;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .hero-slider__dots {
+      position: absolute;
+      bottom: 2rem;
+      left: 3rem;
+      display: inline-flex;
+      gap: 0.75rem;
+      z-index: 3;
+    }
+
+    .hero-slider__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: var(--hero-dot);
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.28s ease, opacity 0.28s ease, background 0.28s ease;
+      opacity: 0.75;
+    }
+
+    .hero-slider__dot.is-active {
+      background: var(--hero-dot-active);
+      opacity: 1;
+      transform: scale(1.3);
+    }
+
+    .hero-slider__dot:focus-visible {
+      outline: 2px solid var(--hero-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-slider {
+        --hero-height: 65vh;
+      }
+
+      .hero-slider__content {
+        padding: 2.75rem 1.75rem 6rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-slider__dots {
+        left: 50%;
+        bottom: 1.6rem;
+        transform: translateX(-50%);
+      }
+
+      .hero-slider__content {
+        padding: 2.5rem 1.5rem 6rem;
+      }
+    }
+
+    .hero-slider__credit {
+      position: absolute;
+      right: 3rem;
+      bottom: 2rem;
+      margin: 0;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 4px;
+      z-index: 3;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    @media (max-width: 640px) {
+      .hero-slider__credit {
+        right: 1.5rem;
+        bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section
+    class="hero-slider"
+    role="region"
+    aria-roledescription="carousel"
+    aria-live="polite"
+    data-hero-source="./assets/data/hero-slides.json"
+  >
+    <div class="hero-slider__slides"></div>
+  </section>
+
+  <script>
+    (function () {
+      const slider = document.querySelector(".hero-slider");
+      if (!slider) {
+        return;
+      }
+
+      const dataUrl = slider.getAttribute("data-hero-source") || "./assets/data/hero-slides.json";
+      slider.setAttribute("aria-busy", "true");
+
+      loadSlides(dataUrl)
+        .then((slidesData) => {
+          if (!Array.isArray(slidesData) || !slidesData.length) {
+            slider.removeAttribute("aria-busy");
+            return;
+          }
+
+          const rendered = renderSlides(slider, slidesData);
+          slider.removeAttribute("aria-busy");
+          initializeSlider(slider, rendered.slides, rendered.dots, rendered.activeIndex);
+        })
+        .catch((error) => {
+          slider.removeAttribute("aria-busy");
+          console.error(error);
+        });
+
+      function loadSlides(url) {
+        return fetch(url, { cache: "no-cache" }).then((response) => {
+          if (!response.ok) {
+            throw new Error(`HeroSlider: Unable to load slide data (${response.status})`);
+          }
+          return response.json();
+        });
+      }
+
+      function renderSlides(sliderEl, slidesData) {
+        let slidesContainer = sliderEl.querySelector(".hero-slider__slides");
+        if (!slidesContainer) {
+          slidesContainer = document.createElement("div");
+          slidesContainer.className = "hero-slider__slides";
+          sliderEl.appendChild(slidesContainer);
+        }
+        slidesContainer.innerHTML = "";
+
+        const existingDots = sliderEl.querySelector(".hero-slider__dots");
+        if (existingDots) {
+          existingDots.remove();
+        }
+
+        const dotsContainer = document.createElement("div");
+        dotsContainer.className = "hero-slider__dots";
+        dotsContainer.setAttribute("role", "tablist");
+        dotsContainer.setAttribute("aria-label", "Hero slider navigation");
+
+        let activeIndex = slidesData.findIndex((item) => Boolean(item.isActive));
+        if (activeIndex < 0) {
+          activeIndex = 0;
+        }
+
+        slidesData.forEach((data, index) => {
+          const slideId = data.id || `hero-slide-${index + 1}`;
+          const slide = document.createElement("article");
+          slide.className = "hero-slider__slide";
+          slide.id = slideId;
+          slide.setAttribute("aria-label", data.ariaLabel || data.title || `Slide ${index + 1}`);
+          slide.setAttribute("aria-hidden", "true");
+          if (data.image) {
+            slide.style.setProperty("--hero-image", `url("${data.image}")`);
+          }
+
+          const content = document.createElement("div");
+          content.className = "hero-slider__content";
+
+          if (data.eyebrow) {
+            const eyebrow = document.createElement("span");
+            eyebrow.className = "hero-slider__eyebrow";
+            eyebrow.textContent = data.eyebrow;
+            content.appendChild(eyebrow);
+          }
+
+          const heading = document.createElement(index === 0 ? "h1" : "h2");
+          heading.className = "hero-slider__title";
+          heading.textContent = data.title || "";
+          content.appendChild(heading);
+
+          if (data.tagline) {
+            const tagline = document.createElement("p");
+            tagline.className = "hero-slider__tagline";
+            tagline.textContent = data.tagline;
+            content.appendChild(tagline);
+          }
+
+          if (Array.isArray(data.tags) && data.tags.length) {
+            const tagsList = document.createElement("div");
+            tagsList.className = "hero-tags tags";
+            tagsList.setAttribute("aria-label", data.tagsLabel || "Top cultural themes");
+
+            data.tags.forEach((tagText) => {
+              const tag = document.createElement("span");
+              tag.className = "tag";
+              tag.textContent = tagText;
+              tagsList.appendChild(tag);
+            });
+
+            content.appendChild(tagsList);
+          }
+
+          if (data.ctaText) {
+            const cta = document.createElement("a");
+            cta.className = "hero-slider__cta";
+            cta.href = data.ctaHref || "#";
+            cta.textContent = data.ctaText;
+            content.appendChild(cta);
+          }
+
+          if (data.includeSearch) {
+            const search = createSearchForm(data, index);
+            content.appendChild(search);
+          }
+
+          slide.appendChild(content);
+
+          if (data.credit) {
+            const credit = document.createElement("p");
+            credit.className = "hero-slider__credit";
+            credit.textContent = data.credit;
+            slide.appendChild(credit);
+          }
+
+          slidesContainer.appendChild(slide);
+
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "hero-slider__dot";
+          dot.setAttribute("aria-label", `Slide ${index + 1} of ${slidesData.length}`);
+          dot.setAttribute("aria-controls", slideId);
+          dot.setAttribute("aria-pressed", "false");
+          dotsContainer.appendChild(dot);
+        });
+
+        sliderEl.appendChild(dotsContainer);
+
+        return {
+          slides: Array.from(slidesContainer.children),
+          dots: Array.from(dotsContainer.children),
+          activeIndex
+        };
+      }
+
+      function createSearchForm(data, index) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "hero-search";
+
+        const form = document.createElement("form");
+        form.className = "hero-search-form";
+        form.setAttribute("data-js", "search-form");
+        form.method = data.searchMethod || "get";
+        form.action = data.searchAction || "#";
+
+        const field = document.createElement("div");
+        field.className = "hero-search-field";
+
+        const searchId = `${data.id || `hero-slide-${index + 1}`}-search`;
+
+        const label = document.createElement("label");
+        label.className = "sr-only";
+        label.setAttribute("for", searchId);
+        label.textContent = data.searchLabel || "Search cultural places";
+
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("aria-hidden", "true");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M21 21l-4.35-4.35m1.35-3.65a6 6 0 1 0-12 0 6 6 0 0 0 12 0Z");
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", "currentColor");
+        path.setAttribute("stroke-width", "1.5");
+        path.setAttribute("stroke-linecap", "round");
+        path.setAttribute("stroke-linejoin", "round");
+        svg.appendChild(path);
+
+        const input = document.createElement("input");
+        input.id = searchId;
+        input.type = "search";
+        input.name = data.searchName || "q";
+        input.autocomplete = "off";
+        input.inputMode = "search";
+        input.enterKeyHint = "search";
+        input.placeholder = data.searchPlaceholder || "Try “quiet morning in Minneapolis” or “design in Detroit”";
+
+        field.append(label, svg, input);
+
+        const submit = document.createElement("button");
+        submit.className = "hero-search-button";
+        submit.type = "submit";
+        submit.textContent = data.searchButtonLabel || "Find places to explore";
+
+        const feedback = document.createElement("p");
+        feedback.className = "form-feedback";
+        feedback.setAttribute("data-js", "search-feedback");
+        feedback.setAttribute("role", "status");
+        feedback.setAttribute("aria-live", "polite");
+
+        form.append(field, submit, feedback);
+        wrapper.appendChild(form);
+        return wrapper;
+      }
+
+      function initializeSlider(sliderEl, slides, dots, initialIndex) {
+        if (!slides.length) {
+          return;
+        }
+
+        const autoAdvanceDelay = 5000;
+        const manualPauseDelay = 10000;
+        let currentIndex = Math.max(0, Math.min(initialIndex, slides.length - 1));
+        let advanceTimer = null;
+        let isDocumentVisible = document.visibilityState === "visible";
+
+        slides.forEach((slide, index) => {
+          const isActive = index === currentIndex;
+          slide.classList.toggle("is-active", isActive);
+          slide.setAttribute("aria-hidden", String(!isActive));
+        });
+
+        dots.forEach((dot, index) => {
+          const isActive = index === currentIndex;
+          dot.classList.toggle("is-active", isActive);
+          dot.setAttribute("aria-pressed", isActive ? "true" : "false");
+          dot.addEventListener("click", () => handleDotInteraction(index));
+          dot.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              handleDotInteraction(index);
+            }
+          });
+        });
+
+        function handleDotInteraction(index) {
+          setActiveSlide(index);
+          scheduleAdvance(manualPauseDelay);
+        }
+
+        function setActiveSlide(index) {
+          if (index === currentIndex || index < 0 || index >= slides.length) {
+            return;
+          }
+
+          const previousSlide = slides[currentIndex];
+          const previousDot = dots[currentIndex];
+          previousSlide.classList.remove("is-active");
+          previousSlide.setAttribute("aria-hidden", "true");
+          if (previousDot) {
+            previousDot.classList.remove("is-active");
+            previousDot.setAttribute("aria-pressed", "false");
+          }
+
+          currentIndex = index;
+
+          const nextSlide = slides[currentIndex];
+          const nextDot = dots[currentIndex];
+          nextSlide.classList.add("is-active");
+          nextSlide.setAttribute("aria-hidden", "false");
+          if (nextDot) {
+            nextDot.classList.add("is-active");
+            nextDot.setAttribute("aria-pressed", "true");
+          }
+        }
+
+        function scheduleAdvance(delay) {
+          clearTimeout(advanceTimer);
+          if (!isDocumentVisible) {
+            return;
+          }
+
+          advanceTimer = window.setTimeout(() => {
+            const nextIndex = (currentIndex + 1) % slides.length;
+            setActiveSlide(nextIndex);
+            scheduleAdvance(autoAdvanceDelay);
+          }, delay);
+        }
+
+        function handlePointerEnter() {
+          clearTimeout(advanceTimer);
+          advanceTimer = null;
+        }
+
+        function handlePointerLeave() {
+          if (!advanceTimer) {
+            scheduleAdvance(autoAdvanceDelay);
+          }
+        }
+
+        function handleVisibilityChange() {
+          isDocumentVisible = document.visibilityState === "visible";
+          if (isDocumentVisible) {
+            scheduleAdvance(autoAdvanceDelay);
+          } else if (advanceTimer) {
+            clearTimeout(advanceTimer);
+            advanceTimer = null;
+          }
+        }
+
+        sliderEl.addEventListener("mouseenter", handlePointerEnter);
+        sliderEl.addEventListener("mouseleave", handlePointerLeave);
+        sliderEl.addEventListener("focusin", handlePointerEnter);
+        sliderEl.addEventListener("focusout", handlePointerLeave);
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        scheduleAdvance(autoAdvanceDelay);
+      }
+    })();
+  </script>
+</body>
+</html>

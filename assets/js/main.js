@@ -165,14 +165,13 @@
     }
   ];
 
-  const heroMedia = document.querySelector('[data-js="hero-media"]');
   const heroMediaImage = document.querySelector('[data-js="hero-media-image"]');
   const heroMediaBadge = document.querySelector('[data-js="hero-media-badge"]');
   const heroDiscovery = document.querySelector('[data-js="hero-discovery"]');
   const heroDiscoveryTitle = document.querySelector('[data-js="hero-discovery-title"]');
   const heroDiscoveryLink = document.querySelector('[data-js="hero-discovery-link"]');
 
-  if (heroMedia && heroMediaImage && heroMediaBadge && heroDiscovery && heroDiscoveryTitle && heroDiscoveryLink && heroSlides.length) {
+  if (heroDiscovery && heroDiscoveryTitle && heroDiscoveryLink && heroSlides.length) {
     heroDiscovery.innerHTML = '';
     heroSlides.forEach((slide, index) => {
       const card = document.createElement('article');
@@ -213,9 +212,13 @@
     const setHeroSlide = (index) => {
       const slide = heroSlides[index];
       heroIndex = index;
-      heroMediaImage.src = slide.image;
-      heroMediaImage.alt = slide.alt;
-      heroMediaBadge.textContent = slide.badge;
+      if (heroMediaImage) {
+        heroMediaImage.src = slide.image;
+        heroMediaImage.alt = slide.alt;
+      }
+      if (heroMediaBadge) {
+        heroMediaBadge.textContent = slide.badge;
+      }
       heroDiscoveryTitle.textContent = slide.title;
       heroDiscoveryLink.textContent = slide.linkLabel || 'Explore reflections';
       heroDiscoveryLink.href = slide.href;
