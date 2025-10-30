@@ -84,7 +84,7 @@
 }
 
 .hero-slider__tagline {
-  margin: 0 0 2rem;
+  margin: 0;
   font-size: clamp(1.05rem, 2.8vw, 1.3rem);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.88);
