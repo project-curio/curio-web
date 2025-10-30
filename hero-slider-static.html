@@ -134,7 +134,7 @@
       text-transform: uppercase;
       color: #082f32;
       background: rgba(255, 255, 255, 0.96);
-      border-radius: 14px;
+      border-radius: 11px;
       text-decoration: none;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -142,7 +142,7 @@
       min-width: 0;
       width: auto;
       max-width: max-content;
-      margin-top: 0.5rem;
+      margin-top: 25px;
     }
 
     .hero-slider__cta:hover,
@@ -317,6 +317,18 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
+    .hero-slider__credit a {
+      color: inherit;
+      text-decoration: underline;
+      transition: opacity 0.2s ease;
+    }
+
+    .hero-slider__credit a:hover,
+    .hero-slider__credit a:focus-visible {
+      opacity: 0.85;
+      text-decoration: none;
+    }
+
     @media (max-width: 640px) {
       .hero-slider__credit {
         right: 1.5rem;
@@ -471,7 +483,46 @@
           if (data.credit) {
             const credit = document.createElement("p");
             credit.className = "hero-slider__credit";
-            credit.textContent = data.credit;
+
+            if (typeof data.credit === "string") {
+              credit.textContent = data.credit;
+            } else {
+              const prefix = data.credit.prefix || "Photo";
+              if (prefix) {
+                credit.append(document.createTextNode(`${prefix}: `));
+              }
+
+              if (data.credit.name) {
+                if (data.credit.profileUrl) {
+                  const profileLink = document.createElement("a");
+                  profileLink.href = data.credit.profileUrl;
+                  profileLink.target = "_blank";
+                  profileLink.rel = "noopener noreferrer";
+                  profileLink.textContent = data.credit.name;
+                  credit.append(profileLink);
+                } else {
+                  credit.append(document.createTextNode(data.credit.name));
+                }
+              } else if (data.credit.text) {
+                credit.append(document.createTextNode(data.credit.text));
+              }
+
+              if (data.credit.imageUrl) {
+                if (data.credit.name || data.credit.text) {
+                  credit.append(document.createTextNode(" · "));
+                }
+                const imageLink = document.createElement("a");
+                imageLink.href = data.credit.imageUrl;
+                imageLink.target = "_blank";
+                imageLink.rel = "noopener noreferrer";
+                imageLink.textContent = data.credit.imageLabel || "View image";
+                credit.append(imageLink);
+              } else if (data.credit.source) {
+                const sourceText = data.credit.name || data.credit.text ? ` · ${data.credit.source}` : data.credit.source;
+                credit.append(document.createTextNode(sourceText));
+              }
+            }
+
             slide.appendChild(credit);
           }
 

@@ -177,7 +177,46 @@ class HeroSlider {
       if (slide.credit) {
         const credit = document.createElement("p");
         credit.className = "hero-slider__credit";
-        credit.textContent = slide.credit;
+
+        if (typeof slide.credit === "string") {
+          credit.textContent = slide.credit;
+        } else {
+          const prefix = slide.credit.prefix || "Photo";
+          if (prefix) {
+            credit.append(document.createTextNode(`${prefix}: `));
+          }
+
+          if (slide.credit.name) {
+            if (slide.credit.profileUrl) {
+              const profileLink = document.createElement("a");
+              profileLink.href = slide.credit.profileUrl;
+              profileLink.target = "_blank";
+              profileLink.rel = "noopener noreferrer";
+              profileLink.textContent = slide.credit.name;
+              credit.append(profileLink);
+            } else {
+              credit.append(document.createTextNode(slide.credit.name));
+            }
+          } else if (slide.credit.text) {
+            credit.append(document.createTextNode(slide.credit.text));
+          }
+
+          if (slide.credit.imageUrl) {
+            if (slide.credit.name || slide.credit.text) {
+              credit.append(document.createTextNode(" · "));
+            }
+            const imageLink = document.createElement("a");
+            imageLink.href = slide.credit.imageUrl;
+            imageLink.target = "_blank";
+            imageLink.rel = "noopener noreferrer";
+            imageLink.textContent = slide.credit.imageLabel || "View image";
+            credit.append(imageLink);
+          } else if (slide.credit.source) {
+            const sourceText = slide.credit.name || slide.credit.text ? ` · ${slide.credit.source}` : slide.credit.source;
+            credit.append(document.createTextNode(sourceText));
+          }
+        }
+
         article.appendChild(credit);
       }
 

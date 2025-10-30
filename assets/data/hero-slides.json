@@ -15,7 +15,13 @@
     "ctaIcon": "arrow-right",
     "ctaHref": "#section-discovery",
     "image": "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=2000&q=80",
-    "credit": "Photo: Daniil Vnoutchkov on Unsplash"
+    "credit": {
+      "prefix": "Photo",
+      "name": "Daniil Vnoutchkov",
+      "profileUrl": "https://unsplash.com/@daniilvnoutchkov",
+      "imageLabel": "View image on Unsplash",
+      "imageUrl": "https://unsplash.com/photos/dcfebaa392e3"
+    }
   },
   {
     "id": "hero-slide-2",
@@ -27,7 +33,13 @@
     "ctaIcon": "arrow-right",
     "ctaHref": "cities/detroit.html",
     "image": "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=2000&q=80",
-    "credit": "Photo: Andrew James on Unsplash"
+    "credit": {
+      "prefix": "Photo",
+      "name": "Andrew James",
+      "profileUrl": "https://unsplash.com/@andrewjames",
+      "imageLabel": "View image on Unsplash",
+      "imageUrl": "https://unsplash.com/photos/87cbac4d88f7"
+    }
   },
   {
     "id": "hero-slide-3",
@@ -39,7 +51,13 @@
     "ctaIcon": "arrow-right",
     "ctaHref": "#section-cities",
     "image": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80",
-    "credit": "Photo: Jezael Melgoza on Unsplash"
+    "credit": {
+      "prefix": "Photo",
+      "name": "Jezael Melgoza",
+      "profileUrl": "https://unsplash.com/@jezael",
+      "imageLabel": "View image on Unsplash",
+      "imageUrl": "https://unsplash.com/photos/5fd1be406fef"
+    }
   },
   {
     "id": "hero-slide-4",
@@ -51,6 +69,12 @@
     "ctaIcon": "arrow-right",
     "ctaHref": "places/sample-institution.html",
     "image": "https://images.unsplash.com/photo-1484662020986-75935d767cc4?auto=format&fit=crop&w=2000&q=80",
-    "credit": "Photo: Stella Jacob on Unsplash"
+    "credit": {
+      "prefix": "Photo",
+      "name": "Stella Jacob",
+      "profileUrl": "https://unsplash.com/@stellajacob",
+      "imageLabel": "View image on Unsplash",
+      "imageUrl": "https://unsplash.com/photos/75935d767cc4"
+    }
   }
 ]
