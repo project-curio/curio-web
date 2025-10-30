@@ -612,7 +612,6 @@ a:focus-visible {
   border-radius: 8px;
   display: inline-block;
   box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 }
 
 .hero-lead {
