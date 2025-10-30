@@ -6,6 +6,7 @@
   --hero-dot-active: rgba(255, 255, 255, 1);
   --transition-speed: 0.6s;
   --hero-height: 75vh;
+
   position: relative;
   color: var(--hero-text);
   height: clamp(520px, var(--hero-height), 820px);
