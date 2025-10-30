@@ -134,21 +134,6 @@ class HeroSlider {
         content.appendChild(tagline);
       }
 
-      if (Array.isArray(slide.tags) && slide.tags.length) {
-        const tagsList = document.createElement("div");
-        tagsList.className = "hero-tags tags";
-        tagsList.setAttribute("aria-label", slide.tagsLabel || "Top cultural themes");
-
-        slide.tags.forEach((tagText) => {
-          const tag = document.createElement("span");
-          tag.className = "tag";
-          tag.textContent = tagText;
-          tagsList.appendChild(tag);
-        });
-
-        content.appendChild(tagsList);
-      }
-
       if (slide.ctaText) {
         const cta = document.createElement("a");
         cta.className = "hero-slider__cta";
@@ -165,6 +150,21 @@ class HeroSlider {
         }
 
         content.appendChild(cta);
+      }
+
+      if (Array.isArray(slide.tags) && slide.tags.length) {
+        const tagsList = document.createElement("div");
+        tagsList.className = "hero-tags tags";
+        tagsList.setAttribute("aria-label", slide.tagsLabel || "Top cultural themes");
+
+        slide.tags.forEach((tagText) => {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = tagText;
+          tagsList.appendChild(tag);
+        });
+
+        content.appendChild(tagsList);
       }
 
       if (slide.includeSearch) {

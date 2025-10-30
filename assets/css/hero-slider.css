@@ -5,11 +5,11 @@
   --hero-dot: rgba(255, 255, 255, 0.35);
   --hero-dot-active: rgba(255, 255, 255, 1);
   --transition-speed: 0.6s;
-  --hero-height: 90vh;
+  --hero-height: 100vh;
 
   position: relative;
   color: var(--hero-text);
-  height: clamp(520px, var(--hero-height), 960px);
+  height: clamp(520px, var(--hero-height), 1100px);
   display: grid;
   place-items: stretch;
   margin-bottom: var(--space-3xl, 5rem);
@@ -94,7 +94,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin: 0 0 2rem;
+  margin: 1.2rem 0 2rem;
   padding: 0;
   list-style: none;
 }
@@ -114,19 +114,21 @@
 .hero-slider__cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.95rem;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #082f32;
   background: rgba(255, 255, 255, 0.96);
-  border-radius: 999px;
+  border-radius: 14px;
   text-decoration: none;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-self: flex-start;
+  margin-top: 0.5rem;
 }
 
 .hero-slider__cta:hover,
@@ -279,7 +281,7 @@
 
 @media (max-width: 768px) {
   .hero-slider {
-    --hero-height: 78vh;
+    --hero-height: 94vh;
   }
 
   .hero-slider__content {
