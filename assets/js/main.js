@@ -78,6 +78,46 @@
     });
   });
 
+  const instMenu = document.querySelector('[data-js="inst-menu"]');
+  if (instMenu) {
+    const trigger = instMenu.querySelector('button');
+    const panel = instMenu.querySelector('.header-menu-panel');
+
+    const closeMenu = () => {
+      if (!trigger || !panel) return;
+      trigger.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('is-open');
+    };
+
+    const openMenu = () => {
+      if (!trigger || !panel) return;
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.classList.add('is-open');
+    };
+
+    trigger?.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!instMenu.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+        trigger?.focus();
+      }
+    });
+  }
+
   const heroSlides = [
     {
       id: 'detroit',
