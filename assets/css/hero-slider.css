@@ -90,6 +90,14 @@
   color: var(--hero-text);
 }
 
+.hero-slider__slide--landing {
+  align-content: center;
+}
+
+.hero-slider__slide--landing .hero-slider__content {
+  margin-bottom: clamp(3rem, 6vh, 4.5rem);
+}
+
 .hero-slider__slide.is-active {
   opacity: 1;
   transform: translateY(0);

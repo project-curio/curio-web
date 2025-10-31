@@ -159,6 +159,9 @@ class HeroSlider {
 
       const content = document.createElement("div");
       content.className = "hero-slider__content";
+      if (slideId === "landing-slide") {
+        article.classList.add("hero-slider__slide--landing");
+      }
 
       if (slide.eyebrow) {
         const eyebrow = document.createElement("span");

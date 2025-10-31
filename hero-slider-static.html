@@ -101,6 +101,14 @@
       color: var(--hero-text);
     }
 
+    .hero-slider__slide--landing {
+      align-content: center;
+    }
+
+    .hero-slider__slide--landing .hero-slider__content {
+      margin-bottom: clamp(3rem, 6vh, 4.5rem);
+    }
+
     .hero-slider__slide.is-active {
       opacity: 1;
       transform: translateY(0);
@@ -669,17 +677,20 @@
             slide.style.setProperty("--hero-cta-color", buttonStyle.textColor);
           }
 
-          const overlayIntensity = resolveOverlayIntensity(data.overlayIntensity);
-          if (overlayIntensity !== null) {
-            applyOverlayIntensity(slide, textTheme, overlayIntensity);
-          }
+        const overlayIntensity = resolveOverlayIntensity(data.overlayIntensity);
+        if (overlayIntensity !== null) {
+          applyOverlayIntensity(slide, textTheme, overlayIntensity);
+        }
 
-          const content = document.createElement("div");
-          content.className = "hero-slider__content";
+        const content = document.createElement("div");
+        content.className = "hero-slider__content";
+        if (slideId === "landing-slide") {
+          slide.classList.add("hero-slider__slide--landing");
+        }
 
-          if (data.eyebrow) {
-            const eyebrow = document.createElement("span");
-            eyebrow.className = "hero-slider__eyebrow";
+        if (data.eyebrow) {
+          const eyebrow = document.createElement("span");
+          eyebrow.className = "hero-slider__eyebrow";
             eyebrow.textContent = data.eyebrow;
             content.appendChild(eyebrow);
           } else {
