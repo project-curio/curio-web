@@ -113,7 +113,7 @@ class HeroSlider {
       article.setAttribute("aria-label", slide.ariaLabel || slide.title || `Slide ${index + 1}`);
       article.setAttribute("aria-hidden", "true");
       if (slide.image) {
-        article.style.setProperty("--hero-image", `url("${slide.image}")`);
+        article.style.setProperty("--hero-image", `url("${this.resolveAssetUrl(slide.image)}")`);
       }
 
       const textTheme = this.resolveTextTheme(slide);
@@ -310,6 +310,25 @@ class HeroSlider {
       backgroundColor: "",
       textColor: ""
     };
+  }
+
+  resolveAssetUrl(path) {
+    if (!path || typeof path !== "string") {
+      return "";
+    }
+
+    const trimmed = path.trim();
+    if (/^(?:https?:)?\/\//i.test(trimmed) || trimmed.startsWith("data:") || trimmed.startsWith("blob:")) {
+      return trimmed;
+    }
+
+    try {
+      const url = new URL(trimmed, document.baseURI);
+      return url.href;
+    } catch (error) {
+      console.warn("HeroSlider: unable to resolve asset URL", path, error);
+      return trimmed;
+    }
   }
 
   updateRootTheme() {

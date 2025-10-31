@@ -493,11 +493,30 @@
           };
         }
 
-        return {
-          name: "",
-          backgroundColor: "",
-          textColor: ""
-        };
+      return {
+        name: "",
+        backgroundColor: "",
+        textColor: ""
+      };
+    }
+
+      function resolveAssetUrl(path) {
+        if (!path || typeof path !== "string") {
+          return "";
+        }
+
+        const trimmed = path.trim();
+        if (/^(?:https?:)?\/\//i.test(trimmed) || trimmed.startsWith("data:") || trimmed.startsWith("blob:")) {
+          return trimmed;
+        }
+
+        try {
+          const url = new URL(trimmed, document.baseURI);
+          return url.href;
+        } catch (error) {
+          console.warn("HeroSlider: unable to resolve asset URL", path, error);
+          return trimmed;
+        }
       }
 
       function updateRootTheme(sliderEl, slides, index) {
@@ -556,7 +575,7 @@
           slide.setAttribute("aria-label", data.ariaLabel || data.title || `Slide ${index + 1}`);
           slide.setAttribute("aria-hidden", "true");
           if (data.image) {
-            slide.style.setProperty("--hero-image", `url("${data.image}")`);
+            slide.style.setProperty("--hero-image", `url("${resolveAssetUrl(data.image)}")`);
           }
 
           const textTheme = resolveTextTheme(data);
