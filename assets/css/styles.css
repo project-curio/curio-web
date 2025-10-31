@@ -866,13 +866,13 @@ a:focus-visible {
 
 .discovery-link {
   font-weight: 600;
-  color: #B9CAD8; /* contrast-safe accent against primary background */
+  color: var(--color-contrast);
   text-decoration: none;
 }
 
 .discovery-link:hover,
 .discovery-link:focus-visible {
-  color: #E1E4F2;
+  color: var(--color-primary);
   text-decoration: underline;
 }
 
