@@ -1,9 +1,28 @@
 .hero-slider {
   --hero-bg: rgba(0, 0, 0, 0.45);
+  --hero-overlay-base: #0b1423;
+  --hero-overlay-start: rgba(5, 16, 31, 0.82);
+  --hero-overlay-mid: rgba(5, 16, 31, 0.65);
+  --hero-overlay-end: rgba(5, 16, 31, 0.75);
   --hero-text: #fff;
+  --hero-text-subtle: rgba(255, 255, 255, 0.88);
   --hero-accent: rgba(255, 255, 255, 0.95);
+  --hero-tag-bg: rgba(255, 255, 255, 0.14);
+  --hero-tag-border: rgba(255, 255, 255, 0.24);
+  --hero-tag-text: #fff;
   --hero-dot: rgba(255, 255, 255, 0.35);
   --hero-dot-active: rgba(255, 255, 255, 1);
+  --hero-search-form-bg: rgba(255, 255, 255, 0.12);
+  --hero-search-form-border: rgba(255, 255, 255, 0.25);
+  --hero-search-field-bg: rgba(255, 255, 255, 0.95);
+  --hero-search-icon-color: rgba(12, 71, 78, 0.55);
+  --hero-search-input-color: #0b1423;
+  --hero-search-placeholder: rgba(12, 71, 78, 0.5);
+  --hero-form-feedback: rgba(255, 255, 255, 0.75);
+  --hero-credit-bg: rgba(0, 0, 0, 0.35);
+  --hero-credit-text: rgba(255, 255, 255, 0.9);
+  --hero-cta-bg: rgba(255, 255, 255, 0.96);
+  --hero-cta-color: #082f32;
   --transition-speed: 0.6s;
   --hero-height: 100vh;
 
@@ -15,6 +34,33 @@
   margin-bottom: var(--space-3xl, 5rem);
   overflow: hidden;
   isolation: isolate;
+}
+
+.hero-slider[data-theme="dark"] {
+  --hero-bg: rgba(255, 255, 255, 0.72);
+  --hero-overlay-base: rgba(240, 244, 246, 0.92);
+  --hero-overlay-start: rgba(255, 255, 255, 0.92);
+  --hero-overlay-mid: rgba(255, 255, 255, 0.85);
+  --hero-overlay-end: rgba(255, 255, 255, 0.92);
+  --hero-text: #1f2a30;
+  --hero-text-subtle: rgba(31, 42, 48, 0.82);
+  --hero-accent: rgba(6, 47, 52, 0.75);
+  --hero-tag-bg: rgba(6, 47, 52, 0.12);
+  --hero-tag-border: rgba(6, 47, 52, 0.28);
+  --hero-tag-text: #12363a;
+  --hero-dot: rgba(6, 47, 52, 0.28);
+  --hero-dot-active: rgba(6, 47, 52, 0.75);
+  --hero-search-form-bg: rgba(255, 255, 255, 0.92);
+  --hero-search-form-border: rgba(6, 47, 52, 0.15);
+  --hero-search-field-bg: rgba(255, 255, 255, 0.98);
+  --hero-search-icon-color: rgba(6, 47, 52, 0.55);
+  --hero-search-input-color: #12363a;
+  --hero-search-placeholder: rgba(6, 47, 52, 0.5);
+  --hero-form-feedback: rgba(32, 36, 40, 0.7);
+  --hero-credit-bg: rgba(255, 255, 255, 0.92);
+  --hero-credit-text: rgba(32, 36, 40, 0.72);
+  --hero-cta-bg: #0D474E;
+  --hero-cta-color: #ffffff;
 }
 
 .hero-slider__slides {
@@ -29,9 +75,9 @@
   display: grid;
   align-content: end;
   padding: 0;
-  background-color: #0b1423;
+  background-color: var(--hero-overlay-base);
   background-image:
-    linear-gradient(180deg, rgba(5, 16, 31, 0.82) 0%, rgba(5, 16, 31, 0.65) 55%, rgba(5, 16, 31, 0.75) 100%),
+    linear-gradient(180deg, var(--hero-overlay-start) 0%, var(--hero-overlay-mid) 55%, var(--hero-overlay-end) 100%),
     var(--hero-image);
   background-size: cover;
   background-position: center;
@@ -41,6 +87,7 @@
     opacity var(--transition-speed) ease,
     transform var(--transition-speed) ease;
   pointer-events: none;
+  color: var(--hero-text);
 }
 
 .hero-slider__slide.is-active {
@@ -87,7 +134,7 @@
   margin: 0;
   font-size: clamp(1.05rem, 2.8vw, 1.3rem);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--hero-text-subtle);
 }
 
 .hero-tags {
@@ -104,9 +151,9 @@
   align-items: center;
   padding: 0.45rem 0.95rem;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  color: #fff;
+  background-color: var(--hero-tag-bg);
+  border: 1px solid var(--hero-tag-border);
+  color: var(--hero-tag-text);
   font-size: 0.85rem;
   letter-spacing: 0.015em;
 }
@@ -121,8 +168,8 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #082f32;
-  background: rgba(255, 255, 255, 0.96);
+  color: var(--hero-cta-color, #082f32);
+  background: var(--hero-cta-bg, rgba(255, 255, 255, 0.96));
   border-radius: 11px;
   text-decoration: none;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
@@ -170,8 +217,8 @@
   width: min(560px, 100%);
   padding: var(--space-sm, 0.85rem);
   border-radius: var(--radius-lg, 18px);
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: var(--hero-search-form-bg);
+  border: 1px solid var(--hero-search-form-border);
   backdrop-filter: blur(20px);
   box-shadow: 0 40px 80px rgba(6, 47, 52, 0.35);
 }
@@ -187,7 +234,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--hero-search-field-bg);
   border-radius: var(--radius-md, 14px);
   padding-left: 2.75rem;
 }
@@ -197,7 +244,7 @@
   left: 1rem;
   width: 1.1rem;
   height: 1.1rem;
-  color: rgba(12, 71, 78, 0.55);
+  color: var(--hero-search-icon-color);
 }
 
 .hero-search-field input {
@@ -206,11 +253,11 @@
   background-color: transparent;
   padding: 0.9rem 0.8rem;
   font-size: 1rem;
-  color: #0b1423;
+  color: var(--hero-search-input-color);
 }
 
 .hero-search-field input::placeholder {
-  color: rgba(12, 71, 78, 0.5);
+  color: var(--hero-search-placeholder);
 }
 
 .hero-search-button {
@@ -233,7 +280,7 @@
 .form-feedback {
   margin: 0;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--hero-form-feedback);
 }
 
 .hero-slider__dots {
@@ -276,10 +323,10 @@
   padding: 0.35rem 0.75rem;
   font-size: 0.8rem;
   letter-spacing: 0.02em;
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--hero-credit-bg);
   border-radius: 4px;
   z-index: 3;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--hero-credit-text);
 }
 
 .hero-slider__credit a {

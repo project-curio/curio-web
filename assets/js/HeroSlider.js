@@ -12,7 +12,7 @@ class HeroSlider {
     );
     this.isDocumentVisible = document.visibilityState === "visible";
     this.dataUrl = config.dataUrl || root.dataset.heroSource || "assets/data/hero-slides.json";
-    this.prefetchedSlides = Array.isArray(config.slides) ? config.slides : null;
+    this.prefetchedSlides = Array.isArray(config.slides) ? this.normalizeSlides(config.slides) : null;
 
     this.handlePointerEnter = this.handlePointerEnter.bind(this);
     this.handlePointerLeave = this.handlePointerLeave.bind(this);
@@ -33,13 +33,13 @@ class HeroSlider {
         this.root.removeAttribute("aria-busy");
       }
       if (slidesData && slidesData.length) {
-        this.renderSlides(slidesData);
+        const normalizedSlides = this.normalizeSlides(slidesData);
+        if (!normalizedSlides.length) {
+          return;
+        }
+        this.renderSlides(normalizedSlides);
         this.slides = Array.from(this.root.querySelectorAll(".hero-slider__slide"));
         this.dots = Array.from(this.root.querySelectorAll(".hero-slider__dot"));
-        this.currentIndex = Math.max(
-          0,
-          slidesData.findIndex((slide) => Boolean(slide.isActive))
-        );
       }
     }
 
@@ -71,7 +71,7 @@ class HeroSlider {
         throw new Error(`HeroSlider: Failed to fetch slide data (${response.status})`);
       }
       const payload = await response.json();
-      return Array.isArray(payload) ? payload : null;
+      return this.normalizeSlides(payload);
     } catch (error) {
       console.error(error);
       return null;
@@ -79,6 +79,11 @@ class HeroSlider {
   }
 
   renderSlides(slidesData) {
+    const slidesToRender = this.normalizeSlides(slidesData);
+    if (!slidesToRender.length) {
+      return;
+    }
+
     let slidesContainer = this.root.querySelector(".hero-slider__slides");
     if (!slidesContainer) {
       slidesContainer = document.createElement("div");
@@ -94,13 +99,13 @@ class HeroSlider {
     }
     this.dots = [];
 
-    let activeIndex = slidesData.findIndex((slide) => Boolean(slide.isActive));
+    let activeIndex = slidesToRender.findIndex((slide) => Boolean(slide.isActive));
     if (activeIndex < 0) {
       activeIndex = 0;
     }
     this.currentIndex = activeIndex;
 
-    slidesData.forEach((slide, index) => {
+    slidesToRender.forEach((slide, index) => {
       const article = document.createElement("article");
       article.className = "hero-slider__slide";
       const slideId = slide.id || `hero-slide-${index + 1}`;
@@ -109,6 +114,24 @@ class HeroSlider {
       article.setAttribute("aria-hidden", "true");
       if (slide.image) {
         article.style.setProperty("--hero-image", `url("${slide.image}")`);
+      }
+
+      const textTheme = this.resolveTextTheme(slide);
+      article.dataset.textTheme = textTheme;
+      const tone = typeof slide.imageTone === "string" ? slide.imageTone.trim().toLowerCase() : "";
+      if (tone) {
+        article.dataset.imageTone = tone;
+      }
+
+      const buttonStyle = this.resolveButtonColor(slide.buttonColor);
+      if (buttonStyle.name) {
+        article.dataset.buttonColor = buttonStyle.name;
+      }
+      if (buttonStyle.backgroundColor) {
+        article.style.setProperty("--hero-cta-bg", buttonStyle.backgroundColor);
+      }
+      if (buttonStyle.textColor) {
+        article.style.setProperty("--hero-cta-color", buttonStyle.textColor);
       }
 
       const content = document.createElement("div");
@@ -137,7 +160,7 @@ class HeroSlider {
       if (slide.ctaText) {
         const cta = document.createElement("a");
         cta.className = "hero-slider__cta";
-        cta.href = slide.ctaHref || "#";
+        cta.href = slide.buttonHref || slide.ctaHref || "#";
 
         const label = document.createElement("span");
         label.className = "hero-slider__cta-label";
@@ -224,6 +247,81 @@ class HeroSlider {
     });
   }
 
+  normalizeSlides(slidesData) {
+    if (!Array.isArray(slidesData)) {
+      return [];
+    }
+
+    return slidesData.filter((slide) => {
+      if (!slide || typeof slide !== "object") {
+        return false;
+      }
+      if (Object.prototype.hasOwnProperty.call(slide, "_comment")) {
+        return false;
+      }
+      return true;
+    });
+  }
+
+  resolveTextTheme(slide) {
+    if (!slide || typeof slide !== "object") {
+      return "light";
+    }
+
+    const declaredTheme = typeof slide.textTheme === "string" ? slide.textTheme.trim().toLowerCase() : "";
+    if (declaredTheme === "light" || declaredTheme === "dark") {
+      return declaredTheme;
+    }
+
+    const tone = typeof slide.imageTone === "string" ? slide.imageTone.trim().toLowerCase() : "";
+    if (tone === "light") {
+      return "dark";
+    }
+
+    return "light";
+  }
+
+  resolveButtonColor(buttonColor) {
+    const name = typeof buttonColor === "string" ? buttonColor.trim().toLowerCase() : "";
+    if (name === "dark") {
+      return {
+        name,
+        backgroundColor: "#0D474E",
+        textColor: "#ffffff"
+      };
+    }
+
+    if (name === "light") {
+      return {
+        name,
+        backgroundColor: "#2F9D85",
+        textColor: "#ffffff"
+      };
+    }
+
+    return {
+      name: "",
+      backgroundColor: "",
+      textColor: ""
+    };
+  }
+
+  updateRootTheme() {
+    if (!Array.isArray(this.slides) || !this.slides.length) {
+      this.root.removeAttribute("data-theme");
+      return;
+    }
+
+    const activeSlide = this.slides[this.currentIndex];
+    if (!activeSlide) {
+      this.root.removeAttribute("data-theme");
+      return;
+    }
+
+    const theme = activeSlide.dataset.textTheme === "dark" ? "dark" : "light";
+    this.root.setAttribute("data-theme", theme);
+  }
+
   buildDots() {
     const dotsContainer = document.createElement("div");
     dotsContainer.className = "hero-slider__dots";
@@ -262,6 +360,8 @@ class HeroSlider {
       dot.classList.toggle("is-active", isActive);
       dot.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
+
+    this.updateRootTheme();
   }
 
   bindEvents() {
@@ -331,6 +431,8 @@ class HeroSlider {
       nextDot.classList.add("is-active");
       nextDot.setAttribute("aria-pressed", "true");
     }
+
+    this.updateRootTheme();
   }
 
   scheduleAdvance(delay) {
@@ -360,6 +462,7 @@ class HeroSlider {
     this.root.removeEventListener("mouseleave", this.handlePointerLeave);
     this.root.removeEventListener("focusin", this.handlePointerEnter);
     this.root.removeEventListener("focusout", this.handlePointerLeave);
+    this.root.removeAttribute("data-theme");
   }
 
   createIcon(name) {
