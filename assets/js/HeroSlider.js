@@ -294,7 +294,7 @@ class HeroSlider {
     if (name === "light") {
       return {
         name,
-        backgroundColor: "#2F9D85",
+        backgroundColor: "#17856D",
         textColor: "#ffffff"
       };
     }

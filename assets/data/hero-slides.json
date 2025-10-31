@@ -14,7 +14,7 @@
       "ctaHref: Legacy link field kept for backward compatibility; buttonHref takes precedence when both are set.",
       "image: Background image file path stored under assets/images/hero/ (use relative paths like \"assets/images/hero/example.jpg\").",
       "imageTone: Set to 'dark' when the background is dark (uses light text) or 'light' when the background is bright (uses dark text).",
-      "buttonColor: Choose 'dark' for a deep teal CTA (#0D474E) or 'light' for a vibrant green CTA (#2F9D85); both render with white text.",
+      "buttonColor: Choose 'dark' for a deep teal CTA (#0D474E) or 'light' for a high-contrast green CTA (#17856D); both render with white text.",
       "isActive: When true the slide is preselected as the active slide.",
       "credit: Object describing image attribution (prefix, name, URLs, etc.)."
     ]
