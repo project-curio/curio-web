@@ -15,6 +15,7 @@
       "image: Background image file path stored under assets/images/hero/ (use relative paths like \"assets/images/hero/example.jpg\").",
       "imageTone: Set to 'dark' when the background is dark (uses light text) or 'light' when the background is bright (uses dark text).",
       "buttonColor: Choose 'dark' for a deep teal CTA (#0D474E) or 'light' for a high-contrast green CTA (#17856D); both render with white text.",
+      "overlayIntensity: Optional number between 0 (no overlay) and 1 (full preset overlay) that controls the slide background overlay strength; defaults to the theme preset when omitted.",
       "isActive: When true the slide is preselected as the active slide.",
       "credit: Object describing image attribution (prefix, name, URLs, etc.)."
     ]
@@ -24,8 +25,8 @@
       "id": "landing-slide",
       "ariaLabel": "Discover Curio",
       "eyebrow": "",
-      "title": "Explore Curio",
-      "tagline": "discover, share, and reflect on museums, historic sites, and botanical gardens that spark your curiosity and fuel exploration",
+      "title": "Explore Curio and Spark Your Curiosity",
+      "tagline": "discover, share, and reflect on museums, historic sites, and botanical gardens that inspire wonder and invite exploration",
       "ctaText": "Discover",
       "ctaIcon": "arrow-right",
       "buttonHref": "#section-discovery",

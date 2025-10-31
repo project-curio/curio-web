@@ -1,3 +1,22 @@
+const HERO_OVERLAY_PRESETS = {
+  light: {
+    color: [5, 16, 31],
+    baseColor: [11, 20, 35],
+    start: 0.82,
+    mid: 0.65,
+    end: 0.75,
+    base: 0.75
+  },
+  dark: {
+    color: [255, 255, 255],
+    baseColor: [240, 244, 246],
+    start: 0.65,
+    mid: 0.5,
+    end: 0.65,
+    base: 0.65
+  }
+};
+
 class HeroSlider {
   constructor(root, config = {}) {
     this.root = root;
@@ -132,6 +151,10 @@ class HeroSlider {
       }
       if (buttonStyle.textColor) {
         article.style.setProperty("--hero-cta-color", buttonStyle.textColor);
+      }
+      const overlayIntensity = this.resolveOverlayIntensity(slide.overlayIntensity);
+      if (overlayIntensity !== null) {
+        this.applyOverlayIntensity(article, textTheme, overlayIntensity);
       }
 
       const content = document.createElement("div");
@@ -328,6 +351,46 @@ class HeroSlider {
     } catch (error) {
       console.warn("HeroSlider: unable to resolve asset URL", path, error);
       return trimmed;
+    }
+  }
+
+  resolveOverlayIntensity(value) {
+    if (value === undefined || value === null || value === "") {
+      return null;
+    }
+
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric)) {
+      return null;
+    }
+
+    return Math.min(1, Math.max(0, numeric));
+  }
+
+  applyOverlayIntensity(element, theme, intensity) {
+    const preset = HERO_OVERLAY_PRESETS[theme];
+    if (!preset) {
+      return;
+    }
+
+    const rgba = (color, alpha) => `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
+    const scaleAlpha = (alpha) => Number((alpha * intensity).toFixed(3));
+
+    if (typeof preset.start === "number") {
+      element.style.setProperty("--hero-overlay-start", rgba(preset.color, scaleAlpha(preset.start)));
+    }
+    if (typeof preset.mid === "number") {
+      element.style.setProperty("--hero-overlay-mid", rgba(preset.color, scaleAlpha(preset.mid)));
+    }
+    if (typeof preset.end === "number") {
+      element.style.setProperty("--hero-overlay-end", rgba(preset.color, scaleAlpha(preset.end)));
+    }
+    const baseAlpha = typeof preset.base === "number" ? preset.base : preset.start;
+    if (typeof baseAlpha === "number") {
+      element.style.setProperty(
+        "--hero-overlay-base",
+        rgba(preset.baseColor || preset.color, scaleAlpha(baseAlpha))
+      );
     }
   }
 
