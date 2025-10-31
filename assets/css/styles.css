@@ -101,8 +101,8 @@ a:focus-visible {
   left: 0;
   right: 0;
   z-index: 20;
-  background: linear-gradient(180deg, rgba(7, 23, 26, 0.88) 0%, rgba(7, 23, 26, 0.42) 65%, transparent 100%);
-  backdrop-filter: blur(16px);
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .header-inner {
