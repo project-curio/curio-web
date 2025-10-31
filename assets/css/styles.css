@@ -987,7 +987,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 .discovery-link {
   font-weight: 600;
-  color: var(--color-accent-1);
+  color: var(--color-surface);
   text-decoration: none;
 }
 
