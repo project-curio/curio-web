@@ -269,11 +269,19 @@ class HeroSlider {
             hasCreditContent = true;
           }
 
-          segments.forEach((segment, index) => {
-            if (index > 0 || (prefix && !prefix.endsWith(": "))) {
-              credit.append(document.createTextNode(index === 0 && prefix ? "" : " · "));
+          const appendSeparator = () => {
+            if (!credit.childNodes.length) {
+              return;
             }
+            const currentText = credit.textContent || "";
+            if (currentText.endsWith(": ") || currentText.endsWith(":")) {
+              return;
+            }
+            credit.append(document.createTextNode(" · "));
+          };
 
+          segments.forEach((segment) => {
+            appendSeparator();
             if (segment.type === "link") {
               const link = document.createElement("a");
               link.href = segment.href;
@@ -426,17 +434,24 @@ class HeroSlider {
   updateRootTheme() {
     if (!Array.isArray(this.slides) || !this.slides.length) {
       this.root.removeAttribute("data-theme");
+      if (document.body.dataset.heroTheme) {
+        document.body.removeAttribute("data-hero-theme");
+      }
       return;
     }
 
     const activeSlide = this.slides[this.currentIndex];
     if (!activeSlide) {
       this.root.removeAttribute("data-theme");
+      if (document.body.dataset.heroTheme) {
+        document.body.removeAttribute("data-hero-theme");
+      }
       return;
     }
 
     const theme = activeSlide.dataset.textTheme === "dark" ? "dark" : "light";
     this.root.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-hero-theme", theme);
   }
 
   buildDots() {
@@ -580,6 +595,9 @@ class HeroSlider {
     this.root.removeEventListener("focusin", this.handlePointerEnter);
     this.root.removeEventListener("focusout", this.handlePointerLeave);
     this.root.removeAttribute("data-theme");
+    if (document.body.dataset.heroTheme) {
+      document.body.removeAttribute("data-hero-theme");
+    }
   }
 
   createIcon(name) {

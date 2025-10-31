@@ -606,17 +606,24 @@
       function updateRootTheme(sliderEl, slides, index) {
         if (!Array.isArray(slides) || !slides.length) {
           sliderEl.removeAttribute("data-theme");
+          if (document.body.dataset.heroTheme) {
+            document.body.removeAttribute("data-hero-theme");
+          }
           return;
         }
 
         const activeSlide = slides[index];
         if (!activeSlide) {
           sliderEl.removeAttribute("data-theme");
+          if (document.body.dataset.heroTheme) {
+            document.body.removeAttribute("data-hero-theme");
+          }
           return;
         }
 
         const theme = activeSlide.dataset.textTheme === "dark" ? "dark" : "light";
         sliderEl.setAttribute("data-theme", theme);
+        document.body.setAttribute("data-hero-theme", theme);
       }
 
       function renderSlides(sliderEl, slidesData) {
@@ -796,11 +803,19 @@
                 hasCreditContent = true;
               }
 
-              segments.forEach((segment, index) => {
-                if (index > 0 || (prefix && !prefix.endsWith(": "))) {
-                  credit.append(document.createTextNode(index === 0 && prefix ? "" : " · "));
+              const appendSeparator = () => {
+                if (!credit.childNodes.length) {
+                  return;
                 }
+                const currentText = credit.textContent || "";
+                if (currentText.endsWith(": ") || currentText.endsWith(":")) {
+                  return;
+                }
+                credit.append(document.createTextNode(" · "));
+              };
 
+              segments.forEach((segment) => {
+                appendSeparator();
                 if (segment.type === "link") {
                   const link = document.createElement("a");
                   link.href = segment.href;
