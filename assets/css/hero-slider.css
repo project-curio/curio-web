@@ -121,13 +121,13 @@
 
 .hero-slider__content--landing {
   max-width: min(768px, 90vw);
-  margin-top: calc(-1 * clamp(4rem, 8vh, 6rem));
-  margin-bottom: clamp(3.5rem, 7vh, 5.5rem);
+  margin-top: calc(-1 * clamp(5rem, 10vh, 8rem));
+  margin-bottom: clamp(3rem, 6vh, 5rem);
 }
 
 .hero-slider__content--landing.hero-slider__content--no-eyebrow {
-  padding-top: clamp(3rem, 6vh, 4.5rem);
-  padding-bottom: clamp(5rem, 10vh, 7.25rem);
+  padding-top: clamp(3.25rem, 6.5vh, 4.75rem);
+  padding-bottom: clamp(4.75rem, 9.5vh, 7rem);
 }
 
 .hero-slider__eyebrow {

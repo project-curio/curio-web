@@ -24,8 +24,8 @@
     {
       "id": "landing-slide",
       "ariaLabel": "Discover Curio",
-      "title": "Explore Curio and Spark Your Curiosity",
-      "tagline": "discover, share, and reflect on museums, historic sites, and botanical gardens that inspire wonder and invite exploration",
+      "title": "Explore curio and Spark Your Sense of Wonder",
+      "tagline": "discover, share, and reflect on museums, historic sites, and botanical gardens that inspire curiosity and invite exploration",
       "ctaText": "Discover your curio",
       "ctaIcon": "arrow-right",
       "buttonHref": "#section-discovery",
