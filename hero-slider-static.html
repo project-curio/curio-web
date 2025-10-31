@@ -435,11 +435,17 @@
       }
 
       function normalizeSlides(slidesData) {
-        if (!Array.isArray(slidesData)) {
+        const list = Array.isArray(slidesData)
+          ? slidesData
+          : slidesData && Array.isArray(slidesData.slides)
+            ? slidesData.slides
+            : null;
+
+        if (!Array.isArray(list)) {
           return [];
         }
 
-        return slidesData.filter((slide) => {
+        return list.filter((slide) => {
           if (!slide || typeof slide !== "object") {
             return false;
           }

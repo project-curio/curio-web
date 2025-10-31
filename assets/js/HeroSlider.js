@@ -12,7 +12,7 @@ class HeroSlider {
     );
     this.isDocumentVisible = document.visibilityState === "visible";
     this.dataUrl = config.dataUrl || root.dataset.heroSource || "assets/data/hero-slides.json";
-    this.prefetchedSlides = Array.isArray(config.slides) ? this.normalizeSlides(config.slides) : null;
+    this.prefetchedSlides = config && config.slides ? this.normalizeSlides(config.slides) : null;
 
     this.handlePointerEnter = this.handlePointerEnter.bind(this);
     this.handlePointerLeave = this.handlePointerLeave.bind(this);
@@ -248,11 +248,17 @@ class HeroSlider {
   }
 
   normalizeSlides(slidesData) {
-    if (!Array.isArray(slidesData)) {
+    const list = Array.isArray(slidesData)
+      ? slidesData
+      : slidesData && Array.isArray(slidesData.slides)
+        ? slidesData.slides
+        : null;
+
+    if (!Array.isArray(list)) {
       return [];
     }
 
-    return slidesData.filter((slide) => {
+    return list.filter((slide) => {
       if (!slide || typeof slide !== "object") {
         return false;
       }
