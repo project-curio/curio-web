@@ -873,7 +873,7 @@ a:focus-visible {
 .discovery-link:hover,
 .discovery-link:focus-visible {
   color: var(--color-primary);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 @media (max-width: 720px) {
@@ -1295,7 +1295,7 @@ a:focus-visible {
 .footer-meta a:hover,
 .footer-meta a:focus-visible {
   color: #ffffff;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .footer-nav h3,
