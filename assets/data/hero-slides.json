@@ -30,7 +30,7 @@
       "ctaIcon": "arrow-right",
       "buttonHref": "#section-discovery",
       "ctaHref": "#section-discovery",
-      "image": "assets/images/hero/landing_slide.jpeg",
+      "image": "assets/images/hero/landing_slide.jpg",
       "imageTone": "dark",
       "buttonColor": "dark",
       "isActive": true,
