@@ -101,14 +101,6 @@
       color: var(--hero-text);
     }
 
-    .hero-slider__slide--landing {
-      align-content: center;
-    }
-
-    .hero-slider__slide--landing .hero-slider__content {
-      margin-bottom: clamp(3rem, 6vh, 4.5rem);
-    }
-
     .hero-slider__slide.is-active {
       opacity: 1;
       transform: translateY(0);
@@ -140,11 +132,13 @@
 
     .hero-slider__content--landing {
       max-width: min(768px, 90vw);
+      margin-top: calc(-1 * clamp(4rem, 8vh, 6rem));
+      margin-bottom: clamp(3.5rem, 7vh, 5.5rem);
     }
 
     .hero-slider__content--landing.hero-slider__content--no-eyebrow {
-      padding-top: clamp(1.5rem, 5vh, 3.5rem);
-      padding-bottom: clamp(5.5rem, 10vh, 7.5rem);
+      padding-top: clamp(3rem, 6vh, 4.5rem);
+      padding-bottom: clamp(5rem, 10vh, 7.25rem);
     }
 
     .hero-slider__eyebrow {
