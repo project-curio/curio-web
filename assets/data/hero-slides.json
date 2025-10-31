@@ -22,10 +22,10 @@
   "slides": [
     {
       "id": "landing-slide",
-      "ariaLabel": "Discover cultural experiences across Curio",
-      "eyebrow": "Curio Collections",
-      "title": "Discover Cultural Experiences Across Curio",
-      "tagline": "Browse curated museums, galleries, gardens, archives, and historic places tailored to your curiosity.",
+      "ariaLabel": "Discover Curio",
+      "eyebrow": "",
+      "title": "Explore Curio",
+      "tagline": "discover, share, and reflect on museums, historic sites, and botanical gardens that spark your curiosity and fuel exploration",
       "ctaText": "Discover",
       "ctaIcon": "arrow-right",
       "buttonHref": "#section-discovery",
