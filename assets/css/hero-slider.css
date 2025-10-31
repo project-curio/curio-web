@@ -113,6 +113,16 @@
   z-index: 2;
 }
 
+.hero-slider__content--no-eyebrow {
+  padding-top: clamp(3.5rem, 7vh, 5.5rem);
+  padding-bottom: clamp(6.75rem, 12vh, 8.75rem);
+  gap: 1.05rem;
+}
+
+.hero-slider__content--landing {
+  max-width: min(768px, 90vw);
+}
+
 .hero-slider__eyebrow {
   font-size: 0.95rem;
   font-weight: 600;

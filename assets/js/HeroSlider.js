@@ -165,6 +165,12 @@ class HeroSlider {
         eyebrow.className = "hero-slider__eyebrow";
         eyebrow.textContent = slide.eyebrow;
         content.appendChild(eyebrow);
+      } else {
+        content.classList.add("hero-slider__content--no-eyebrow");
+      }
+
+      if (slide.id === "landing-slide") {
+        content.classList.add("hero-slider__content--landing");
       }
 
       const headingTag = index === 0 ? "h1" : "h2";
