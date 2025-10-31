@@ -866,12 +866,13 @@ a:focus-visible {
 
 .discovery-link {
   font-weight: 600;
-  color: var(--color-accent-strong);
+  color: #B9CAD8; /* contrast-safe accent against primary background */
   text-decoration: none;
 }
 
 .discovery-link:hover,
 .discovery-link:focus-visible {
+  color: #E1E4F2;
   text-decoration: underline;
 }
 
@@ -1282,6 +1283,21 @@ a:focus-visible {
   font-style: italic;
 }
 
+.footer-meta {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.footer-meta a {
+  color: var(--color-surface);
+  text-decoration: none;
+}
+
+.footer-meta a:hover,
+.footer-meta a:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .footer-nav h3,
 .footer-connect h3 {
   margin: 0 0 var(--space-sm);
@@ -1299,14 +1315,14 @@ a:focus-visible {
 }
 
 .footer-nav a {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--color-surface);
   text-decoration: none;
   transition: color var(--transition-base);
 }
 
 .footer-nav a:hover,
 .footer-nav a:focus-visible {
-  color: var(--color-surface);
+  color: #ffffff;
 }
 
 .footer-connect {
@@ -1323,7 +1339,7 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--color-surface);
   text-decoration: none;
   transition: color var(--transition-base);
 }
@@ -1336,7 +1352,7 @@ a:focus-visible {
 
 .footer-links a:hover,
 .footer-links a:focus-visible {
-  color: var(--color-surface);
+  color: #ffffff;
 }
 
 .footer-badges {
@@ -1368,17 +1384,17 @@ a:focus-visible {
 }
 
 .footer-bottom-links a {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--color-surface);
   text-decoration: none;
 }
 
 .footer-bottom-links a:hover,
 .footer-bottom-links a:focus-visible {
-  color: var(--color-surface);
+  color: #ffffff;
 }
 
 .footer-heart {
-  color: var(--color-accent-1);
+  color: var(--color-surface);
 }
 
 @media (min-width: 768px) {
@@ -1415,7 +1431,7 @@ a:focus-visible {
 }
 
 .highlight {
-  background: linear-gradient(120deg, rgba(196, 122, 75, 0.18), rgba(13, 71, 78, 0.08));
+  background: linear-gradient(120deg, rgba(71, 176, 161, 0.18), rgba(67, 90, 112, 0.12));
   border-radius: var(--radius-md);
   padding: var(--space-sm) var(--space-md);
   display: inline-block;
