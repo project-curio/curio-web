@@ -123,6 +123,11 @@
   max-width: min(768px, 90vw);
 }
 
+.hero-slider__content--landing.hero-slider__content--no-eyebrow {
+  padding-top: clamp(2.25rem, 6vh, 4.25rem);
+  padding-bottom: clamp(6.25rem, 11vh, 8.25rem);
+}
+
 .hero-slider__eyebrow {
   font-size: 0.95rem;
   font-weight: 600;
