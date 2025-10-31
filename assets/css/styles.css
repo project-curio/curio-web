@@ -1,16 +1,23 @@
 :root {
   color-scheme: light;
-  --color-primary: #0d474e;
-  --color-primary-strong: #083338;
-  --color-accent: #c47a4b;
-  --color-accent-strong: #8d3f16;
-  --color-surface: #ffffff;
-  --color-surface-muted: #eef3f3;
-  --color-background: #f5f7f7;
-  --color-border: rgba(9, 33, 36, 0.12);
-  --color-text: #10252a;
-  --color-muted: #445156;
-  --color-muted-soft: #566066;
+  --color-primary: #0D474E;
+  --color-secondary: #083338;
+  --color-accent-1: #47B0A1;
+  --color-accent-2: #5FAE9E;
+  --color-accent-3: #2F9D85;
+  --color-contrast: #435A70;
+  --color-surface: #E1E4F2;
+  --color-ink: #1F2933;
+  --color-body: #FFFFFF;
+  --color-muted: rgba(15, 23, 42, 0.65);
+  --color-primary-strong: var(--color-secondary);
+  --color-accent: var(--color-accent-1);
+  --color-accent-strong: var(--color-accent-3);
+  --color-surface-muted: #F3F5FB;
+  --color-background: var(--color-body);
+  --color-border: rgba(67, 90, 112, 0.12);
+  --color-text: var(--color-ink);
+  --color-muted-soft: rgba(67, 90, 112, 0.45);
   --shadow-sm: 0 10px 30px rgba(6, 47, 52, 0.08);
   --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: 'Georgia', 'Times New Roman', serif;
@@ -49,7 +56,7 @@ body.nav-open {
 
 a {
   color: var(--color-primary);
-  text-decoration-color: rgba(12, 71, 78, 0.35);
+  text-decoration-color: rgba(71, 176, 161, 0.35);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
   transition: color var(--transition-base), text-decoration-color var(--transition-base);
@@ -126,7 +133,7 @@ a:focus-visible {
 }
 
 .logo span.logo-accent {
-  color: #f6c8a0;
+  color: var(--color-accent-1);
   font-size: 1.2em;
   line-height: 1;
 }
@@ -146,7 +153,7 @@ a:focus-visible {
   gap: var(--space-xs);
   padding: var(--space-xs);
   border-radius: calc(var(--radius-lg) * 1.05);
-  border: 1px solid rgba(7, 23, 26, 0.08);
+  border: 1px solid rgba(67, 90, 112, 0.12);
   background-color: #ffffff;
   box-shadow: 0 22px 50px rgba(6, 29, 33, 0.18);
   max-width: 640px;
@@ -242,7 +249,7 @@ a:focus-visible {
   min-width: 220px;
   padding: var(--space-sm);
   border-radius: var(--radius-lg);
-  background-color: rgba(7, 23, 26, 0.95);
+  background-color: rgba(8, 51, 56, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 20px 40px rgba(6, 47, 52, 0.3);
   display: none;
@@ -453,7 +460,7 @@ a:focus-visible {
 .nav-links a[aria-current="page"],
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  background-color: rgba(12, 71, 78, 0.08);
+  background-color: rgba(71, 176, 161, 0.12);
   color: var(--color-primary-strong);
 }
 
@@ -510,7 +517,7 @@ a:focus-visible {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #723213;
+  color: var(--color-contrast);
   font-weight: 600;
   margin-bottom: var(--space-xs);
 }
@@ -693,14 +700,14 @@ a:focus-visible {
   font-size: 1.05rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
+  background: var(--color-primary);
   cursor: pointer;
   transition: box-shadow var(--transition-base), opacity var(--transition-base);
 }
 
 .hero-search-button:hover,
 .hero-search-button:focus-visible {
-  box-shadow: 0 18px 36px rgba(12, 71, 78, 0.22);
+  box-shadow: 0 18px 36px rgba(8, 51, 56, 0.32);
 }
 
 .discovery {
@@ -717,7 +724,7 @@ a:focus-visible {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: #8d3f16;
+  color: var(--color-contrast);
   font-weight: 600;
   margin: 0 0 var(--space-2xs);
 }
@@ -833,7 +840,7 @@ a:focus-visible {
 }
 
 .hero-card.is-active {
-  border-color: rgba(12, 71, 78, 0.3);
+  border-color: rgba(67, 90, 112, 0.3);
   box-shadow: 0 22px 48px rgba(6, 47, 52, 0.2);
   transform: translateY(-4px);
 }
@@ -894,9 +901,9 @@ a:focus-visible {
 .tag {
   padding: var(--space-2xs) var(--space-sm);
   border-radius: var(--radius-pill);
-  background-color: rgba(13, 71, 78, 0.1);
-  border: 1px solid rgba(13, 71, 78, 0.12);
-  color: var(--color-primary-strong);
+  background-color: rgba(71, 176, 161, 0.12);
+  border: 1px solid rgba(67, 90, 112, 0.12);
+  color: var(--color-ink);
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -925,7 +932,7 @@ a:focus-visible {
 .btn:hover,
 .btn:focus-visible {
   background-color: var(--color-primary-strong);
-  box-shadow: 0 12px 30px rgba(13, 71, 78, 0.18);
+  box-shadow: 0 12px 30px rgba(8, 51, 56, 0.24);
 }
 
 .form-feedback {
@@ -996,7 +1003,7 @@ a:focus-visible {
   flex: 0 0 clamp(300px, 32vw, 360px);
   border-radius: var(--radius-lg);
   background-color: var(--color-surface);
-  border: 1px solid rgba(9, 33, 36, 0.08);
+  border: 1px solid rgba(67, 90, 112, 0.08);
   box-shadow: 0 20px 40px rgba(6, 47, 52, 0.12);
   overflow: hidden;
   scroll-snap-align: start;
@@ -1006,7 +1013,7 @@ a:focus-visible {
 .city-card:hover,
 .city-card:focus-within {
   transform: translateY(-4px);
-  border-color: rgba(12, 71, 78, 0.25);
+  border-color: rgba(67, 90, 112, 0.25);
   box-shadow: 0 28px 60px rgba(6, 47, 52, 0.2);
 }
 
@@ -1242,35 +1249,36 @@ a:focus-visible {
 }
 
 .footer {
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .footer-inner {
   display: grid;
   gap: var(--space-xl);
-  padding: var(--space-2xl) 0 var(--space-xl);
+  padding: 2.5rem 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .footer-brand p {
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.76);
   max-width: 38ch;
   margin-bottom: var(--space-sm);
 }
 
 .footer-brand .logo {
-  color: var(--color-text);
+  color: #ffffff;
 }
 
 .footer-brand .logo .logo-accent {
-  color: var(--color-accent-strong);
+  color: var(--color-accent-2);
 }
 
 .footer-tagline {
   margin: 0;
   font-size: 0.9rem;
-  color: var(--color-muted-soft);
+  color: rgba(255, 255, 255, 0.72);
   font-style: italic;
 }
 
@@ -1279,7 +1287,7 @@ a:focus-visible {
   margin: 0 0 var(--space-sm);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--color-text);
+  color: #ffffff;
 }
 
 .footer-nav ul {
@@ -1291,14 +1299,14 @@ a:focus-visible {
 }
 
 .footer-nav a {
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
   transition: color var(--transition-base);
 }
 
 .footer-nav a:hover,
 .footer-nav a:focus-visible {
-  color: var(--color-primary);
+  color: var(--color-surface);
 }
 
 .footer-connect {
@@ -1315,7 +1323,7 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
   transition: color var(--transition-base);
 }
@@ -1323,26 +1331,26 @@ a:focus-visible {
 .footer-links a svg {
   width: 1rem;
   height: 1rem;
-  color: var(--color-accent);
+  color: var(--color-accent-1);
 }
 
 .footer-links a:hover,
 .footer-links a:focus-visible {
-  color: var(--color-primary);
+  color: var(--color-surface);
 }
 
 .footer-badges {
   display: grid;
   gap: var(--space-2xs);
   font-size: 0.85rem;
-  color: var(--color-muted-soft);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--color-border);
-  padding: var(--space-md) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.5rem 0 0;
   font-size: 0.85rem;
-  color: var(--color-muted-soft);
+  color: rgba(255, 255, 255, 0.72);
   text-align: center;
 }
 
@@ -1360,17 +1368,17 @@ a:focus-visible {
 }
 
 .footer-bottom-links a {
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
 }
 
 .footer-bottom-links a:hover,
 .footer-bottom-links a:focus-visible {
-  color: var(--color-primary);
+  color: var(--color-surface);
 }
 
 .footer-heart {
-  color: #8d3f16;
+  color: var(--color-accent-1);
 }
 
 @media (min-width: 768px) {
@@ -1387,8 +1395,8 @@ a:focus-visible {
   padding: var(--space-2xs) var(--space-sm);
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
-  background-color: rgba(12, 71, 78, 0.08);
-  color: var(--color-primary);
+  background-color: rgba(71, 176, 161, 0.12);
+  color: var(--color-ink);
   font-weight: 600;
 }
 
@@ -1473,7 +1481,7 @@ a:focus-visible {
   padding: var(--space-sm) var(--space-md);
   font-size: 0.875rem;
   color: var(--color-muted-soft);
-  background-color: rgba(12, 71, 78, 0.05);
+  background-color: rgba(71, 176, 161, 0.12);
 }
 
 .city-map {
@@ -1757,7 +1765,7 @@ a:focus-visible {
   padding: var(--space-sm) var(--space-md);
   font-size: 0.85rem;
   color: var(--color-muted-soft);
-  background-color: rgba(12, 71, 78, 0.04);
+  background-color: rgba(71, 176, 161, 0.12);
 }
 
 @media (max-width: 1080px) {
