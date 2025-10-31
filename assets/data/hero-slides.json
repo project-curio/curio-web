@@ -30,10 +30,10 @@
       "ctaIcon": "arrow-right",
       "buttonHref": "#section-discovery",
       "ctaHref": "#section-discovery",
-      "image": "assets/images/hero/landing_slide.jpg",
+      "image": "assets/images/hero/alec-krum-Y8Xvlz2lP5k-unsplash.jpg",
       "imageTone": "dark",
       "buttonColor": "dark",
-      "overlayIntensity": 1,
+      "overlayIntensity": 0.5,
       "isActive": true,
       "credit": {
         "prefix": "Photo",
@@ -59,10 +59,10 @@
       "overlayIntensity": 1,
       "credit": {
         "prefix": "Photo",
-        "name": "Andrew James",
-        "profileUrl": "https://unsplash.com/@andrewjames",
+        "name": "Alec Krum",
+        "profileUrl": "https://unsplash.com/@krummly",
         "imageLabel": "View image on Unsplash",
-        "imageUrl": "https://unsplash.com/photos/87cbac4d88f7"
+        "imageUrl": "https://unsplash.com/photos/green-trees-on-brown-rocky-mountain-during-daytime-Y8Xvlz2lP5k"
       }
     },
     {
