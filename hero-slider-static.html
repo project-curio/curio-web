@@ -373,13 +373,12 @@
       right: clamp(2.75rem, 6vw, 5rem);
       bottom: clamp(1.8rem, 4vh, 3rem);
       margin: 0;
-      padding: 0.35rem 0.75rem;
+      padding: 0;
       font-size: 0.8rem;
       letter-spacing: 0.02em;
-      background: var(--hero-credit-bg);
-      border-radius: 4px;
       z-index: 3;
       color: var(--hero-credit-text);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
     }
 
     .hero-slider__credit a {
@@ -750,47 +749,67 @@
           if (data.credit) {
             const credit = document.createElement("p");
             credit.className = "hero-slider__credit";
+            let hasCreditContent = false;
 
             if (typeof data.credit === "string") {
-              credit.textContent = data.credit;
-            } else {
-              const prefix = data.credit.prefix || "Photo";
+              const raw = data.credit.trim();
+              if (raw) {
+                credit.textContent = raw;
+                hasCreditContent = true;
+              }
+            } else if (data.credit && typeof data.credit === "object") {
+              const prefix = typeof data.credit.prefix === "string" ? data.credit.prefix.trim() : "";
+              const name = typeof data.credit.name === "string" ? data.credit.name.trim() : "";
+              const profileUrl = typeof data.credit.profileUrl === "string" ? data.credit.profileUrl.trim() : "";
+              const text = typeof data.credit.text === "string" ? data.credit.text.trim() : "";
+              const imageUrl = typeof data.credit.imageUrl === "string" ? data.credit.imageUrl.trim() : "";
+              const imageLabel = typeof data.credit.imageLabel === "string" ? data.credit.imageLabel.trim() : "";
+              const source = typeof data.credit.source === "string" ? data.credit.source.trim() : "";
+
+              const segments = [];
+              if (name) {
+                segments.push({ type: profileUrl ? "link" : "text", value: name, href: profileUrl });
+              }
+              if (text) {
+                segments.push({ type: "text", value: text });
+              }
+              if (imageUrl) {
+                segments.push({ type: "link", value: imageLabel || "View image", href: imageUrl, external: true });
+              }
+              if (source) {
+                segments.push({ type: "text", value: source });
+              }
+
               if (prefix) {
-                credit.append(document.createTextNode(`${prefix}: `));
+                const needsColon = segments.length > 0;
+                credit.append(document.createTextNode(needsColon ? `${prefix}: ` : prefix));
+                hasCreditContent = true;
               }
 
-              if (data.credit.name) {
-                if (data.credit.profileUrl) {
-                  const profileLink = document.createElement("a");
-                  profileLink.href = data.credit.profileUrl;
-                  profileLink.target = "_blank";
-                  profileLink.rel = "noopener noreferrer";
-                  profileLink.textContent = data.credit.name;
-                  credit.append(profileLink);
+              segments.forEach((segment, index) => {
+                if (index > 0 || (prefix && !prefix.endsWith(": "))) {
+                  credit.append(document.createTextNode(index === 0 && prefix ? "" : " · "));
+                }
+
+                if (segment.type === "link") {
+                  const link = document.createElement("a");
+                  link.href = segment.href;
+                  if (segment.external || segment.href?.startsWith("http")) {
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+                  }
+                  link.textContent = segment.value;
+                  credit.append(link);
                 } else {
-                  credit.append(document.createTextNode(data.credit.name));
+                  credit.append(document.createTextNode(segment.value));
                 }
-              } else if (data.credit.text) {
-                credit.append(document.createTextNode(data.credit.text));
-              }
-
-              if (data.credit.imageUrl) {
-                if (data.credit.name || data.credit.text) {
-                  credit.append(document.createTextNode(" · "));
-                }
-                const imageLink = document.createElement("a");
-                imageLink.href = data.credit.imageUrl;
-                imageLink.target = "_blank";
-                imageLink.rel = "noopener noreferrer";
-                imageLink.textContent = data.credit.imageLabel || "View image";
-                credit.append(imageLink);
-              } else if (data.credit.source) {
-                const sourceText = data.credit.name || data.credit.text ? ` · ${data.credit.source}` : data.credit.source;
-                credit.append(document.createTextNode(sourceText));
-              }
+                hasCreditContent = true;
+              });
             }
 
-            slide.appendChild(credit);
+            if (hasCreditContent) {
+              slide.appendChild(credit);
+            }
           }
 
           slidesContainer.appendChild(slide);

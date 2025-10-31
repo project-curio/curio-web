@@ -232,47 +232,67 @@ class HeroSlider {
       if (slide.credit) {
         const credit = document.createElement("p");
         credit.className = "hero-slider__credit";
+        let hasCreditContent = false;
 
         if (typeof slide.credit === "string") {
-          credit.textContent = slide.credit;
-        } else {
-          const prefix = slide.credit.prefix || "Photo";
+          const raw = slide.credit.trim();
+          if (raw) {
+            credit.textContent = raw;
+            hasCreditContent = true;
+          }
+        } else if (slide.credit && typeof slide.credit === "object") {
+          const prefix = typeof slide.credit.prefix === "string" ? slide.credit.prefix.trim() : "";
+          const name = typeof slide.credit.name === "string" ? slide.credit.name.trim() : "";
+          const profileUrl = typeof slide.credit.profileUrl === "string" ? slide.credit.profileUrl.trim() : "";
+          const text = typeof slide.credit.text === "string" ? slide.credit.text.trim() : "";
+          const imageUrl = typeof slide.credit.imageUrl === "string" ? slide.credit.imageUrl.trim() : "";
+          const imageLabel = typeof slide.credit.imageLabel === "string" ? slide.credit.imageLabel.trim() : "";
+          const source = typeof slide.credit.source === "string" ? slide.credit.source.trim() : "";
+
+          const segments = [];
+          if (name) {
+            segments.push({ type: profileUrl ? "link" : "text", value: name, href: profileUrl });
+          }
+          if (text) {
+            segments.push({ type: "text", value: text });
+          }
+          if (imageUrl) {
+            segments.push({ type: "link", value: imageLabel || "View image", href: imageUrl, external: true });
+          }
+          if (source) {
+            segments.push({ type: "text", value: source });
+          }
+
           if (prefix) {
-            credit.append(document.createTextNode(`${prefix}: `));
+            const needsColon = segments.length > 0;
+            credit.append(document.createTextNode(needsColon ? `${prefix}: ` : prefix));
+            hasCreditContent = true;
           }
 
-          if (slide.credit.name) {
-            if (slide.credit.profileUrl) {
-              const profileLink = document.createElement("a");
-              profileLink.href = slide.credit.profileUrl;
-              profileLink.target = "_blank";
-              profileLink.rel = "noopener noreferrer";
-              profileLink.textContent = slide.credit.name;
-              credit.append(profileLink);
+          segments.forEach((segment, index) => {
+            if (index > 0 || (prefix && !prefix.endsWith(": "))) {
+              credit.append(document.createTextNode(index === 0 && prefix ? "" : " · "));
+            }
+
+            if (segment.type === "link") {
+              const link = document.createElement("a");
+              link.href = segment.href;
+              if (segment.external || segment.href?.startsWith("http")) {
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+              }
+              link.textContent = segment.value;
+              credit.append(link);
             } else {
-              credit.append(document.createTextNode(slide.credit.name));
+              credit.append(document.createTextNode(segment.value));
             }
-          } else if (slide.credit.text) {
-            credit.append(document.createTextNode(slide.credit.text));
-          }
-
-          if (slide.credit.imageUrl) {
-            if (slide.credit.name || slide.credit.text) {
-              credit.append(document.createTextNode(" · "));
-            }
-            const imageLink = document.createElement("a");
-            imageLink.href = slide.credit.imageUrl;
-            imageLink.target = "_blank";
-            imageLink.rel = "noopener noreferrer";
-            imageLink.textContent = slide.credit.imageLabel || "View image";
-            credit.append(imageLink);
-          } else if (slide.credit.source) {
-            const sourceText = slide.credit.name || slide.credit.text ? ` · ${slide.credit.source}` : slide.credit.source;
-            credit.append(document.createTextNode(sourceText));
-          }
+            hasCreditContent = true;
+          });
         }
 
-        article.appendChild(credit);
+        if (hasCreditContent) {
+          article.appendChild(credit);
+        }
       }
 
       slidesContainer.appendChild(article);

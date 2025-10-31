@@ -338,13 +338,12 @@
   right: clamp(2.75rem, 6vw, 5rem);
   bottom: clamp(1.8rem, 4vh, 3rem);
   margin: 0;
-  padding: 0.35rem 0.75rem;
+  padding: 0;
   font-size: 0.8rem;
   letter-spacing: 0.02em;
-  background: var(--hero-credit-bg);
-  border-radius: 4px;
   z-index: 3;
   color: var(--hero-credit-text);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
 }
 
 .hero-slider__credit a {
