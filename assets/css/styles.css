@@ -290,7 +290,7 @@ a:focus-visible {
   top: calc(100% + 0.65rem);
   left: 50%;
   transform: translateX(-50%);
-  min-width: 187px;
+  min-width: 220px;
   padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-sm);
   border-radius: var(--radius-md);
   background-color: #ffffff;
@@ -312,13 +312,19 @@ a:focus-visible {
 }
 
 .header-menu-link {
-  display: block;
-  padding: 0.55rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: 0.55rem 0.85rem;
   border-radius: var(--radius-md);
   color: var(--color-ink);
   text-decoration: none;
   font-size: 0.9rem;
   transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.header-menu-link .header-menu-icon {
+  color: var(--color-accent-1);
 }
 
 .header-menu-link:hover,
