@@ -154,13 +154,14 @@ a:focus-visible {
   align-items: stretch;
   gap: var(--space-xs);
   padding: 0.25rem;
-  border-radius: calc(var(--radius-lg) * 1.05);
+  border-radius: var(--radius-cta);
   border: 1px solid rgba(67, 90, 112, 0.12);
   background-color: #ffffff;
   box-shadow: 0 22px 50px rgba(6, 29, 33, 0.18);
   max-width: 640px;
   width: 100%;
   height: var(--header-control-height);
+  margin-left: 10%;
 }
 
 .header-search-form {
@@ -180,7 +181,7 @@ a:focus-visible {
   font-size: 0.95rem;
   line-height: 1;
   color: var(--color-text);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-cta);
 }
 
 .header-search-form input::placeholder {
@@ -189,7 +190,7 @@ a:focus-visible {
 
 .header-search-form:focus-within {
   box-shadow: 0 0 0 2px rgba(13, 71, 78, 0.28);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-cta);
 }
 
 .header-search-icon {
@@ -212,7 +213,7 @@ a:focus-visible {
   justify-content: center;
   gap: var(--space-2xs);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-cta);
   padding: 0 1rem;
   height: 100%;
   background-color: var(--color-primary);
@@ -235,7 +236,8 @@ a:focus-visible {
 .header-actions {
   display: none;
   align-items: center;
-  gap: var(--space-xs);
+  gap: calc(var(--space-xs) + 5px);
+  margin-left: auto;
 }
 
 .header-menu {
@@ -271,25 +273,7 @@ a:focus-visible {
 
 .header-menu-panel::before,
 .header-menu-panel::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.header-menu-panel::before {
-  top: -12px;
-  border: 10px solid transparent;
-  border-bottom-color: rgba(8, 51, 56, 0.18);
-  z-index: 0;
-}
-
-.header-menu-panel::after {
-  top: -10px;
-  border: 9px solid transparent;
-  border-bottom-color: #ffffff;
-  z-index: 1;
+  content: none;
 }
 
 .header-menu-panel.is-open {
@@ -443,12 +427,9 @@ body[data-hero-theme="dark"] .header-menu-panel {
   box-shadow: 0 18px 32px rgba(15, 23, 42, 0.12);
 }
 
-body[data-hero-theme="dark"] .header-menu-panel::before {
-  border-bottom-color: rgba(67, 90, 112, 0.25);
-}
-
+body[data-hero-theme="dark"] .header-menu-panel::before,
 body[data-hero-theme="dark"] .header-menu-panel::after {
-  border-bottom-color: rgba(225, 228, 242, 0.98);
+  content: none;
 }
 
 body[data-hero-theme="dark"] .header-menu-link {
