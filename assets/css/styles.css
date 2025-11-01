@@ -29,6 +29,8 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --header-height: 4.5rem;
+  --header-control-height: 2.6rem;
+  --radius-cta: 11px;
   --radius-md: 14.4px;
   --radius-lg: 21.6px;
   --radius-pill: 899.1px;
@@ -149,28 +151,34 @@ a:focus-visible {
 
 .header-search {
   display: none;
-  align-items: center;
+  align-items: stretch;
   gap: var(--space-xs);
-  padding: 0.45rem;
+  padding: 0.25rem;
   border-radius: calc(var(--radius-lg) * 1.05);
   border: 1px solid rgba(67, 90, 112, 0.12);
   background-color: #ffffff;
   box-shadow: 0 22px 50px rgba(6, 29, 33, 0.18);
   max-width: 640px;
   width: 100%;
+  height: var(--header-control-height);
 }
 
 .header-search-form {
   position: relative;
   flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .header-search-form input {
   width: 100%;
+  height: 100%;
   border: none;
   background-color: transparent;
-  padding: 0.675rem 0.675rem 0.675rem 2.25rem;
+  padding: 0 0.6rem 0 2rem;
   font-size: 0.95rem;
+  line-height: 1;
   color: var(--color-text);
   border-radius: var(--radius-lg);
 }
@@ -187,10 +195,10 @@ a:focus-visible {
 .header-search-icon {
   position: absolute;
   top: 50%;
-  left: 0.9rem;
+  left: 0.85rem;
   transform: translateY(-50%);
-  width: 1rem;
-  height: 1rem;
+  width: 0.95rem;
+  height: 0.95rem;
   color: var(--color-muted-soft);
 }
 
@@ -205,7 +213,8 @@ a:focus-visible {
   gap: var(--space-2xs);
   border: none;
   border-radius: var(--radius-md);
-  padding: 0.675rem 1.125rem;
+  padding: 0 1rem;
+  height: 100%;
   background-color: var(--color-primary);
   color: #ffffff;
   cursor: pointer;
@@ -249,7 +258,7 @@ a:focus-visible {
   top: calc(100% + 0.65rem);
   left: 50%;
   transform: translateX(-50%);
-  min-width: 220px;
+  min-width: 187px;
   padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-sm);
   border-radius: var(--radius-md);
   background-color: #ffffff;
@@ -264,25 +273,23 @@ a:focus-visible {
 .header-menu-panel::after {
   content: "";
   position: absolute;
-  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translateX(-50%);
   pointer-events: none;
 }
 
 .header-menu-panel::before {
-  width: 0.9rem;
-  height: 0.9rem;
-  background-color: #ffffff;
-  z-index: 1;
+  top: -12px;
+  border: 10px solid transparent;
+  border-bottom-color: rgba(8, 51, 56, 0.18);
+  z-index: 0;
 }
 
 .header-menu-panel::after {
-  width: 1.05rem;
-  height: 1.05rem;
-  border: 1px solid rgba(8, 51, 56, 0.18);
-  background-color: #ffffff;
-  z-index: 0;
+  top: -10px;
+  border: 9px solid transparent;
+  border-bottom-color: #ffffff;
+  z-index: 1;
 }
 
 .header-menu-panel.is-open {
@@ -326,12 +333,14 @@ a:focus-visible {
 
 .header-link--menu {
   gap: var(--space-2xs);
-  padding: 0.55rem 1rem;
+  padding: 0 1rem;
+  min-height: var(--header-control-height);
   border: 1px solid rgba(8, 51, 56, 0.18);
+  border-radius: var(--radius-cta);
   background-color: #ffffff;
   color: var(--color-secondary);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1;
 }
 
 .header-link--menu:hover,
@@ -345,10 +354,12 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.55rem 1rem;
-  border-radius: var(--radius-md);
+  padding: 0 1rem;
+  min-height: var(--header-control-height);
+  border-radius: var(--radius-cta);
   border: 1px solid transparent;
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
   transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
 }
@@ -357,7 +368,6 @@ a:focus-visible {
   background-color: #ffffff;
   border-color: rgba(8, 51, 56, 0.18);
   color: var(--color-secondary);
-  line-height: 1.2;
 }
 
 .header-button--login:hover,
@@ -434,12 +444,11 @@ body[data-hero-theme="dark"] .header-menu-panel {
 }
 
 body[data-hero-theme="dark"] .header-menu-panel::before {
-  background-color: rgba(225, 228, 242, 0.98);
+  border-bottom-color: rgba(67, 90, 112, 0.25);
 }
 
 body[data-hero-theme="dark"] .header-menu-panel::after {
-  border-color: rgba(67, 90, 112, 0.25);
-  background-color: rgba(225, 228, 242, 0.98);
+  border-bottom-color: rgba(225, 228, 242, 0.98);
 }
 
 body[data-hero-theme="dark"] .header-menu-link {

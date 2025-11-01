@@ -187,7 +187,7 @@
   text-transform: uppercase;
   color: var(--hero-cta-color, #082f32);
   background: var(--hero-cta-bg, rgba(255, 255, 255, 0.96));
-  border-radius: 11px;
+  border-radius: var(--radius-cta, 11px);
   text-decoration: none;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
