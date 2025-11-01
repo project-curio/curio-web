@@ -385,16 +385,16 @@ a:focus-visible {
 }
 
 .header-button--login {
-  background-color: #ffffff;
-  border-color: rgba(8, 51, 56, 0.18);
-  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  border-color: transparent;
+  color: #ffffff;
 }
 
 .header-button--login:hover,
 .header-button--login:focus-visible {
-  background-color: var(--color-accent-1);
-  border-color: var(--color-accent-1);
-  color: var(--color-secondary);
+  background-color: var(--color-secondary);
+  border-color: transparent;
+  color: #ffffff;
 }
 
 .header-button--signup {
@@ -428,19 +428,6 @@ body[data-hero-theme="dark"] .header-link--menu {
 
 body[data-hero-theme="dark"] .header-link--menu:hover,
 body[data-hero-theme="dark"] .header-link--menu:focus-visible {
-  background-color: var(--color-accent-1);
-  border-color: var(--color-accent-1);
-  color: var(--color-secondary);
-}
-
-body[data-hero-theme="dark"] .header-button--login {
-  background-color: #ffffff;
-  border-color: rgba(67, 90, 112, 0.25);
-  color: var(--color-secondary);
-}
-
-body[data-hero-theme="dark"] .header-button--login:hover,
-body[data-hero-theme="dark"] .header-button--login:focus-visible {
   background-color: var(--color-accent-1);
   border-color: var(--color-accent-1);
   color: var(--color-secondary);
@@ -619,8 +606,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   justify-content: center;
   padding: 0.75rem 1rem;
   border-radius: var(--radius-md);
-  background-color: rgba(71, 176, 161, 0.16);
-  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  color: #ffffff;
   font-weight: 600;
   text-decoration: none;
   transition: background-color var(--transition-base), color var(--transition-base);
@@ -628,7 +615,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 .nav-cta:hover,
 .nav-cta:focus-visible {
-  background-color: var(--color-accent-1);
+  background-color: var(--color-secondary);
   color: #ffffff;
 }
 
