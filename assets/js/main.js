@@ -302,4 +302,10 @@
       discoveryNext.addEventListener('click', () => scrollCarousel(1));
     }
   }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  });
 })();

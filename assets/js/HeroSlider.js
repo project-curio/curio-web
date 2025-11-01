@@ -73,6 +73,7 @@ class HeroSlider {
     this.applyInitialState();
     this.bindEvents();
     this.scheduleAdvance(this.autoAdvanceDelay);
+    this.refreshIcons();
   }
 
   async loadSlidesData() {
@@ -305,6 +306,8 @@ class HeroSlider {
 
       slidesContainer.appendChild(article);
     });
+
+    this.refreshIcons();
   }
 
   normalizeSlides(slidesData) {
@@ -600,29 +603,18 @@ class HeroSlider {
     }
   }
 
+  refreshIcons() {
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+      window.lucide.createIcons();
+    }
+  }
+
   createIcon(name) {
-    const icons = {
-      "arrow-right": ["M5 12h14", "M12 5l7 7-7 7"]
-    };
-
-    const paths = icons[name] || icons["arrow-right"];
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("class", "hero-slider__cta-icon");
-    svg.setAttribute("viewBox", "0 0 24 24");
-    svg.setAttribute("aria-hidden", "true");
-
-    paths.forEach((d) => {
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("d", d);
-      path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "currentColor");
-      path.setAttribute("stroke-width", "1.5");
-      path.setAttribute("stroke-linecap", "round");
-      path.setAttribute("stroke-linejoin", "round");
-      svg.appendChild(path);
-    });
-
-    return svg;
+    const icon = document.createElement("i");
+    icon.setAttribute("aria-hidden", "true");
+    icon.dataset.lucide = name || "arrow-right";
+    icon.className = "icon icon--sm hero-slider__cta-icon";
+    return icon;
   }
 
   createSearchForm(slide, index) {
@@ -644,17 +636,10 @@ class HeroSlider {
     label.setAttribute("for", searchId);
     label.textContent = slide.searchLabel || "Search cultural places";
 
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("aria-hidden", "true");
-    svg.setAttribute("viewBox", "0 0 24 24");
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", "M21 21l-4.35-4.35m1.35-3.65a6 6 0 1 0-12 0 6 6 0 0 0 12 0Z");
-    path.setAttribute("fill", "none");
-    path.setAttribute("stroke", "currentColor");
-    path.setAttribute("stroke-width", "1.5");
-    path.setAttribute("stroke-linecap", "round");
-    path.setAttribute("stroke-linejoin", "round");
-    svg.appendChild(path);
+    const icon = document.createElement("i");
+    icon.setAttribute("aria-hidden", "true");
+    icon.dataset.lucide = slide.searchIcon || "search";
+    icon.className = "icon icon--sm hero-search-icon";
 
     const input = document.createElement("input");
     input.id = searchId;
@@ -665,7 +650,7 @@ class HeroSlider {
     input.enterKeyHint = "search";
     input.placeholder = slide.searchPlaceholder || "Try “quiet morning in Minneapolis” or “design in Detroit”";
 
-    field.append(label, svg, input);
+    field.append(label, icon, input);
 
     const submit = document.createElement("button");
     submit.className = "hero-search-button";
