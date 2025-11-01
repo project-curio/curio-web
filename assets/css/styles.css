@@ -1424,6 +1424,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   gap: var(--space-xl);
   padding: 2.5rem 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: start;
 }
 
 .footer-brand {
@@ -1431,6 +1432,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   gap: var(--space-sm);
   text-align: left;
   justify-items: start;
+  align-self: start;
 }
 
 .footer-brand p {
@@ -1550,6 +1552,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   flex-direction: column;
   gap: var(--space-xs);
   align-items: flex-start;
+  align-self: stretch;
 }
 
 .footer-bottom-links {
