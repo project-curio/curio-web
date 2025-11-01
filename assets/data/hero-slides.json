@@ -75,9 +75,9 @@
       "ctaIcon": "arrow-right",
       "buttonHref": "#section-cities",
       "ctaHref": "#section-cities",
-      "image": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80",
+      "image": "assets/images/hero/IMG_20170526_114229.jpg",
       "imageTone": "light",
-      "buttonColor": "light",
+      "buttonColor": "dark",
       "overlayIntensity": 1,
       "credit": {
         "prefix": "Photo",
