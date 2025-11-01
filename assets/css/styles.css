@@ -1425,6 +1425,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .footer-brand .logo {
   color: #ffffff;
   justify-self: start;
+  margin-left: 0;
 }
 
 .footer-brand .logo .logo-accent {
@@ -1482,7 +1483,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 .footer-connect {
   display: grid;
-  gap: var(--space-sm);
+  gap: 0;
 }
 
 .footer-links {
