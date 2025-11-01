@@ -29,9 +29,9 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --header-height: 4.5rem;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-pill: 999px;
+  --radius-md: 14.4px;
+  --radius-lg: 21.6px;
+  --radius-pill: 899.1px;
   --transition-base: 180ms ease;
 }
 
@@ -233,14 +233,6 @@ a:focus-visible {
   position: relative;
 }
 
-.header-link--menu {
-  gap: var(--space-2xs);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background-color: rgba(13, 71, 78, 0.22);
-  color: #ffffff;
-  padding: 0.6rem 1rem;
-}
-
 .header-link--menu svg {
   width: 0.85rem;
   height: 0.85rem;
@@ -252,12 +244,6 @@ a:focus-visible {
   transform: rotate(180deg);
 }
 
-.header-link--menu:hover,
-.header-link--menu:focus-visible {
-  background-color: rgba(13, 71, 78, 0.32);
-  color: #ffffff;
-}
-
 .header-menu-panel {
   position: absolute;
   top: calc(100% + 0.65rem);
@@ -266,8 +252,8 @@ a:focus-visible {
   min-width: 220px;
   padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-sm);
   border-radius: var(--radius-md);
-  background-color: var(--color-surface);
-  border: 1px solid rgba(67, 90, 112, 0.18);
+  background-color: #ffffff;
+  border: 1px solid rgba(8, 51, 56, 0.18);
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
   display: none;
   text-align: left;
@@ -280,7 +266,19 @@ a:focus-visible {
   left: 50%;
   transform: translateX(-50%);
   border: 10px solid transparent;
-  border-bottom-color: var(--color-surface);
+  border-bottom-color: #ffffff;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.header-menu-panel::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 12px solid transparent;
+  border-bottom-color: rgba(8, 51, 56, 0.18);
   pointer-events: none;
 }
 
@@ -323,6 +321,21 @@ a:focus-visible {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
+.header-link--menu {
+  gap: var(--space-2xs);
+  padding: 0.65rem 1.1rem;
+  border: 1px solid rgba(8, 51, 56, 0.18);
+  background-color: #ffffff;
+  color: var(--color-secondary);
+}
+
+.header-link--menu:hover,
+.header-link--menu:focus-visible {
+  background-color: var(--color-accent-1);
+  border-color: var(--color-accent-1);
+  color: var(--color-secondary);
+}
+
 .header-button {
   display: inline-flex;
   align-items: center;
@@ -336,16 +349,16 @@ a:focus-visible {
 }
 
 .header-button--login {
-  background-color: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+  background-color: #ffffff;
+  border-color: rgba(8, 51, 56, 0.18);
+  color: var(--color-secondary);
 }
 
 .header-button--login:hover,
 .header-button--login:focus-visible {
-  background-color: rgba(255, 255, 255, 0.28);
-  border-color: rgba(255, 255, 255, 0.6);
-  color: #ffffff;
+  background-color: var(--color-accent-1);
+  border-color: var(--color-accent-1);
+  color: var(--color-secondary);
 }
 
 .header-button--signup {
@@ -372,27 +385,28 @@ body[data-hero-theme="dark"] .header-link:focus-visible {
 }
 
 body[data-hero-theme="dark"] .header-link--menu {
-  background-color: rgba(225, 228, 242, 0.98);
-  border-color: rgba(67, 90, 112, 0.35);
+  background-color: #ffffff;
+  border-color: rgba(67, 90, 112, 0.25);
   color: var(--color-secondary);
 }
 
 body[data-hero-theme="dark"] .header-link--menu:hover,
 body[data-hero-theme="dark"] .header-link--menu:focus-visible {
-  background-color: #ffffff;
+  background-color: var(--color-accent-1);
+  border-color: var(--color-accent-1);
   color: var(--color-secondary);
 }
 
 body[data-hero-theme="dark"] .header-button--login {
-  background-color: var(--color-surface);
-  border-color: rgba(67, 90, 112, 0.35);
+  background-color: #ffffff;
+  border-color: rgba(67, 90, 112, 0.25);
   color: var(--color-secondary);
 }
 
 body[data-hero-theme="dark"] .header-button--login:hover,
 body[data-hero-theme="dark"] .header-button--login:focus-visible {
-  background-color: #ffffff;
-  border-color: rgba(67, 90, 112, 0.45);
+  background-color: var(--color-accent-1);
+  border-color: var(--color-accent-1);
   color: var(--color-secondary);
 }
 
@@ -415,6 +429,10 @@ body[data-hero-theme="dark"] .header-menu-panel {
 
 body[data-hero-theme="dark"] .header-menu-panel::before {
   border-bottom-color: rgba(225, 228, 242, 0.98);
+}
+
+body[data-hero-theme="dark"] .header-menu-panel::after {
+  border-bottom-color: rgba(67, 90, 112, 0.25);
 }
 
 body[data-hero-theme="dark"] .header-menu-link {
