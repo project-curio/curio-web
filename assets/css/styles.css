@@ -200,6 +200,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   height: 100%;
+  border-radius: var(--radius-cta);
 }
 
 .header-search-form input {
@@ -220,7 +221,6 @@ a:focus-visible {
 
 .header-search-form:focus-within {
   box-shadow: 0 0 0 2px rgba(13, 71, 78, 0.28);
-  border-radius: var(--radius-cta);
 }
 
 .header-search-icon {
@@ -244,23 +244,16 @@ a:focus-visible {
   gap: var(--space-2xs);
   border: none;
   border-radius: var(--radius-cta);
-  padding: 0 1.25rem;
+  padding: 0 1rem;
   height: var(--header-control-height);
   background-color: var(--color-primary);
   color: #ffffff;
   cursor: pointer;
-  transition: background-color var(--transition-base), transform var(--transition-base);
-}
-
-.header-search-submit:hover,
-.header-search-submit:focus-visible {
-  background-color: var(--color-secondary);
-  transform: translateY(-1px);
 }
 
 .header-search-submit .icon {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 0.95rem;
+  height: 0.95rem;
 }
 
 .header-actions {
@@ -1421,14 +1414,14 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   gap: var(--space-xl);
   padding: 2.5rem 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  place-items: start;
+  align-items: start;
 }
 
 .footer-brand {
   display: grid;
   gap: var(--space-sm);
   text-align: left;
-  place-items: start;
+  justify-items: start;
 }
 
 .footer-brand p {
