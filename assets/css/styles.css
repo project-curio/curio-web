@@ -178,6 +178,7 @@ a:focus-visible {
 
 
 
+
 .header-search {
   display: none;
   align-items: center;
@@ -190,6 +191,7 @@ a:focus-visible {
   max-width: 544px;
   width: 100%;
   margin-left: 10%;
+  height: var(--header-control-height);
 }
 
 .header-search-form {
@@ -197,7 +199,19 @@ a:focus-visible {
   flex: 1;
   display: flex;
   align-items: center;
-  height: var(--header-control-height);
+  height: 100%;
+}
+
+.header-search-form input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 0 0.75rem 0 2.5rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--color-text);
+  border-radius: var(--radius-cta);
 }
 
 .header-search-form input::placeholder {
