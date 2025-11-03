@@ -1422,10 +1422,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-xl) var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  gap: var(--space-lg) var(--space-md);
   padding: 2.5rem 0;
   align-items: start;
+  justify-content: center;
 }
 
 .footer-brand {
