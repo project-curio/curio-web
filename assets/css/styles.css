@@ -1435,12 +1435,12 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   }
 
   .footer-inner > :nth-child(2) {
-    justify-self: start;
+    justify-self: end;
   }
 
   .footer-inner > :nth-child(3) {
-    justify-self: start;
-    margin-left: var(--space-xl);
+    justify-self: end;
+    margin-left: var(--space-lg);
   }
 }
 
