@@ -97,7 +97,7 @@
       "ctaIcon": "arrow-right",
       "buttonHref": "places/sample-institution.html",
       "ctaHref": "places/sample-institution.html",
-      "image": "assets/images/hero/IMG_20170526_114229.jpg",
+      "image": "assets/images/hero/note-thanun-zNzzulArQdc-unsplash.jpg",
       "imageTone": "dark",
       "buttonColor": "dark",
       "overlayIntensity": 1,
@@ -106,7 +106,7 @@
         "name": "note thanun",
         "profileUrl": "https://unsplash.com/@notethanun",
         "imageLabel": "View image on Unsplash",
-        "imageUrl": "https://unsplash.com/photos/GiYjgz_3Ylk"
+        "imageUrl": "note-thanun-zNzzulArQdc-unsplash.jpg"
       }
     }
   ]

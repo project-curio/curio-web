@@ -201,6 +201,8 @@ a:focus-visible {
   align-items: center;
   height: 100%;
   border-radius: var(--radius-cta);
+  background-color: #ffffff;
+  overflow: hidden;
 }
 
 .header-search-form input {
@@ -245,7 +247,7 @@ a:focus-visible {
   gap: var(--space-2xs);
   border: none;
   border-radius: var(--radius-cta);
-  padding: 0 1rem;
+  padding: 0 0.85rem;
   height: var(--header-control-height);
   background-color: var(--color-primary);
   color: #ffffff;
@@ -253,8 +255,8 @@ a:focus-visible {
 }
 
 .header-search-submit .icon {
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 0.72rem;
+  height: 0.72rem;
 }
 
 .header-actions {
