@@ -97,16 +97,16 @@
       "ctaIcon": "arrow-right",
       "buttonHref": "places/sample-institution.html",
       "ctaHref": "places/sample-institution.html",
-      "image": "https://images.unsplash.com/photo-1484662020986-75935d767cc4?auto=format&fit=crop&w=2000&q=80",
+      "image": "assets/images/hero/IMG_20170526_114229.jpg",
       "imageTone": "dark",
       "buttonColor": "dark",
       "overlayIntensity": 1,
       "credit": {
         "prefix": "Photo",
-        "name": "Stella Jacob",
-        "profileUrl": "https://unsplash.com/@stellajacob",
+        "name": "note thanun",
+        "profileUrl": "https://unsplash.com/@notethanun",
         "imageLabel": "View image on Unsplash",
-        "imageUrl": "https://unsplash.com/photos/75935d767cc4"
+        "imageUrl": "https://unsplash.com/photos/GiYjgz_3Ylk"
       }
     }
   ]
