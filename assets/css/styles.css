@@ -1433,6 +1433,14 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
     grid-template-columns: minmax(0, 1fr) auto auto;
     gap: var(--space-lg);
   }
+
+  .footer-inner > :nth-child(2) {
+    justify-self: start;
+  }
+
+  .footer-inner > :nth-child(3) {
+    justify-self: start;
+  }
 }
 
 .footer-brand {
