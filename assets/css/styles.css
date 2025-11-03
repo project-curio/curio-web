@@ -1422,7 +1422,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 .footer-inner {
   display: grid;
-  gap: var(--space-xl);
+  gap: calc(var(--space-xl) * 0.7);
   padding: 2.5rem 0;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   align-items: start;
