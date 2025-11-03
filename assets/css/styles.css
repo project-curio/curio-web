@@ -203,9 +203,12 @@ a:focus-visible {
   border-radius: var(--radius-cta);
   background-color: #ffffff;
   overflow: hidden;
+  padding: 2px;
+  box-sizing: border-box;
 }
 
 .header-search-form input {
+  flex: 1 1 auto;
   width: 100%;
   height: 100%;
   border: none;
@@ -229,7 +232,7 @@ a:focus-visible {
 .header-search-icon {
   position: absolute;
   top: 50%;
-  left: 0.9rem;
+  left: calc(0.9rem + 2px);
   transform: translateY(-50%);
   width: 1rem;
   height: 1rem;
@@ -247,16 +250,19 @@ a:focus-visible {
   gap: var(--space-2xs);
   border: none;
   border-radius: var(--radius-cta);
-  padding: 0 0.85rem;
-  height: var(--header-control-height);
+  padding: 0;
+  margin-left: 2px;
+  flex: 0 0 auto;
+  width: calc(var(--header-control-height) - 4px);
+  height: 100%;
   background-color: var(--color-primary);
   color: #ffffff;
   cursor: pointer;
 }
 
 .header-search-submit .icon {
-  width: 0.72rem;
-  height: 0.72rem;
+  width: 0.83rem;
+  height: 0.83rem;
 }
 
 .header-actions {
