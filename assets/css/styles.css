@@ -220,7 +220,8 @@ a:focus-visible {
 }
 
 .header-search-form:focus-within {
-  box-shadow: 0 0 0 2px rgba(13, 71, 78, 0.28);
+  box-shadow: inset 0 0 0 2px rgba(13, 71, 78, 0.28);
+  border-radius: var(--radius-cta);
 }
 
 .header-search-icon {
@@ -252,8 +253,8 @@ a:focus-visible {
 }
 
 .header-search-submit .icon {
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
 .header-actions {
@@ -309,7 +310,7 @@ a:focus-visible {
 .header-menu-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2xs);
+  gap: calc(var(--space-sm) + 3px);
   padding: 0.55rem 0.85rem;
   border-radius: var(--radius-md);
   color: var(--color-ink);
@@ -322,6 +323,7 @@ a:focus-visible {
   color: #000000;
   width: 1.015rem;
   height: 1.015rem;
+  margin-left: -0.2rem;
 }
 
 .header-menu-link:hover,
@@ -350,7 +352,7 @@ a:focus-visible {
 
 .header-link--menu {
   gap: var(--space-2xs);
-  padding: 0 1rem;
+  padding: 0.6rem 1.05rem;
   min-height: var(--header-control-height);
   border: 1px solid rgba(8, 51, 56, 0.18);
   border-radius: var(--radius-cta);
@@ -371,7 +373,7 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 1.1rem;
+  padding: 0.65rem 1.1rem;
   min-height: var(--header-control-height);
   border-radius: var(--radius-cta);
   border: 1px solid transparent;
@@ -397,7 +399,7 @@ a:focus-visible {
 .header-button--signup {
   background-color: var(--color-primary);
   color: #ffffff;
-  border-color: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
   box-shadow: none;
 }
 
@@ -405,6 +407,7 @@ a:focus-visible {
 .header-button--signup:focus-visible {
   background-color: var(--color-secondary);
   color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 body[data-hero-theme="dark"] .header-link {
@@ -1412,7 +1415,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .footer-inner {
   display: grid;
   gap: var(--space-xl);
-  padding: 2.5rem 1.5rem;
+  padding: 2.5rem 0;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   align-items: start;
 }
@@ -1503,7 +1506,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .footer-links a {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2xs);
+  gap: calc(var(--space-2xs) + 3px);
   color: var(--color-surface);
   text-decoration: none;
   transition: color var(--transition-base);
