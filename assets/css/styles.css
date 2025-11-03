@@ -1426,7 +1426,6 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   gap: var(--space-lg) var(--space-md);
   padding: 2.5rem 0;
   align-items: start;
-  justify-content: center;
 }
 
 .footer-brand {
