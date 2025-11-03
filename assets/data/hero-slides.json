@@ -100,7 +100,7 @@
       "image": "assets/images/hero/note-thanun-zNzzulArQdc-unsplash.jpg",
       "imageTone": "dark",
       "buttonColor": "dark",
-      "overlayIntensity": 1,
+      "overlayIntensity": 0.7,
       "credit": {
         "prefix": "Photo",
         "name": "note thanun",
