@@ -2278,20 +2278,3 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
     transition: none;
   }
 }
-.card,
-.hero-card,
-.city-card,
-.partner-card,
-.info-card,
-.reflection-card {
-  background-color: #ffffff;
-  background-image: none;
-}
-
-.hero-card-body,
-.city-card-body,
-.card-body,
-.partner-card-content {
-  background-color: #ffffff;
-  background-image: none;
-}
