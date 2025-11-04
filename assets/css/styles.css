@@ -1143,6 +1143,19 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   max-width: 52ch;
 }
 
+.section-cities {
+  background-color: #ffffff;
+  background-image: none;
+}
+
+.section-cities .container,
+.section-cities .section-intro,
+.section-cities .city-carousel-shell,
+.section-cities .city-carousel {
+  background-color: #ffffff;
+  background-image: none;
+}
+
 .city-carousel {
   display: flex;
   gap: var(--space-md);
