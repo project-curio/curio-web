@@ -1315,7 +1315,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .city-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.5) 85%, rgba(0, 0, 0, 0.6) 100%);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .city-card-title {
@@ -1479,7 +1479,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .partner-card-visual {
   position: relative;
   min-height: 280px;
-  background: linear-gradient(145deg, rgba(13, 71, 78, 0.95), rgba(8, 51, 56, 0.95));
+  background-color: var(--color-secondary);
+  background-image: none;
 }
 
 .partner-visual {
