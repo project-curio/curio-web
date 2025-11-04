@@ -1158,21 +1158,23 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   max-width: 52ch;
 }
 
-:where(.card, .hero-card, .city-card, .partner-card, .info-card, .reflection-card) {
+
+.hero-card,
+.city-card,
+.card,
+.partner-card,
+.info-card,
+.reflection-card {
   background-color: #ffffff;
   background-image: none;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(67, 90, 112, 0.08);
-  box-shadow: 0 18px 36px rgba(6, 47, 52, 0.1);
-  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
-/* Normalize card surfaces and squash inherited gradients */
-[class*="card"],
-[class*="carousel"] > [class*="card"],
-.discovery-carousel > div {
-  background: #ffffff !important;
-  background-image: none !important;
+.hero-card-body,
+.city-card-body,
+.card-body,
+.partner-card-content {
+  background-color: #ffffff;
+  background-image: none;
 }
 
 .section-cities {
