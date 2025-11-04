@@ -1204,7 +1204,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .city-card {
   flex: 0 0 clamp(260px, 85vw, 320px);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
+  background-color: #ffffff;
   border: 1px solid rgba(67, 90, 112, 0.08);
   box-shadow: 0 20px 40px rgba(6, 47, 52, 0.12);
   overflow: hidden;
@@ -1228,7 +1228,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .city-card-media img {
-  background-color: #edeff1;
+  background-color: #ffffff;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1254,7 +1254,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   }
 
   .city-card {
-    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3 + 0.0001px);
+    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3 - 2px);
   }
 
   .city-card-media {
