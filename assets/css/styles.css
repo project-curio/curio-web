@@ -1166,14 +1166,16 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 .section-cities {
   background-color: #ffffff;
+  background-image: none;
 }
 
 .section-cities .container,
 .section-cities .section-intro,
 .section-cities .city-carousel-shell,
 .section-cities .city-carousel {
-  background-color: transparent;
+  background-color: #ffffff;
   background-image: none;
+  box-shadow: none;
 }
 
 .city-carousel {
