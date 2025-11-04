@@ -294,14 +294,55 @@
       });
     };
 
-    if (discoveryPrev) {
-      discoveryPrev.addEventListener('click', () => scrollCarousel(-1));
-    }
-
-    if (discoveryNext) {
-      discoveryNext.addEventListener('click', () => scrollCarousel(1));
-    }
+  if (discoveryPrev) {
+    discoveryPrev.addEventListener('click', () => scrollCarousel(-1));
   }
+
+  if (discoveryNext) {
+    discoveryNext.addEventListener('click', () => scrollCarousel(1));
+  }
+
+  const cityCarousel = document.querySelector('[data-js="city-carousel"]');
+  const cityPrev = document.querySelector('[data-js="city-prev"]');
+  const cityNext = document.querySelector('[data-js="city-next"]');
+
+  if (cityCarousel && cityPrev && cityNext) {
+    const getStep = () => {
+      const firstCard = cityCarousel.querySelector('.city-card');
+      if (!firstCard) return cityCarousel.clientWidth;
+      const style = window.getComputedStyle(cityCarousel);
+      const gap = parseFloat(style.columnGap || style.gap || '0');
+      return firstCard.offsetWidth + gap;
+    };
+
+    const updateCityControls = () => {
+      const maxScroll = cityCarousel.scrollWidth - cityCarousel.clientWidth - 1;
+      const current = cityCarousel.scrollLeft;
+      const atStart = current <= 1;
+      const atEnd = current >= maxScroll;
+      cityPrev.disabled = atStart;
+      cityPrev.setAttribute('aria-disabled', atStart);
+      cityNext.disabled = atEnd;
+      cityNext.setAttribute('aria-disabled', atEnd);
+    };
+
+    const scrollCity = (direction) => {
+      cityCarousel.scrollBy({
+        left: direction * getStep(),
+        behavior: 'smooth'
+      });
+      window.requestAnimationFrame(() => {
+        setTimeout(updateCityControls, 220);
+      });
+    };
+
+    cityPrev.addEventListener('click', () => scrollCity(-1));
+    cityNext.addEventListener('click', () => scrollCity(1));
+    cityCarousel.addEventListener('scroll', updateCityControls, { passive: true });
+    window.addEventListener('resize', updateCityControls);
+    updateCityControls();
+  }
+}
 
   window.addEventListener('DOMContentLoaded', () => {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {

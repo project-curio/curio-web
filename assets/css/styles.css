@@ -1152,6 +1152,49 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   scrollbar-width: none;
 }
 
+.city-carousel-shell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.city-carousel-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(8, 51, 56, 0.12);
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-secondary);
+  transition: background-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+  cursor: pointer;
+}
+
+.city-carousel-control .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.city-carousel-control:hover:not(:disabled),
+.city-carousel-control:focus-visible:not(:disabled) {
+  background-color: #ffffff;
+  box-shadow: 0 12px 28px rgba(6, 47, 52, 0.18);
+  transform: translateY(-2px);
+}
+
+.city-carousel-control:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.city-carousel-control:disabled .icon {
+  opacity: 0.8;
+}
+
 .city-carousel::-webkit-scrollbar {
   display: none;
 }
