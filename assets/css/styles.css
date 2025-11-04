@@ -1224,10 +1224,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   position: relative;
   height: 220px;
   overflow: hidden;
-  background-color: #f2f5f7;
+  background-color: transparent;
 }
 
 .city-card-media img {
+  background-color: #edeff1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1243,15 +1244,17 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 @media (min-width: 1024px) {
   .city-carousel-shell {
     overflow: hidden;
+    background: none;
   }
 
   .city-carousel {
     padding-bottom: 0;
     overflow-x: hidden;
+    background: none;
   }
 
   .city-card {
-    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3);
+    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3 + 0.0001px);
   }
 
   .city-card-media {
