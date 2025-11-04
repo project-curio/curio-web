@@ -1148,7 +1148,6 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   gap: var(--space-md);
   overflow-x: auto;
   padding-bottom: var(--space-sm);
-  padding-right: calc(var(--space-md) + 2px);
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 0;
   scrollbar-width: none;
@@ -1225,7 +1224,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   position: relative;
   height: 220px;
   overflow: hidden;
-  background-color: rgba(13, 71, 78, 0.12);
+  background-color: #f2f5f7;
 }
 
 .city-card-media img {
@@ -1242,13 +1241,17 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 @media (min-width: 1024px) {
+  .city-carousel-shell {
+    overflow: hidden;
+  }
+
   .city-carousel {
     padding-bottom: 0;
     overflow-x: hidden;
   }
 
   .city-card {
-    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3 - 0.75px);
+    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3);
   }
 
   .city-card-media {
@@ -1259,7 +1262,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .city-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.65) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.5) 85%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .city-card-title {
