@@ -6,7 +6,7 @@
   --color-accent-2: #5FAE9E;
   --color-accent-3: #2F9D85;
   --color-contrast: #435A70;
-  --color-surface: #E1E4F2;
+  --color-surface: #FFFFFF;
   --color-section-muted: #F5F7FB;
   --color-ink: #1F2933;
   --color-body: #FFFFFF;
@@ -958,16 +958,14 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .hero-card {
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   display: grid;
   gap: var(--space-2xs);
   width: clamp(260px, 35vw, 300px);
   cursor: pointer;
-  border-radius: var(--radius-md);
-  background-color: var(--color-surface);
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   scroll-snap-align: start;
 }
 
@@ -1158,6 +1156,14 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   max-width: 52ch;
 }
 
+:where(.card, .hero-card, .city-card, .partner-card, .info-card, .reflection-card) {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(67, 90, 112, 0.08);
+  box-shadow: 0 18px 36px rgba(6, 47, 52, 0.1);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
 .section-cities {
   background-color: #ffffff;
 }
@@ -1229,15 +1235,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .city-card {
-  flex: 0 0 clamp(260px, 85vw, 320px);
-  border-radius: var(--radius-lg);
-  background-color: #ffffff;
-  border: 1px solid rgba(67, 90, 112, 0.08);
   box-shadow: 0 14px 32px rgba(6, 47, 52, 0.1);
+  flex: 0 0 clamp(260px, 85vw, 320px);
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .city-card:hover,
@@ -1339,10 +1341,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .card {
-  background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  box-shadow: var(--shadow-sm);
   display: grid;
   gap: var(--space-md);
 }
@@ -1366,13 +1365,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .partner-card {
+  border: 1px solid rgba(9, 33, 36, 0.08);
+  box-shadow: 0 28px 60px rgba(6, 47, 52, 0.12);
   display: grid;
   gap: var(--space-lg);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface-muted);
-  border: 1px solid rgba(9, 33, 36, 0.08);
   overflow: hidden;
-  box-shadow: 0 28px 60px rgba(6, 47, 52, 0.12);
 }
 
 @media (min-width: 992px) {
@@ -1577,7 +1574,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .footer-meta a {
-  color: var(--color-surface);
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
 }
 
@@ -1604,7 +1601,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .footer-nav a {
-  color: var(--color-surface);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   transition: color var(--transition-base);
 }
@@ -1629,7 +1626,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: calc(var(--space-2xs) + 3px);
-  color: var(--color-surface);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   transition: color var(--transition-base);
 }
@@ -1676,7 +1673,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .footer-bottom-links a {
-  color: var(--color-surface);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
 }
 
@@ -1686,7 +1683,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .footer-heart {
-  color: var(--color-surface);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @media (min-width: 768px) {
@@ -2009,13 +2006,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .info-card {
-  background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
   padding: var(--space-lg);
   display: grid;
   gap: var(--space-md);
-  box-shadow: var(--shadow-sm);
 }
 
 .info-list {
