@@ -958,6 +958,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .hero-card {
+  background-color: #ffffff;
+  background-image: none;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
@@ -1158,6 +1160,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 :where(.card, .hero-card, .city-card, .partner-card, .info-card, .reflection-card) {
   background-color: #ffffff;
+  background-image: none;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(67, 90, 112, 0.08);
   box-shadow: 0 18px 36px rgba(6, 47, 52, 0.1);
@@ -1241,6 +1244,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .city-card {
+  background-color: #ffffff;
+  background-image: none;
   box-shadow: 0 14px 32px rgba(6, 47, 52, 0.1);
   flex: 0 0 clamp(260px, 85vw, 320px);
   overflow: hidden;
@@ -1347,6 +1352,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .card {
+  background-color: #ffffff;
+  background-image: none;
   padding: var(--space-lg);
   display: grid;
   gap: var(--space-md);
@@ -1371,6 +1378,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .partner-card {
+  background-color: #ffffff;
+  background-image: none;
   border: 1px solid rgba(9, 33, 36, 0.08);
   box-shadow: 0 28px 60px rgba(6, 47, 52, 0.12);
   display: grid;
@@ -1962,11 +1971,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .reflection-card {
-  background: linear-gradient(180deg, rgba(238, 243, 243, 0.65), rgba(255, 255, 255, 0.95));
-  border-radius: var(--radius-lg);
+  background-color: #ffffff;
   padding: var(--space-lg);
   border: 1px solid rgba(9, 33, 36, 0.08);
   box-shadow: 0 24px 50px rgba(6, 47, 52, 0.12);
+  border-radius: var(--radius-lg);
   display: grid;
   gap: var(--space-md);
 }
@@ -2012,6 +2021,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 .info-card {
+  background-color: #ffffff;
+  background-image: none;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   padding: var(--space-lg);
