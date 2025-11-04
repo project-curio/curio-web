@@ -1167,6 +1167,14 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
+/* Normalize card surfaces and squash inherited gradients */
+[class*="card"],
+[class*="carousel"] > [class*="card"],
+.discovery-carousel > div {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
 .section-cities {
   background-color: #ffffff;
   background-image: none;
