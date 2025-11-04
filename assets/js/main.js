@@ -326,13 +326,23 @@
       cityNext.setAttribute('aria-disabled', atEnd);
     };
 
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const alignToStep = (value, step) => Math.round(value / step) * step;
+
     const scrollCity = (direction) => {
-      cityCarousel.scrollBy({
-        left: direction * getStep(),
+      const step = getStep();
+      const max = Math.max(cityCarousel.scrollWidth - cityCarousel.clientWidth, 0);
+      const target = clamp(alignToStep(cityCarousel.scrollLeft + direction * step, step), 0, max);
+      cityCarousel.scrollTo({
+        left: target,
         behavior: 'smooth'
       });
       window.requestAnimationFrame(() => {
-        setTimeout(updateCityControls, 220);
+        setTimeout(() => {
+          cityCarousel.scrollTo({ left: target });
+          updateCityControls();
+        }, 220);
       });
     };
 
@@ -340,6 +350,7 @@
     cityNext.addEventListener('click', () => scrollCity(1));
     cityCarousel.addEventListener('scroll', updateCityControls, { passive: true });
     window.addEventListener('resize', updateCityControls);
+    cityCarousel.scrollTo({ left: 0 });
     updateCityControls();
   }
 }

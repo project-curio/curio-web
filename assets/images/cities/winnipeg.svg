@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b4b63"/>
+      <stop offset="55%" stop-color="#2c828a"/>
+      <stop offset="100%" stop-color="#5ab0a8"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f3c44" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0b2c31" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="440" fill="url(#sky)"/>
+  <rect y="440" width="960" height="280" fill="url(#river)"/>
+  <g fill="#f2f7f7">
+    <rect x="120" y="260" width="90" height="180" opacity="0.3"/>
+    <rect x="240" y="220" width="110" height="220" opacity="0.22"/>
+    <rect x="370" y="240" width="70" height="200" opacity="0.28"/>
+    <rect x="460" y="210" width="90" height="230" opacity="0.26"/>
+    <rect x="570" y="250" width="110" height="190" opacity="0.25"/>
+    <rect x="700" y="200" width="120" height="240" opacity="0.21"/>
+  </g>
+  <g fill="#fefefe">
+    <polygon points="470,140 520,140 585,420 405,420"/>
+    <rect x="455" y="420" width="130" height="140" opacity="0.9"/>
+  </g>
+  <g fill="#c3e1dd" opacity="0.85">
+    <polygon points="140,470 360,480 520,520 640,500 840,530 840,560 120,560"/>
+  </g>
+  <g fill="#78b7ac" opacity="0.5">
+    <ellipse cx="620" cy="600" rx="260" ry="80"/>
+    <ellipse cx="280" cy="620" rx="220" ry="70"/>
+  </g>
+  <g fill="#ffffff" opacity="0.7">
+    <circle cx="180" cy="120" r="6"/>
+    <circle cx="220" cy="150" r="5"/>
+    <circle cx="260" cy="100" r="5"/>
+    <circle cx="320" cy="160" r="4"/>
+    <circle cx="680" cy="130" r="6"/>
+    <circle cx="720" cy="100" r="5"/>
+    <circle cx="780" cy="140" r="4"/>
+  </g>
+</svg>

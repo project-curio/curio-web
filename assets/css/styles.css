@@ -1148,7 +1148,9 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   gap: var(--space-md);
   overflow-x: auto;
   padding-bottom: var(--space-sm);
+  padding-right: calc(var(--space-md) + 2px);
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
   scrollbar-width: none;
 }
 
@@ -1208,6 +1210,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   box-shadow: 0 20px 40px rgba(6, 47, 52, 0.12);
   overflow: hidden;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
@@ -1241,10 +1244,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 @media (min-width: 1024px) {
   .city-carousel {
     padding-bottom: 0;
+    overflow-x: hidden;
   }
 
   .city-card {
-    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3);
+    flex: 0 0 calc((100% - (2 * var(--space-md))) / 3 - 0.75px);
   }
 
   .city-card-media {
