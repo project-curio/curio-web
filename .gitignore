@@ -6,3 +6,4 @@ npm-debug.log*
 .tmp
 /cache/
 .env
+agents.md
