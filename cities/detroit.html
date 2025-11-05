@@ -17,7 +17,7 @@
     <title>detroit culture guide | curio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="manifest" href="../manifest.json">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -55,8 +55,25 @@
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
       <article class="city-layout">
-        <section class="city-hero" aria-labelledby="detroit-heading">
+        <section id="overview" class="city-hero" aria-labelledby="detroit-heading">
           <div class="container city-hero-grid">
+        <nav class="city-secondary-nav" aria-label="City navigation">
+          <ul>
+            <li><a href="#detroit-heading">Overview</a></li>
+            <li><a href="#detroit-map">Map</a></li>
+            <li><a href="#detroit-reflections-heading">Reflections</a></li>
+            <li><a href="#detroit-institutions-heading">Institutions</a></li>
+          </ul>
+        </nav>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Cities</a></li>
+          <li aria-current="page">Detroit</li>
+        </ol>
+      </nav>
+
             <div class="city-hero-body">
               <p class="eyebrow">Pilot city</p>
               <h1 id="detroit-heading">Detroit</h1>
@@ -75,7 +92,7 @@
           </div>
         </section>
 
-        <section class="city-map" aria-labelledby="detroit-map-heading">
+        <section id="detroit-map" class="city-map" aria-labelledby="detroit-map-heading">
           <div class="container">
             <div class="section-heading">
               <h2 id="detroit-map-heading">Explore Detroit’s cultural anchors</h2>
@@ -104,11 +121,11 @@
           </div>
         </section>
 
-        <section class="section" aria-labelledby="detroit-discovery">
+        <section class="section" aria-labelledby="detroit-reflections-heading">
           <div class="container">
             <div class="section-heading">
-              <h2 id="detroit-discovery">Discovery cards in progress</h2>
-              <p class="lead">Here’s a look at how reflections and visit cues will surface for Detroit explorers.</p>
+              <h2 id="detroit-reflections-heading">Reflections in progress</h2>
+              <p class="lead">Prototype cards show how Detroit reflections will pair visitor prompts with visit cues.</p>
             </div>
             <div class="card-grid place-grid">
               <article class="card place-card">
@@ -158,6 +175,21 @@
                   <span class="tag">Nature</span>
                   <span class="tag">Reflection</span>
                 </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section city-institutions" aria-labelledby="detroit-institutions-heading">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="detroit-institutions-heading">Institution partners (coming soon)</h2>
+              <p class="lead">Phase 2 will spotlight Detroit institutions collaborating on Curio reflections. We’ll publish partner profiles and accessibility highlights here.</p>
+            </div>
+            <div class="card-grid place-grid">
+              <article class="card place-card">
+                <h3>Partner roster coming soon</h3>
+                <p>We’ll publish partner spotlights, accessibility notes, and wish-loop contact info once Phase 2 onboarding begins.</p>
               </article>
             </div>
           </div>

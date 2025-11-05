@@ -207,7 +207,7 @@
 
 .hero-slider__cta:focus-visible {
   outline: 2px solid var(--hero-accent);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 .hero-slider__cta-label {
@@ -337,7 +337,7 @@
 
 .hero-slider__dot:focus-visible {
   outline: 2px solid var(--hero-accent);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 .hero-slider__credit {

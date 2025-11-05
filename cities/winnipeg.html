@@ -17,7 +17,7 @@
     <title>winnipeg culture guide | curio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="manifest" href="../manifest.json">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -55,8 +55,25 @@
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
       <article class="city-layout">
-        <section class="city-hero" aria-labelledby="winnipeg-heading">
+        <section id="overview" class="city-hero" aria-labelledby="winnipeg-heading">
           <div class="container city-hero-grid">
+        <nav class="city-secondary-nav" aria-label="City navigation">
+          <ul>
+            <li><a href="#winnipeg-heading">Overview</a></li>
+            <li><a href="#winnipeg-map">Map</a></li>
+            <li><a href="#winnipeg-reflections-heading">Reflections</a></li>
+            <li><a href="#winnipeg-institutions-heading">Institutions</a></li>
+          </ul>
+        </nav>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Cities</a></li>
+          <li aria-current="page">Winnipeg</li>
+        </ol>
+      </nav>
+
             <div class="city-hero-body">
               <p class="eyebrow">Pilot city</p>
               <h1 id="winnipeg-heading">Winnipeg</h1>
@@ -104,10 +121,10 @@
           </div>
         </section>
 
-        <section class="section" aria-labelledby="winnipeg-discovery">
+        <section class="section" aria-labelledby="winnipeg-reflections-heading">
           <div class="container">
             <div class="section-heading">
-              <h2 id="winnipeg-discovery">Discovery cards in progress</h2>
+              <h2 id="winnipeg-reflections-heading">Reflections in progress</h2>
               <p class="lead">Winnipeg reflections surface resilience, cultural care, and relationship to land.</p>
             </div>
             <div class="card-grid place-grid">
@@ -146,6 +163,21 @@
                   <span class="tag">Land acknowledgment</span>
                   <span class="tag">Gathering</span>
                 </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section city-institutions" aria-labelledby="winnipeg-institutions-heading">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="winnipeg-institutions-heading">Institution partners (coming soon)</h2>
+              <p class="lead">We’ll feature Winnipeg collaborators with bilingual resources and accessibility commitments as Phase 2 unfolds.</p>
+            </div>
+            <div class="card-grid place-grid">
+              <article class="card place-card">
+                <h3>Partner roster coming soon</h3>
+                <p>Stay tuned for Winnipeg institution profiles, wish-loop updates, and cultural accessibility spotlights.</p>
               </article>
             </div>
           </div>

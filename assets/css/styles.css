@@ -20,7 +20,8 @@
   --color-text: var(--color-ink);
   --color-muted-soft: rgba(67, 90, 112, 0.45);
   --shadow-sm: 0 10px 30px rgba(6, 47, 52, 0.08);
-  --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: 'Georgia', 'Times New Roman', serif;
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -48,13 +49,27 @@ body {
   min-height: 100vh;
 }
 
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
 body.nav-open {
   overflow: hidden;
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 3px;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 a {
@@ -129,7 +144,7 @@ a:focus-visible {
 }
 
 .container {
-  width: min(92%, 1120px);
+  width: min(92%, 960px);
   margin: 0 auto;
 }
 
@@ -161,6 +176,7 @@ a:focus-visible {
   color: #ffffff;
   text-decoration: none;
   margin-left: -50px;
+  font-family: var(--font-display);
 }
 
 .logo span.logo-accent {
@@ -749,9 +765,10 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .hero-eyebrow {
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   color: rgba(255, 255, 255, 0.75);
   font-weight: 600;
+  font-family: var(--font-display);
 }
 
 .hero-body h1 {
@@ -764,6 +781,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   border-radius: 8px;
   display: inline-block;
   box-decoration-break: clone;
+  font-family: var(--font-display);
 }
 
 .hero-lead {
@@ -876,6 +894,9 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   color: var(--color-ink);
   font-size: 0.85rem;
   font-weight: 500;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .tag--small {
@@ -949,12 +970,23 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .section-intro h2 {
   margin: 0;
   font-size: clamp(2rem, 3vw, 2.6rem);
+  letter-spacing: -0.01em;
 }
 
 .section-lead {
   font-size: 1.125rem;
   color: var(--color-muted);
   max-width: 52ch;
+}
+
+.section-eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
 }
 
 .card {
@@ -1326,6 +1358,9 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   background-color: rgba(71, 176, 161, 0.12);
   color: var(--color-ink);
   font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .grid {
@@ -1363,6 +1398,52 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   gap: var(--space-xl);
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: center;
+}
+
+.city-secondary-nav {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-md);
+}
+
+.city-secondary-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.city-secondary-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(67, 90, 112, 0.18);
+  background-color: rgba(71, 176, 161, 0.12);
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.city-secondary-nav a:hover,
+.city-secondary-nav a:focus-visible {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .city-secondary-nav ul {
+    gap: var(--space-2xs);
+  }
+
+  .city-secondary-nav a {
+    font-size: 0.8rem;
+    padding: var(--space-2xs) var(--space-xs);
+  }
 }
 
 .city-hero-body {
