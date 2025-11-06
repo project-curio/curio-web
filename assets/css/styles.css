@@ -160,15 +160,13 @@ a:focus-visible {
 
 .header-inner {
   display: grid;
-  grid-template-columns: auto 1fr auto; /* Logo | Search | Actions */
-  grid-template-areas: "logo search actions";
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--space-lg); /* Maintain original gap */
+  column-gap: var(--space-lg);
   padding: var(--space-sm) 0;
 }
 
 .logo {
-  grid-area: logo;
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
@@ -179,7 +177,7 @@ a:focus-visible {
   text-decoration: none;
   margin-left: 0;
   font-family: var(--font-display);
-  justify-self: start; /* Ensure left alignment within its grid area if needed */
+  justify-self: start;
 }
 
 .logo span.logo-accent {
@@ -197,8 +195,7 @@ a:focus-visible {
 }
 
 .header-search {
-  grid-area: search;
-  justify-self: center; /* Center the search within its grid area */
+  justify-self: center;
   display: none;
   align-items: center;
   gap: var(--space-xs);
@@ -207,11 +204,11 @@ a:focus-visible {
   border: 1px solid rgba(67, 90, 112, 0.12);
   background-color: #ffffff;
   box-shadow: 0 22px 50px rgba(6, 29, 33, 0.18);
-  width: calc(598.4px * 1.1); /* Increase width by 10% */
-  max-width: calc(100% * 1.1); /* Increase max-width by 10% */
+  width: 544px;
+  max-width: 100%;
   margin: 0;
   height: var(--header-control-height);
-  /* transform: translateX(0); Reset original transform - not needed if justify-self: center works */ /* REMOVED AS IT'S NOT NEEDED WITH GRID CENTERING */
+  transform: translateX(-24px);
 }
 
 .header-search-form {
@@ -286,13 +283,12 @@ a:focus-visible {
 }
 
 .header-actions {
-  grid-area: actions;
-  display: none; /* Initially hidden */
+  display: none;
   align-items: center;
   gap: var(--space-sm);
   margin: 0;
-  /* justify-self: end; REMOVED - Grid area 'actions' is the last column, so it's implicitly right-aligned */
-  padding-right: var(--space-md); /* Add padding from the right edge */
+  justify-self: end;
+  padding-right: var(--space-md);
 }
 
 .header-menu {
@@ -381,16 +377,16 @@ a:focus-visible {
 
 .header-link--menu {
   gap: var(--space-2xs);
-  padding: 0; /* Reset original padding */
+  padding: 0; 
   min-height: var(--header-control-height);
-  height: var(--header-control-height); /* Match search bar height */
+  height: var(--header-control-height); 
   border: 1px solid rgba(8, 51, 56, 0.18);
   border-radius: var(--radius-cta);
   background-color: #ffffff;
   color: var(--color-secondary);
   font-weight: 600;
   line-height: 1;
-  display: flex; /* Ensure flex layout for centering */
+  display: flex; 
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -407,16 +403,16 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0; /* Reset original padding */
+  padding: 0; 
   min-height: var(--header-control-height);
-  height: var(--header-control-height); /* Match search bar height */
+  height: var(--header-control-height); 
   border-radius: var(--radius-cta);
   border: 1px solid transparent;
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
   transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
-  box-sizing: border-box; /* Include padding/border in height */
+  box-sizing: border-box; 
 }
 
 .header-button--login {
@@ -658,11 +654,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 @media (min-width: 992px) {
-
   .header-search--desktop {
-    display: flex; /* Show desktop search */
-    /* justify-self: center; Already handled by grid-area: search and parent justify-items */
-    /* transform: translateX(0); Not needed if grid centering is sufficient */
+    display: flex;
   }
 
   .header-search-submit {
@@ -670,10 +663,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   }
 
   .header-actions {
-    display: inline-flex; /* Show header actions on desktop */
-    /* grid-area: actions; Already defined above, places it in the right column */
-    /* justify-self: end; REMOVED TO FIX LINT ERROR - Grid placement handles right-alignment */
-    /* padding-right is kept to add space from window edge */
+    display: inline-flex;
   }
 
   .nav-toggle {
