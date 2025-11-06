@@ -160,10 +160,10 @@ a:focus-visible {
 
 .header-inner {
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-md);
-  padding: var(--space-sm) 0;
+  padding: var(--space-sm) var(--space-md);
 }
 
 .logo {
@@ -175,7 +175,7 @@ a:focus-visible {
   letter-spacing: 0.3px;
   color: #ffffff;
   text-decoration: none;
-  margin-left: -50px;
+  margin-left: 0;
   font-family: var(--font-display);
 }
 
@@ -198,6 +198,7 @@ a:focus-visible {
 
 .header-search {
   display: none;
+  justify-self: start;
   align-items: center;
   gap: var(--space-xs);
   padding: 0;
@@ -207,7 +208,7 @@ a:focus-visible {
   box-shadow: 0 22px 50px rgba(6, 29, 33, 0.18);
   max-width: 544px;
   width: 100%;
-  margin-left: 10%;
+  margin-left: 0;
   height: var(--header-control-height);
 }
 
@@ -285,10 +286,8 @@ a:focus-visible {
 .header-actions {
   display: none;
   align-items: center;
-  gap: calc(var(--space-xs) + 5px);
-  margin-left: auto;
-  justify-content: flex-end;
-  width: 100%;
+  gap: var(--space-sm);
+  justify-self: end;
 }
 
 .header-menu {
@@ -481,6 +480,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 .nav-toggle {
   display: inline-flex;
+  justify-self: end;
   align-items: center;
   justify-content: center;
   width: 2.75rem;
@@ -651,6 +651,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
   .header-search--desktop {
     display: flex;
+    justify-self: start;
   }
 
   .header-search-submit {
@@ -659,6 +660,8 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
   .header-actions {
     display: inline-flex;
+    gap: var(--space-sm);
+    justify-self: end;
   }
 
   .nav-toggle {
