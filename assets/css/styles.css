@@ -158,6 +158,15 @@ a:focus-visible {
   backdrop-filter: none;
 }
 
+.site-header .container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: clamp(2.75rem, 6vw, 5rem);
+  padding-right: clamp(2.75rem, 6vw, 5rem);
+  box-sizing: border-box;
+}
+
 .header-inner {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto auto;
