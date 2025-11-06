@@ -178,6 +178,7 @@ a:focus-visible {
   text-decoration: none;
   margin-left: 0;
   font-family: var(--font-display);
+  justify-self: start;
 }
 
 .logo span.logo-accent {
@@ -210,7 +211,6 @@ a:focus-visible {
   width: 100%;
   margin-left: 0;
   height: var(--header-control-height);
-  justify-self: stretch;
 }
 
 .header-search-form {
@@ -648,11 +648,13 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 @media (min-width: 992px) {
   .header-inner {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    column-gap: var(--space-lg);
   }
 
   .header-search--desktop {
     display: flex;
+    justify-self: center;
   }
 
   .header-search-submit {
