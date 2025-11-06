@@ -160,7 +160,7 @@ a:focus-visible {
 
 .header-inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
   column-gap: var(--space-lg);
   padding: var(--space-sm) 0;
@@ -377,19 +377,17 @@ a:focus-visible {
 
 .header-link--menu {
   gap: var(--space-2xs);
-  padding: 0; 
+  padding: 0.6rem 1.05rem;
   min-height: var(--header-control-height);
-  height: var(--header-control-height); 
   border: 1px solid rgba(8, 51, 56, 0.18);
   border-radius: var(--radius-cta);
   background-color: #ffffff;
   color: var(--color-secondary);
   font-weight: 600;
-  line-height: 1;
-  display: flex; 
+  line-height: 1.1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 }
 
 .header-link--menu:hover,
@@ -403,16 +401,14 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0; 
+  padding: 0.65rem 1.1rem;
   min-height: var(--header-control-height);
-  height: var(--header-control-height); 
   border-radius: var(--radius-cta);
   border: 1px solid transparent;
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
   transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
-  box-sizing: border-box; 
 }
 
 .header-button--login {
@@ -498,7 +494,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   cursor: pointer;
   transition: background-color var(--transition-base), border-color var(--transition-base);
   justify-self: end;
-  grid-column: 3;
+  grid-column: 4;
 }
 
 .nav-toggle:hover,
@@ -654,6 +650,10 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 }
 
 @media (min-width: 992px) {
+  .header-inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
   .header-search--desktop {
     display: flex;
   }
