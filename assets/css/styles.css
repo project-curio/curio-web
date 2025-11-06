@@ -207,6 +207,7 @@ a:focus-visible {
   height: var(--header-control-height);
   width: 100%;
   max-width: 544px;
+  flex: 1 1 420px;
 }
 
 .header-search-form {
@@ -642,8 +643,7 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 @media (min-width: 992px) {
   .header-search--desktop {
     display: flex;
-    flex: 0 1 544px;
-    margin-left: var(--space-md);
+    margin: 0 var(--space-md);
   }
 
   .header-search-submit {
