@@ -160,10 +160,9 @@ a:focus-visible {
 
 .header-inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
-  gap: var(--space-sm);
-  column-gap: var(--space-md);
+  gap: var(--space-md);
   padding: var(--space-sm) 0;
 }
 
@@ -176,9 +175,8 @@ a:focus-visible {
   letter-spacing: 0.3px;
   color: #ffffff;
   text-decoration: none;
-  margin-left: 0;
+  margin-left: -50px;
   font-family: var(--font-display);
-  justify-self: start;
 }
 
 .logo span.logo-accent {
@@ -209,7 +207,7 @@ a:focus-visible {
   box-shadow: 0 22px 50px rgba(6, 29, 33, 0.18);
   max-width: 544px;
   width: 100%;
-  margin-left: 0;
+  margin-left: 10%;
   height: var(--header-control-height);
 }
 
@@ -287,9 +285,10 @@ a:focus-visible {
 .header-actions {
   display: none;
   align-items: center;
-  gap: var(--space-sm);
-  margin-left: 0;
-  justify-self: end;
+  gap: calc(var(--space-xs) + 5px);
+  margin-left: auto;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .header-menu {
@@ -648,13 +647,11 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 @media (min-width: 992px) {
   .header-inner {
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
-    column-gap: var(--space-lg);
+    grid-template-columns: auto minmax(0, 1fr) auto;
   }
 
   .header-search--desktop {
     display: flex;
-    justify-self: center;
   }
 
   .header-search-submit {
