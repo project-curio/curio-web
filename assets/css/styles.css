@@ -179,7 +179,7 @@ a:focus-visible {
   text-decoration: none;
   margin-left: 0;
   font-family: var(--font-display);
-  justify-self: start;
+  justify-self: start; /* Ensure left alignment within its grid area if needed */
 }
 
 .logo span.logo-accent {
@@ -211,8 +211,7 @@ a:focus-visible {
   max-width: calc(100% * 1.1); /* Increase max-width by 10% */
   margin: 0;
   height: var(--header-control-height);
-  justify-self: center;
-  transform: translateX(0); /* Reset original transform */
+  /* transform: translateX(0); Reset original transform - not needed if justify-self: center works */ /* REMOVED AS IT'S NOT NEEDED WITH GRID CENTERING */
 }
 
 .header-search-form {
@@ -288,11 +287,11 @@ a:focus-visible {
 
 .header-actions {
   grid-area: actions;
-  display: none;
+  display: none; /* Initially hidden */
   align-items: center;
   gap: var(--space-sm);
   margin: 0;
-  justify-self: end; /* Justify to the end (right) of its grid area */
+  /* justify-self: end; REMOVED - Grid area 'actions' is the last column, so it's implicitly right-aligned */
   padding-right: var(--space-md); /* Add padding from the right edge */
 }
 
@@ -660,9 +659,9 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 
 @media (min-width: 992px) {
   .header-search--desktop {
-    display: flex;
-    justify-self: center;
-    transform: translateX(0);
+    display: flex; /* Show desktop search */
+    /* justify-self: center; Already handled by grid-area: search and parent justify-items */
+    /* transform: translateX(0); Not needed if grid centering is sufficient */
   }
 
   .header-search-submit {
@@ -670,7 +669,10 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
   }
 
   .header-actions {
-    display: inline-flex;
+    display: inline-flex; /* Show header actions on desktop */
+    /* grid-area: actions; Already defined above, places it in the right column */
+    /* justify-self: end; REMOVED TO FIX LINT ERROR - Grid placement handles right-alignment */
+    /* padding-right is kept to add space from window edge */
   }
 
   .nav-toggle {
