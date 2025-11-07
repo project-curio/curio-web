@@ -7,3 +7,5 @@ npm-debug.log*
 /cache/
 .env
 agents.md
+docs/atlas-layout-engine.md
+prototypes/atlas/
