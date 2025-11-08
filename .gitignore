@@ -8,5 +8,7 @@ npm-debug.log*
 .env
 agents.md
 docs/atlas-layout-engine.md
+docs/curio_data_playbook.md
+docs/curio_data_playbook/
 prototypes/atlas/
 prototypes/atlas/avatars/
