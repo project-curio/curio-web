@@ -26,256 +26,7 @@ Tip: keep a checklist (or duplicate this doc into Notion) for each city so nothi
 1. Go to [https://colab.research.google.com](https://colab.research.google.com) and sign in with the same Google account you used for Sheets.
 2. Each gray code block in this guide maps to one Colab cell. Click the **+ Code** button in Colab, paste the block, then click the ▶︎ “Run” button on the left of that cell.
 3. Run cells **from top to bottom**. Do not skip ahead—earlier cells define variables that later cells need.
-4. If Colab restarts (it will show “Runtime disconnected”), rerun every cell from the top until you reach the step you were on.🚀 Workflow & Automation Upgrades
-These are enhancements to the ingestion process itself, moving it from a manual notebook to a professional, automated pipeline.
-
-1. Graduating from Colab
-
-What it is: Moving your Python ingestion script from a Google Colab notebook (which you have to run manually) into an automated, scheduled platform. 
-
-
-
-
-
-
-Why it's valuable: Colab is not a scheduler.  You cannot tell it to "run this script every Sunday at 3 AM to find new museums or update open hours." For Curio to have reliable, fresh data, you need an automated workflow that runs without you.
-
-How you'd implement it:
-
-n8n: You would rebuild the Colab script in n8n's visual interface. You'd have nodes for "Read Google Sheet," "HTTP Request (fetch Yelp)," "HTTP Request (fetch Google)," "Function (run merge/clean logic)," and "Supabase (write rows)." You could then set this workflow to run on a cron schedule (e.g., "every day at midnight"). 
-
-
-GitHub Actions: You would store your Python script in the curio-ingestion repo. You'd create a .yml file in the .github/workflows/ directory that tells GitHub to: 
-
-
-
-Run on: schedule: '0 3 * * 0' (every Sunday at 3 AM).
-
-Check out the code.
-
-Install dependencies (like pandas, requests, gspread).
-
-Run the main Python script (python ingest.py --city=detroit).
-
-
-Apache Airflow: This is the heaviest-duty option.  You would define a DAG (Directed Acyclic Graph) where each step (fetch, clean, validate, write) is a separate, monitorable task. This is likely overkill for now but is what a large-scale data company would use.
-
-2. Timestamped Review Sheets
-What it is: Instead of overwriting the "Detroit" tab in your Google Sheet every time you run the script, the script would create a new, timestamped tab, such as "Detroit - 2025-11-08".
-
-Why it's valuable: This gives you an immutable audit trail. If a run goes wrong (e.g., a source API changes and you import 500 junk records), you know exactly which run it was. You can easily see new institutions added over time instead of just seeing the current state.
-
-How you'd implement it: In your Colab code (Section 16), you would modify the function that gets/creates the worksheet:
-
-Python
-
-from datetime import datetime
-today_str = datetime.utcnow().strftime('%Y-%m-%d')
-worksheet_title = f"{CITY_TITLE} - {today_str}"
-
-# ... then check for and create a worksheet with this new title
-worksheet = get_or_create_city_worksheet(sh, worksheet_title)
-3. AI for Flagged Rows Only
-What it is: An optimization strategy to keep your costs at zero. The AI-powered cleaning function (like the one we designed using Azure) is only called on rows that your own validator has already flagged (e.g., FLAG = 'name-disagreement'). 
-
-
-
-Why it's valuable: You don't need to waste an expensive AI call to "fix" a perfect record from Google. This targets your most valuable resource (the AI) only at the 10-20% of records that are messy, saving you money and processing time.
-
-How you'd implement it: In your final merge/upsert loop (Section 21), you'd wrap the AI call in a conditional:
-
-Python
-
-# ... (inside the loop)
-validation = validate_bucket(rows) # Get flags
-raw_short_desc = build_institution_description(rows, CITY_TITLE)
-
-# Only call AI if the validator found a problem
-if len(validation["flags"]) > 0:
-    short_desc = azure_rewrite_short_description(raw_short_desc, final_name, CITY_TITLE)
-else:
-    short_desc = normalize_short_description(raw_short_desc, max_len=300)
-
-inst_payload = { ... "short_description": short_desc, ... }
-🔎 Data Source & Enrichment Expansion
-These are new data sources you can add to the ingestion_sources table to make your data richer and more comprehensive.
-
-4. Official Website Crawler
-What it is: A new Python function that takes the best_website URL, fetches the page's HTML, and parses it for key metadata tags.
-
-Why it's valuable: The institution's own description and hero image are the "source of truth." They are almost always better and more accurate than Google's editorial summary. This makes your listings look far more professional.
-
-How you'd implement it:
-
-Add beautifulsoup4 and requests to your Colab (already there).
-
-Create a new function fetch_website_meta(url).
-
-Inside, it would use requests.get(url) and BeautifulSoup(html, 'html.parser').
-
-It would search for:
-
-
-meta_desc = soup.find("meta", {"name": "description"}) 
-
-
-
-
-
-og_image = soup.find("meta", {"property": "og:image"}) 
-
-
-
-
-Your build_institution_description function would be updated to check for this meta_desc first, before trying Google or TripAdvisor.
-
-5. Local & Civic Data
-
-What it is: Adding the local Detroit-specific sources we discussed earlier (like the "Detroit Open Data Portal" or "CultureSource") to your ingestion_sources table. 
-
-
-
-Why it's valuable: Google and Yelp are great at finding popular commercial places. They are terrible at finding small community archives, non-profit galleries, and municipal historic houses.  These local sources fill that "long-tail" gap and show deep, local knowledge.
-
-
-How you'd implement it:
-
-In Supabase: Add a new row to ingestion_sources:
-
-SQL
-
-INSERT INTO public.ingestion_sources (code, url, parser)
-VALUES ('detroit-open-data-parks', 'https://data.detroitmi.gov/.../parks.geojson', 'geojson');
-In Colab: Add a new fetcher function fetch_detroit_open_data().
-
-In Colab: Add it to the main scrape loop: elif code == 'detroit-open-data-parks': items = fetch_detroit_open_data()
-
-6. Open Knowledge Graphs (Wikidata)
-
-What it is: Using the SPARQL query language to pull data from Wikidata, the database that powers Wikipedia. 
-
-
-Why it's valuable: This is the single best way to get authoritative, language-agnostic identifiers (like a Wikidata QID) and multilingual names/descriptions. It solidifies your data in the global Linked Open Data cloud. Your schema already has a field for external_ids for this. 
-
-How you'd implement it:
-
-Add a fetch_wikidata_detroit() function to Colab.
-
-This function would send a SPARQL query to https://query.wikidata.org/sparql asking for things "within" Detroit that are an "instance of" "museum," "archive," etc.
-
-The results (JSON) are parsed just like the other sources and fed into the ingested_institutions_raw table.
-
-7. Google Places Pagination
-What it is: The Google Places API only returns 20 results at a time (up to 60 max). If your search for "park in Detroit" has 65 results, you are currently missing 45 of them. 
-
-Why it's valuable: To truly get all institutions, you must follow the pagination tokens.
-
-How you'd implement it: Your fetch_google_places_detroit function needs to be wrapped in a while loop.
-
-Make the first request.
-
-Add the 20 results to your list.
-
-Check the JSON response for a key called next_page_token.
-
-If it exists: time.sleep(2) (a required delay), then make a new request using that token.
-
-Repeat until no next_page_token is returned.
-
-🧩 Deduplication & Validation Improvements
-These are upgrades to your cleaning and validation logic.
-
-8. Address-Based Matching
-What it is: An upgrade to the de-duplication logic. Right now, you group by normalize_name(name). This would add a second pass: group_by(cleaned_address).
-
-Why it's valuable: This solves the "Doing Business As" (DBA) problem. "The Wright" and "Charles H. Wright Museum" might not normalize to the same name key, but they have the same address. This would correctly merge them.
-
-How you'd implement it: After grouping by name, you would run a second clustering step. You'd loop through your name-based buckets and merge any two buckets that share a matching (or highly similar) street address.
-
-9. External Verifier Flow (for Broken Websites)
-What it is: An automated "cleanup crew" process that runs after ingestion. It would query your final public.institutions table to find records with broken or missing websites and try to find new ones.
-
-Why it's valuable: An institution's website is the #1 source of truth for hours and events. A broken link is a critical data error that makes Curio look unreliable.
-
-How you'd implement it: A separate, scheduled GitHub Action or n8n workflow would:
-
-SELECT * FROM institutions WHERE website_url IS NULL OR last_checked_status = '404'.
-
-For each one, re-run only the Google Places Details and Yelp API calls to see if a new website is listed.
-
-If a new, valid URL is found, it would UPDATE the institutions table.
-
-🏗️ Schema & Feature Enhancements
-These are changes to your Supabase schema or app features that are supported by the data you're collecting.
-
-10. Dedicated city Column
-What it is: Adding a new, top-level SQL column to the public.institutions table called city (type text).
-
-
-Why it's valuable: Right now, the city name ("Detroit") is buried inside the auto_payload JSON blob.  This is slow to query. If you want your app to have a page like /city/chicago, you need to be able to query the database efficiently: SELECT * FROM institutions WHERE city = 'chicago'.
-
-How you'd implement it:
-
-In Supabase SQL: alter table public.institutions add column if not exists city text;
-
-In Colab (Upsert Cell): Add the key directly to the inst_payload:
-
-Python
-
-inst_payload = {
-  "name": final_name,
-  "slug": slug,
-  "city": CITY_TITLE, # <-- THE NEW TOP-LEVEL FIELD
-  "plan": "public",
-  # ...etc
-}
-11. Internationalization (i18n)
-
-What it is: Preparing the database and app to handle multiple languages, as specified in your architecture doc. 
-
-Why it's valuable: Essential for supporting bilingual cities (like Toronto or Montreal) and allowing users to browse Curio in their preferred language.
-
-
-How you'd implement it: You would add lang columns to your key tables: 
-
-
-alter table users add column if not exists lang text default 'en'; 
-
-alter table institutions add column if not exists lang text default 'en';
-
-
-alter table reflections add column if not exists lang text; 
-
-12. Full "Phase 3" Features
-
-What it is: These are the high-level product features that this ingestion pipeline is designed to enable once institutions start claiming their pages. 
-
-The Features:
-
-
-Multi-site/Org Rollups: An "institutional" plan user (e.g., the "City of Detroit Parks Dept") could log in and see analytics for all their sites (Belle Isle, Palmer Park, etc.) in one dashboard. 
-
-
-
-CSV Exports: Allowing a "pro" or "institutional" user to download all their visitor reflections as a CSV. 
-
-
-
-API/Webhook Access: Allowing a partner museum to get an automated notification (a webhook) every time a new reflection is posted for their institution. 
-
-13. ORCID Integration
-
-What it is: Allowing users (visitors, museum staff) to sign up or link their account using their ORCID iD (Open Researcher and Contributor ID). 
-
-Why it's valuable: This is a massive trust signal for your specific audience. Academics, researchers, curators, and many museum professionals live by their ORCID iD. It signals that Curio "gets" the academic/heritage world and isn't just another tech startup.
-
-How you'd implement it:
-
-Register Curio as an application with ORCID to get API keys.
-
-Add "Sign in with ORCID" as a Supabase Auth provider. 
-
-Add the orcid column to your users table to store their verified ID.
+4. If Colab restarts (it will show “Runtime disconnected”), rerun every cell from the top until you reach the step you were on.
 5. When the instructions say “edit this line,” double-click inside the cell, make the change, then run the cell again.
 6. Keep Colab and this guide side-by-side so you can copy/paste without retyping. Easiest approach: open this markdown file in one browser window, Colab in another, then drag the windows so they sit left/right on your screen.
 
@@ -318,7 +69,13 @@ We are shipping a repeatable pipeline that:
 
 ## 2. Create the Canonical Tables
 
-All schema is created through the Supabase SQL editor. Open **SQL → New query** for each block.
+All schema is created through the Supabase SQL editor. For every block below:
+
+1. In the Supabase dashboard, go to **Database → SQL editor**.
+2. Click **+ New query** (or reuse the current tab) so you have a clean editor.
+3. Paste the SQL and press **Run** (the ▶︎ button). There’s no extra “Save” step unless you want to bookmark the script via the optional **Save** dropdown.
+
+Run each block independently so errors are easier to diagnose.
 
 ### 2.1 `public.institutions`
 ```sql
@@ -341,9 +98,21 @@ create table if not exists public.institutions (
 
 create index if not exists institutions_slug_idx on public.institutions(slug);
 ```
-Verify the table appears in the **Table editor**.
 
-### 2.2 `public.ingestion_sources`
+### 2.2 Confirm the Table in the Supabase Table Editor
+1. In the left navigation, click **Table editor** (under **Database**).
+2. Make sure the schema selector is set to `public`, then search for `institutions`.
+3. Click the table name and confirm the columns you just created appear.
+
+This verification step matters because every later table references `public.institutions`. Catching typos or failed runs now prevents confusing foreign-key errors later. Repeat this quick check after each schema change in this section.
+
+### 2.3 `public.ingestion_sources`
+
+This table is the catalog of “where to fetch data from.” Every subsequent seed (2.4) and scraper step (Section 7) relies on it, so create it immediately after `public.institutions`:
+
+1. Open **SQL editor → + New query**, paste the block, and click **Run**. Supabase should respond with `CREATE TABLE`.
+2. Open **Table editor → public.ingestion_sources** to confirm the columns (`code`, `url`, `parser`, etc.) exist. Leave this tab handy—you will use it again in §2.4 to confirm the Detroit rows were inserted correctly.
+
 ```sql
 create table if not exists public.ingestion_sources (
   id uuid primary key default gen_random_uuid(),
@@ -355,7 +124,14 @@ create table if not exists public.ingestion_sources (
 );
 ```
 
-### 2.3 Seed the Four Detroit Sources
+### 2.4 Seed the Four Detroit Sources
+
+“Seeding” here simply means inserting the starter rows that describe which external sources the ingestion notebook should call for Detroit. Run these steps once per city (they are safe to rerun because of the `on conflict do nothing` clause):
+
+1. Open the Supabase **SQL editor → + New query** tab.
+2. Paste the block below and click **Run**. The console should report `INSERT 0 5` (or similar) the first time, and `INSERT 0 0` on reruns.
+3. Switch to **Table editor → public.ingestion_sources**, filter `code` with `detroit`, and confirm the five rows exist with the expected `parser` + `url` values. This check matters because every downstream fetcher references these codes; if they are missing or mistyped, the Colab notebook will have nothing to retrieve.
+
 ```sql
 insert into public.ingestion_sources (code, url, parser)
 values
@@ -367,7 +143,14 @@ values
 on conflict (code) do nothing;
 ```
 
-### 2.4 `public.ingested_institutions_raw`
+### 2.5 `public.ingested_institutions_raw`
+
+This table stores every raw payload exactly as it arrived from Google, Yelp, TripAdvisor, etc. Create it before you run the Colab scraper:
+
+1. Open **SQL editor → + New query** and paste the block.
+2. Press **Run**; Supabase should confirm with `CREATE TABLE`.
+3. Verify the structure inside **Table editor → public.ingested_institutions_raw** so you can see the `source_id`, `raw_blob`, and `processed` columns the notebook relies on. Catching a typo now avoids runtime errors later when the script tries to insert raw rows.
+
 ```sql
 create table if not exists public.ingested_institutions_raw (
   id uuid primary key default gen_random_uuid(),
@@ -382,7 +165,13 @@ create table if not exists public.ingested_institutions_raw (
 );
 ```
 
-### 2.5 `public.institution_source_links`
+### 2.6 `public.institution_source_links`
+
+Once institutions are merged, this table records which raw rows fed into each final entry (provenance for analytics and audits). Build it right after the raw table so you do not forget later:
+
+1. Open **SQL editor → + New query**, paste the block, and click **Run**.
+2. Open **Table editor → public.institution_source_links** and confirm the columns (`institution_id`, `raw_id`, `source_code`) appear. You will use this grid in §11 to make sure every merged institution has the correct links.
+
 ```sql
 create table if not exists public.institution_source_links (
   id uuid primary key default gen_random_uuid(),
@@ -394,7 +183,7 @@ create table if not exists public.institution_source_links (
 );
 ```
 
-### 2.6 RLS Reminder
+### 2.7 RLS Reminder
 Keep Row Level Security **disabled** on these four tables until ingestion is complete or you have written explicit policies for the Colab service account.
 
 ---
@@ -447,11 +236,17 @@ Google Sheets is the canonical review surface—no CSV exports. All reviewers wo
 2. Create a new notebook named `curio_ingest_detroit`.
 
 ### 5.2 Install Python Dependencies
+Create a **new code cell** (click **+ Code**), paste the command below, and click the ▶︎ run button. This installs every library the notebook uses (HTTP calls, dataframes, Google Sheets helpers). You must run it once per fresh Colab session because environments reset when the runtime disconnects.
 ```python
 !pip install requests beautifulsoup4 python-slugify pandas gspread gspread_dataframe
 ```
+Expected output: a progress log ending with `Successfully installed ...`. If you see errors, rerun the cell—temporary Colab network hiccups sometimes require a second attempt.
 
 ### 5.3 Google Auth + Sheets Client
+In the next code cell, paste and run the block below. It handles two things:
+- `auth.authenticate_user()` opens the OAuth prompt so Colab can access your Google Drive/Sheets. Follow the link, choose the same Google account you used to create the Sheet, and paste the auth code back into the dialog.
+- The remaining imports build an authenticated `gspread` client we reuse later.
+
 ```python
 from google.colab import auth
 auth.authenticate_user()
@@ -466,8 +261,10 @@ import pandas as pd
 creds, _ = default()
 gc = gspread.authorize(creds)
 ```
+When the cell finishes you should see `Authenticated` in the Colab output pane.
 
 ### 5.4 Open / Create the Master Sheet
+Add another code cell, paste this snippet, and run it. The script looks for a Google Sheet named **Curio – Ingestion Review**; if it doesn’t exist yet, Colab creates it for you. The printed URL is the one you’ll share with reviewers.
 ```python
 MASTER_SHEET_NAME = "Curio – Ingestion Review"
 try:
@@ -480,8 +277,15 @@ print("Sheet URL:", sh.url)
 # Double-check the Google account name shown in the Colab output matches the one listed in the top-right
 # of the Google Sheet tab. If they differ, sign into the correct account in either Colab or Sheets before continuing.
 ```
+Confirm the link opens the expected spreadsheet before moving on.
 
 ### 5.5 City + Supabase Credentials
+Use the next cell to define which city you are working on and connect to Supabase:
+
+1. Update `CITY` (lowercase) to match the city slug used in your ingestion source codes; `CITY_TITLE` auto-capitalizes it for display.
+2. Replace `SUPABASE_URL` / `SUPABASE_KEY` with the exact values from §1.2.
+3. Run the cell. The final `health_resp` call should print `Supabase test status: 200`. Any other status means the URL or key is wrong—fix the strings and rerun this cell until it succeeds.
+
 ```python
 CITY = "detroit"
 CITY_TITLE = CITY.title()
@@ -509,6 +313,7 @@ if health_resp.status_code != 200:
 **Edit tips:** replace `YOUR-PROJECT` and `YOUR-SUPABASE-ANON-KEY` with the exact values you copied from Supabase. Keep the quotation marks. If you paste the wrong value, rerun the cell after fixing it.
 
 ### 5.6 Third-Party Keys
+Still in the same notebook, add a new cell for your external API credentials. Paste the code below, fill in the strings, and run it. The variables live in memory for the rest of the session; you never print the actual keys anywhere.
 ```python
 YELP_API_KEY = "paste-your-yelp-key-here"
 GOOGLE_PLACES_KEY = "paste-your-google-places-key-here"
@@ -517,6 +322,7 @@ TRIPADVISOR_API_KEY = "paste-your-tripadvisor-key-here"  # leave blank to skip
 Copy each API key exactly as issued by the provider. If you do not have the TripAdvisor key yet, leave the empty string (`""`) and the script will skip that source.
 
 ### 5.7 Confirm Supabase Sources
+Finally, add another code cell with the block below. It fetches every row from `public.ingestion_sources`, filters them by the current city, and prints the active codes so you can sanity-check the setup before scraping. Run it after §2.4 is complete.
 ```python
 resp = requests.get(f"{SUPABASE_URL}/rest/v1/ingestion_sources?active=eq.true", headers=headers)
 sources = resp.json()
@@ -536,7 +342,7 @@ if not sources:
     f"so it includes the city slug (e.g., yelp-{CITY}-museums). Click Save, then rerun this cell."
   )
 ```
-Expected: four Detroit sources. If `0`, rerun the SQL seed from §2.3.
+Expected: four Detroit sources. If `0`, rerun the SQL seed from §2.4.
 
 ---
 
@@ -906,6 +712,8 @@ Keep this cell near the top of your notebook so you can re-run it quickly if the
 
 ## 7. Scrape & Persist Raw Rows
 
+This is where the ingestion actually happens. In a **new Colab code cell**, paste the script below and run it top-to-bottom. The cell does two things: (1) wipes any old Detroit rows from `public.ingested_institutions_raw` so you are not duplicating data, and (2) calls each fetcher (Yelp, Google, TripAdvisor, OSM, Wikidata) to repopulate the table with fresh payloads.
+
 > ⚠️ **Before you run this cell:** export a backup of `public.ingested_institutions_raw` if you want to preserve previous runs. In Supabase: Table Editor → `ingested_institutions_raw` → **Export data** → save the CSV. The script below deletes every row for the selected source codes before inserting fresh data.
 
 ```python
@@ -982,6 +790,13 @@ print(f"Total raw rows inserted: {raw_count}")
 
 Verify the Supabase table now holds the raw rows from all four sources.
 
+How to check inside Supabase:
+1. In the left navigation, open **Table editor** and choose the `public.ingested_institutions_raw` table.
+2. Use the filter bar at the top of the grid to set `source_code = yelp-detroit-museums`. Check the row count shown above the grid. Repeat for the other source codes (`google-places-detroit`, `tripadvisor-detroit`, `osm-detroit`, `wikidata-detroit`). Each count should roughly match the console output printed in Colab for that source.
+3. Clear all filters and confirm the total number of rows matches the `raw_count` total from the previous cell.
+
+Why this matters: Step 8 only processes rows that already exist in `ingested_institutions_raw`. If a fetcher failed silently, you’ll catch it here and can rerun the affected source before moving on.
+
 > Google Places returns 20 records per page (maximum ~60 per place type). The helper now follows `next_page_token` pointers with the required 2-second delay so nothing is missed. If you still need more coverage, expand the `place_type` list or increase the `radius` and rerun this step.
 >
 > **Heads-up:** the delete step above removes all previous raw rows for the listed source codes. If you need an archival copy, export the table before running this script.
@@ -989,6 +804,13 @@ Verify the Supabase table now holds the raw rows from all four sources.
 ---
 
 ## 8. Push Cleaned Candidates to Google Sheets
+
+With raw rows in Supabase, the next step is to prep them for human review. Add a **new Colab code cell**, paste the block below, and run it once per ingestion cycle. The script:
+
+1. Downloads every row from `public.ingested_institutions_raw` (1,000 at a time so Colab stays stable).
+2. Groups potential duplicates into “buckets” via normalized names and addresses.
+3. Runs the validation helper to produce `FLAG` / `FLAG_REASON` values.
+4. Builds a dataframe with reviewer-friendly columns and creates a timestamped worksheet in Google Sheets.
 
 ```python
 print("Fetching all raw rows from Supabase (1,000 at a time)...")
@@ -1081,6 +903,8 @@ print(f"Created worksheet '{worksheet_title}' with {len(df_new)} candidate insti
 print("Review here:", sh.url)
 ```
 
+When it finishes, switch to Sheets, open the brand-new tab (e.g., `Detroit – 2025-11-08`), and confirm the columns match the order listed below. If the sheet is empty or missing `bucket_key`, rerun the cell—the importer is idempotent and safe to re-run.
+
 Your new worksheet (e.g., `Detroit – 2025-11-08`) now includes:
 - A hidden-but-critical `bucket_key` column that ties each sheet row to the normalized institution name.
 - Auto-cleaned `raw_name`, `raw_address`, `raw_url`
@@ -1147,6 +971,8 @@ You can optionally record a 2–3 minute Loom video walking through a single app
 
 ## 10. Pull Approved Rows Back into Colab
 
+Once reviewers finish their pass, you have to bring the `KEEP=YES` rows back into Python. Add a **new Colab code cell** with the snippet below and run it. The cell reads the Google Sheet, filters for `KEEP=YES`, and rebuilds a list of buckets that are ready for merging.
+
 ```python
 reviewed_df = get_as_dataframe(worksheet, evaluate_formulas=True)
 reviewed_df = reviewed_df.dropna(subset=["raw_name"], how="any")
@@ -1171,6 +997,9 @@ print(f"Found {len(final_buckets_to_merge)} final institutions to merge and upse
 
 ## 11. Merge, Describe, Upsert, and Link
 
+Time to turn those approved buckets into real Curio institutions. Create a **new Colab cell**, paste the block below, and run it. The script loops through every `final_buckets_to_merge` entry, builds the best-guess profile (name/address/description), upserts it into `public.institutions`, and records provenance rows in `public.institution_source_links`. Watch the console output—each upsert prints its status so you can fix issues immediately.
+
+```python
 verified_slugs = []
 
 for norm_name, rows in final_buckets_to_merge.items():
@@ -1231,14 +1060,22 @@ for norm_name, rows in final_buckets_to_merge.items():
     )
 ```
 
-Outcome checklist:
-- `public.institutions` contains merged, de-duplicated entries with smart `short_description` values.
+Outcome checklist once the cell finishes:
+- `public.institutions` now contains merged, de-duplicated entries with short descriptions.
 - `public.institution_source_links` ties each institution to all contributing raw rows for provenance.
 - `auto_payload` stores the merged data and validation details for debugging or reprocessing.
 
 ### 11.1 Verify the Final Rows
 
-Run this quick sanity check immediately after the loop above:
+Before moving on to another city, confirm each merged institution actually landed in Supabase with a valid short description:
+
+1. Stay in the same Colab session and run the snippet below; it iterates over every slug captured in `verified_slugs` and fetches the fresh row from Supabase.
+2. Watch the console output:
+   - `[Verify] Missing record for {slug}` means the upsert failed. Open **Table editor → public.institutions**, filter by that slug, and rerun the merge block for the affected bucket until the row appears.
+   - `[Verify] Short description issue…` indicates the description is blank or longer than 300 characters. Fix the input data in the Google Sheet (or adjust the short-description helper), rerun the merge for that bucket, and re-run this verification cell so the warning clears.
+3. After the script reports success, open **Table editor → public.institution_source_links**, filter by an `institution_id` you just created, and confirm one link exists for each raw source row. This quick provenance check ensures downstream analytics can trace every institution back to its source data.
+
+Only proceed once every slug passes these checks.
 
 ```python
 print("Verifying Supabase inserts...")
@@ -1256,7 +1093,7 @@ for slug in verified_slugs:
     print(f"  [Verify] {slug} looks good ({len(short_desc)} chars)")
 ```
 
-Slugs are the URL-friendly IDs for each institution (`detroit-institute-of-arts-detroit`, etc.). Copy the final verification output (or the `verified_slugs` list) into your project notes so you have a record of what was inserted in this run.
+Slugs are the URL-friendly IDs for each institution (`detroit-institute-of-arts-detroit`, etc.). Copy the final verification output (or the `verified_slugs` list) into your project notes so you have a record of what was inserted in this run and which source links you checked.
 
 To copy the output from Colab: click inside the output cell, drag to highlight the text, press `Cmd+C` (macOS) or `Ctrl+C` (Windows), then paste (`Cmd+V` / `Ctrl+V`) into your notes tool (Notion, Google Doc, etc.). If you prefer, click the three dots in the top-right of the output cell → **Copy to clipboard**.
 
@@ -1266,13 +1103,15 @@ If any record fails verification, fix the data (e.g., update Sheets, rerun the a
 
 ## 12. Running the Pipeline for a New City
 
+Detroit acts as the reference run, but nothing in this pipeline is city-specific. When you expand to Chicago, Toronto, or any other metro, follow the checklist below so every prerequisite (Supabase rows, Sheets tab, Colab constants) is in place before you rerun Sections 5–11. Use it as a mini runbook for onboarding teammates—each bullet points back to the detailed instructions earlier in this document.
+
 1. **Supabase Sources** — duplicate the `ingestion_sources` seed with city-specific codes (e.g., `yelp-chicago-museums`). Include the correct parser + API endpoint.
 2. **City constant** — update the Colab cell:
    ```python
    CITY = "chicago"
    CITY_TITLE = CITY.title()
    ```
-3. **Google Sheet Tab** — add a worksheet named `Chicago` inside **Curio – Ingestion Review**.
+3. **Google Sheet Tab** — add a worksheet named `Chicago` inside **Curio – Ingestion Review** so reviewers have a dedicated tab.
 4. **Rerun from §5.7 onward** — confirm sources, scrape raw data, push to Sheets, review, and merge.
 5. **Repeat for each city** — Chicago, Toronto, Winnipeg, Minneapolis, etc. Keep the same notebook; just rerun the cells for the updated city constant.
 
