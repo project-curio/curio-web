@@ -42,6 +42,7 @@ Tip: keep a checklist (or duplicate this doc into Notion) for each city so nothi
 
 ## Key Terms Cheat Sheet (Read This Once)
 
+
 **Bucket** — a group of raw rows that likely refer to the same institution.  
 **Flag / Flag Reason** — automated warnings about missing or inconsistent information.  
 **Merge / Upsert** — combining reviewed data and inserting or updating the record in Supabase.  
@@ -404,7 +405,7 @@ if not sources:
 ```
 > ✅ **Expected Outcome:** The Colab output should list four or five Detroit sources (Google, Yelp, TripAdvisor, OSM, Wikidata). If you see them, your Supabase connection and API setup are correct.  
 > 🎯 You’ve completed this stage successfully — move on to the next section when you’re ready.
-Expected: four Detroit sources. If `0`, rerun the SQL seed from §2.4.
+Note: Expected four Detroit sources. If `0`, rerun the SQL seed from §2.4.
 
 ---
 
@@ -898,9 +899,7 @@ Why this matters: Step 8 only processes rows that already exist in `ingested_ins
 
 Now that Supabase holds the raw data, this step transforms it into a simple review sheet—turning complex API output into a clear checklist for people to approve.
 
-**What this does:** Prepares a clean, human-readable sheet of candidates for reviewers.
-
-With raw rows in Supabase, the next step is to prep them for human review.
+**What this does:** Prepares a clean, human-readable sheet of candidates for reviewers by taking the raw rows in Supabase and getting them ready for human review.
 
 You’re now ready to push the cleaned and validated raw rows into Sheets for human review.
 
@@ -1218,11 +1217,11 @@ Slugs are the URL-friendly IDs for each institution (`detroit-institute-of-arts-
 
 To copy the output from Colab: click inside the output cell, drag to highlight the text, press `Cmd+C` (macOS) or `Ctrl+C` (Windows), then paste (`Cmd+V` / `Ctrl+V`) into your notes tool (Notion, Google Doc, etc.). If you prefer, click the three dots in the top-right of the output cell — **Copy to clipboard**.
 
-If any record fails verification, fix the data (e.g., update Sheets, rerun the affected bucket) before proceeding to the next city.
+If any record fails verification, fix the data (e.g., update Sheets, rerun the affected bucket) before proceeding to the next city. Don’t worry — this happens frequently the first time you run a city.
 
 ---
 
-## 12. Running the Pipeline for a New City
+## 12. Running the Pipeline for a New City (Reusing Everything You’ve Already Built)
 
 You won’t have to rebuild anything — just update a few constants and rerun the same steps for your new city.  
 All your setup work and Supabase schema remain valid.
@@ -1265,7 +1264,7 @@ Detroit acts as the reference run, but nothing in this pipeline is city-specific
 2. **Supabase storage** — The raw ingestion table grows quickly. Periodically archive old raw rows to cold storage (after they are linked) to stay within the free-tier 500 MB limit.
 3. **TripAdvisor follow-ups** — Keep a calendar reminder to rerun Step 7 for TripAdvisor whenever a new key or expanded radius becomes available.
 4. **OSM courtesy** — Respect Overpass etiquette: avoid running more than one city simultaneously and keep the exponential backoff enabled.
-5. **Reviewer rotations** — Schedule at least two reviewers per city so the `KEEP` decisions stay unbiased and culturally sensitive.
+5. **Reviewer rotations** — Schedule at least two reviewers per city so the `KEEP` decisions stay unbiased and culturally sensitive to ensure diverse perspectives and data quality.
 6. **Audit trail snapshots** — After each ingestion, export the Google Sheet tab to PDF (File — Download — PDF) and store it in your project folder. This preserves the human review state if questions arise later.
 
 ---
