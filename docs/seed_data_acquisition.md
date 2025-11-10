@@ -34,7 +34,7 @@ Tip: keep a checklist (or duplicate this doc into Notion) for each city so nothi
 1. Go to [https://colab.research.google.com](https://colab.research.google.com) and sign in with the same Google account you used for Sheets.
 2. Each gray code block in this guide maps to one Colab cell. Click the **+ Code** button in Colab, paste the block, then click the ▶︎ “Run” button on the left of that cell.
 3. Run cells **from top to bottom**. Do not skip ahead—earlier cells define variables that later cells need.
-4. If Colab restarts (it will show “if Colab logs you out”), click **Runtime → Run all** if you need to restart..
+4. If Colab restarts (it will show “if Colab logs you out”), click **Runtime → Run all** if you need to restart.
 5. When the instructions say “edit this line,” double-click inside the cell, make the change, then run the cell again.
 6. Keep Colab and this guide side-by-side so you can copy/paste without retyping. Easiest approach: open this markdown file in one browser window, Colab in another, then drag the windows so they sit left/right on your screen.
 
@@ -68,8 +68,8 @@ Think of this workflow like a relay race: public data sources collect listings, 
 8. **Links Sources** — records which raw rows powered each final institution via `public.institution_source_links`.
 
 ```text
-[Public APIs] &rarr; [Raw Data in Supabase] &rarr; [Automated Cleaning & Flags] &rarr; [Google Sheets Review]
-&rarr; [Approved Entries] &rarr; [Merged Institutions] &rarr; [Final Supabase Tables] &rarr; [Curio Map & Analytics]
+[Public APIs] → [Raw Data in Supabase] → [Automated Cleaning & Flags] → [Google Sheets Review]
+→ [Approved Entries] → [Merged Institutions] → [Final Supabase Tables] → [Curio Map & Analytics]
 ```
 
 > ⏱ **Typical timeline:** Setup (~15 min) • Scrape (~10 min) • Human Review (~20 min) • Merge & Verification (~10 min).  
@@ -293,7 +293,7 @@ This ensures all reviewers work from a single, live document with version histor
 2. Create a new notebook named `curio_ingest_detroit`.
 
 ### 5.2 Install Python Dependencies
-Create a **new code cell** (click **+ Code**), paste the command below, and click the ▶︎ run button. This installs every library the notebook uses (HTTP calls, dataframes, Google Sheets helpers). You must run it once per fresh Colab session because environments reset when the runtime disconnects.
+Create a **new code cell** (click **+ Code**), paste the command below, and click the ▶︎ run button. This installs every library the notebook uses (HTTP calls, dataframes, Google Sheets helpers). You must run it once per fresh Colab session because environments reset when Colab logs you out.
 ```python
 !pip install requests beautifulsoup4 python-slugify pandas gspread gspread_dataframe
 ```
@@ -1240,7 +1240,7 @@ Detroit acts as the reference run, but nothing in this pipeline is city-specific
 5. **Repeat for each city** — Chicago, Toronto, Winnipeg, Minneapolis, etc. Keep the same notebook; just rerun the cells for the updated city constant.
 
 > ⏱ **Reminder:** Expect each new city ingestion to take **60–90 minutes** end-to-end, including scraping, review, and verification.  
-— Plan additional time if you’re running multiple cities consecutively.
+— Plan extra time if you’re running multiple cities consecutively.
 
 ---
 
@@ -1254,6 +1254,10 @@ Detroit acts as the reference run, but nothing in this pipeline is city-specific
 - **Short Description Logic** — priority is Google editorial summary — TripAdvisor description — Yelp category sentence — fallback copy referencing the city; every description is capped at 300 characters while preserving whole words.
 
 ---
+
+
+> **Tip:** If you ever delete and recreate your Supabase project, its URL and API key will change.  
+> Update these values in your Colab notebook and environment variables before rerunning the workflow to avoid connection errors.
 
 ## 14. Ongoing Monitoring
 
