@@ -6,6 +6,7 @@ npm-debug.log*
 .tmp
 /cache/
 .env
+docs/
 agents.md
 docs/atlas-layout-engine.md
 docs/curio_data_playbook.md
