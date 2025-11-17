@@ -1848,30 +1848,39 @@ body[data-hero-theme="dark"] .header-menu-link:focus-visible {
 .not-found-hero__link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.55rem 1.2rem;
-  border-radius: var(--radius-cta);
-  background-color: rgba(255, 255, 255, 0.96);
-  color: #082f32;
+  gap: 0.35rem;
+  padding: 0;
+  background: none;
+  color: #ffffff;
   font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 0.03em;
-  text-transform: none;
+  font-size: 1rem;
+  letter-spacing: 0.015em;
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, color var(--transition-base);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  transition: color var(--transition-base);
 }
 
 .not-found-hero__link:hover,
 .not-found-hero__link:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
-  color: #082f32;
+  color: #e4f2ef;
+  text-decoration: underline;
 }
 
 .not-found-hero__link:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.9);
-  outline-offset: 2px;
+  outline-offset: 3px;
+}
+
+.not-found-hero__link-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: transform var(--transition-base);
+}
+
+.not-found-hero__link:hover .not-found-hero__link-icon,
+.not-found-hero__link:focus-visible .not-found-hero__link-icon {
+  transform: translateX(3px);
 }
 
 @media (max-width: 720px) {
