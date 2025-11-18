@@ -118,9 +118,54 @@
     });
   }
 
+  const initAtlasCarousels = () => {
+    const carousels = document.querySelectorAll('.js-atlas-carousel');
+    if (!carousels.length) {
+      return;
+    }
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const getBehavior = () => (motionQuery.matches ? 'auto' : 'smooth');
+
+    carousels.forEach((carousel) => {
+      const track = carousel.querySelector('.atlas-carousel__track');
+      const prevBtn = carousel.querySelector('.carousel-button--prev');
+      const nextBtn = carousel.querySelector('.carousel-button--next');
+
+      if (!track || !prevBtn || !nextBtn) {
+        return;
+      }
+
+      const getScrollAmount = () => track.clientWidth * 0.9 || 300;
+
+      const updateButtons = () => {
+        const maxScroll = track.scrollWidth - track.clientWidth - 4;
+        const current = track.scrollLeft;
+        prevBtn.disabled = current <= 0;
+        nextBtn.disabled = current >= maxScroll;
+      };
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -getScrollAmount(), behavior: getBehavior() });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: getScrollAmount(), behavior: getBehavior() });
+      });
+
+      track.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateButtons);
+      });
+
+      window.addEventListener('resize', updateButtons);
+      updateButtons();
+    });
+  };
+
   window.addEventListener('DOMContentLoaded', () => {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {
       window.lucide.createIcons();
     }
+    initAtlasCarousels();
   });
 })();

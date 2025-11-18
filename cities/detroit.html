@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Discover museums, galleries, and cultural sites in Detroit with Curio.">
+    <meta name="description" content="Explore Detroit’s museums, music history, and neighborhood galleries with Curio’s reflection-first city guide.">
     <meta name="theme-color" content="#0d474e">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="detroit culture guide | curio">
-    <meta property="og:description" content="Preview Curio’s reflection-driven discovery experience across Detroit’s cultural landscape.">
-    <meta property="og:url" content="https://curio.city/cities/detroit.html">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1523374228107-6e44bd2b524e?auto=format&fit=crop&w=1600&q=80">
+    <meta property="og:title" content="Curio · Detroit City Guide">
+    <meta property="og:description" content="Reflections, not reviews. Discover Detroit’s cultural places with Curio.">
+    <meta property="og:url" content="https://curio.city/cities/detroit">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1529397934418-35b760a1529a?auto=format&fit=crop&w=1600&q=80">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="detroit culture guide | curio">
-    <meta name="twitter:description" content="Curio connects people with Detroit museums, galleries, gardens, and historic places.">
-    <link rel="canonical" href="https://curio.city/cities/detroit.html">
-    <title>detroit culture guide | curio</title>
+    <meta name="twitter:title" content="Curio · Detroit City Guide">
+    <meta name="twitter:description" content="Detroit reflections powered by museums, galleries, archives, and riverfront experiences.">
+    <link rel="canonical" href="https://curio.city/cities/detroit">
+    <title>curio | Detroit cultural guide</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet">
@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="../assets/css/normalize.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/hero-slider.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -31,186 +33,485 @@
         <a class="logo" href="../index.html" aria-label="Curio home">
           curio<span class="logo-accent">.</span>
         </a>
+        <div class="header-search header-search--desktop" role="search" aria-label="Curio search">
+          <form class="header-search-form" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="nav-search-keyword">Search experiences</label>
+            <i class="icon icon--sm header-search-icon" data-lucide="search" aria-hidden="true"></i>
+            <input id="nav-search-keyword" name="q" type="search" placeholder="Museums, galleries, gardens…" autocomplete="off">
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+            <button class="sr-only" type="submit">Search</button>
+          </form>
+          <form class="header-search-form header-search-form--location" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="nav-search-location">Search by city</label>
+            <i class="icon icon--sm header-search-icon" data-lucide="map-pin" aria-hidden="true"></i>
+            <input id="nav-search-location" name="location" type="search" placeholder="Detroit, Chicago, Toronto…" autocomplete="off">
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+            <button class="sr-only" type="submit">Search</button>
+          </form>
+          <button class="header-search-submit" type="button" aria-label="Search Curio">
+            <i class="icon icon--sm" data-lucide="search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="header-actions">
+          <div class="header-menu" data-js="inst-menu">
+            <button class="header-link header-link--menu" type="button" aria-expanded="false" aria-haspopup="true">
+              For institutions
+              <i class="icon icon--sm header-link--menu-icon" data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="header-menu-panel" role="menu">
+              <a class="header-menu-link" role="menuitem" href="mailto:partners@curio.city?subject=Add%20Institution">
+                <i class="icon icon--sm header-menu-icon" data-lucide="landmark" aria-hidden="true"></i>
+                Add Your Institution
+              </a>
+              <a class="header-menu-link" role="menuitem" href="mailto:partners@curio.city?subject=Claim%20Institution">
+                <i class="icon icon--sm header-menu-icon" data-lucide="key-round" aria-hidden="true"></i>
+                Claim Your Institution
+              </a>
+              <a class="header-menu-link" role="menuitem" href="../index.html#partners">
+                <i class="icon icon--sm header-menu-icon" data-lucide="handshake" aria-hidden="true"></i>
+                Partner with Curio
+              </a>
+              <a class="header-menu-link" role="menuitem" href="../index.html#contact">
+                <i class="icon icon--sm header-menu-icon" data-lucide="log-in" aria-hidden="true"></i>
+                Log in to Dashboard
+              </a>
+            </div>
+          </div>
+          <a class="header-button header-button--login" href="../index.html#contact">Log in</a>
+          <a class="header-button header-button--signup" href="mailto:hello@curio.city?subject=Curio%20Sign%20Up">Sign up</a>
+        </div>
         <button class="nav-toggle" type="button" data-js="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
           <span class="sr-only">Toggle navigation</span>
           <span class="nav-toggle-icon" aria-hidden="true"></span>
         </button>
-        <nav id="primary-nav" class="site-nav" aria-label="Primary navigation">
-          <form class="nav-search" data-js="search-form" action="#" method="get" role="search" aria-label="Search cultural places">
-            <label class="sr-only" for="nav-search">Search places</label>
-            <input id="nav-search" name="q" type="search" placeholder="Search museums, galleries, gardens..." autocomplete="off">
-            <button type="submit">Search</button>
-            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
-          </form>
-          <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="detroit.html" aria-current="page">Cities</a></li>
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../partners.html">Partners</a></li>
-            <li><a href="../contact.html">Contact</a></li>
-          </ul>
-          <a class="nav-cta" href="mailto:hello@curio.city">Share your reflection</a>
-        </nav>
       </div>
-    </header>
-    <main id="main-content" class="site-main" tabindex="-1">
-      <article class="city-layout">
-        <section id="overview" class="city-hero" aria-labelledby="detroit-heading">
-          <div class="container city-hero-grid">
-        <nav class="city-secondary-nav" aria-label="City navigation">
-          <ul>
-            <li><a href="#detroit-heading">Overview</a></li>
-            <li><a href="#detroit-map">Map</a></li>
-            <li><a href="#detroit-reflections-heading">Reflections</a></li>
-            <li><a href="#detroit-institutions-heading">Institutions</a></li>
-          </ul>
-        </nav>
-
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="index.html">Cities</a></li>
-          <li aria-current="page">Detroit</li>
-        </ol>
+      <nav id="primary-nav" class="site-nav" aria-label="Primary navigation">
+        <div class="mobile-search" role="search" aria-label="Curio search">
+          <form class="mobile-search-form" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="mobile-search-keyword">Search experiences</label>
+            <input id="mobile-search-keyword" name="q" type="search" placeholder="Find museums, galleries…" autocomplete="off">
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+            <button class="mobile-search-submit" type="submit">Search</button>
+          </form>
+          <form class="mobile-search-form" data-js="search-form" action="#" method="get">
+            <label class="sr-only" for="mobile-search-location">Search by city</label>
+            <input id="mobile-search-location" name="location" type="search" placeholder="Detroit, Chicago…" autocomplete="off">
+            <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+            <button class="mobile-search-submit" type="submit">Search</button>
+          </form>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="index.html" aria-current="page">Cities</a></li>
+          <li><a href="../index.html#partners">Partner with us</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <a class="nav-cta" href="mailto:hello@curio.city">Share your reflection</a>
       </nav>
-
-            <div class="city-hero-body">
-              <p class="eyebrow">Pilot city</p>
-              <h1 id="detroit-heading">Detroit</h1>
-              <p class="lead">Motown rhythm, industrial imagination, and community-led storytelling shape Detroit’s cultural scene.</p>
-              <p>Curio highlights institutions and neighborhood anchors that champion legacy, experimentation, and belonging across the city.</p>
-              <ul class="city-highlights" aria-label="Detroit cultural highlights">
-                <li>Motown legacies</li>
-                <li>Design &amp; maker culture</li>
-                <li>Riverfront and island escapes</li>
-              </ul>
-            </div>
-            <figure class="city-photo">
-              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1440&q=80" alt="Visitors walking through the Detroit Institute of Arts grand hall" loading="lazy" decoding="async">
-              <figcaption>Detroit Institute of Arts in Midtown</figcaption>
-            </figure>
+    </header>
+    <main id="main-content" class="site-main city-page city-page--detroit" tabindex="-1">
+      <!-- Atlas: Detroit city hero -->
+      <section id="detroit-hero" class="city-hero city-hero--detroit" aria-labelledby="detroit-hero-heading" data-atlas-section="city-hero">
+        <div class="city-hero__content container">
+          <div class="city-hero__text city-hero__text--bottom-left">
+            <p class="eyebrow">Pilot city</p>
+            <h1 id="detroit-hero-heading">Detroit</h1>
+            <p class="city-hero__tagline">Where industrial grit meets world-class art and music.</p>
           </div>
-        </section>
-
-        <section id="detroit-map" class="city-map" aria-labelledby="detroit-map-heading">
-          <div class="container">
-            <div class="section-heading">
-              <h2 id="detroit-map-heading">Explore Detroit’s cultural anchors</h2>
-              <p class="lead">Prototype map showcasing signature museums and reflective stops across the city.</p>
-            </div>
-            <div class="map-shell">
-              <div
-                class="map-canvas js-city-map"
-                role="region"
-                aria-label="Map showing Detroit cultural highlights"
-                tabindex="0"
-                data-lat="42.3487"
-                data-lng="-83.0567"
-                data-zoom="12"
-                data-places='[{"name":"Detroit Institute of Arts","lat":42.3594,"lng":-83.0645,"description":"Iconic Midtown anchor with global collections"},{"name":"Motown Museum","lat":42.366,"lng":-83.083,"description":"Hitsville USA sharing sound and storytelling"},{"name":"Belle Isle Aquarium","lat":42.343,"lng":-82.9718,"description":"Historic aquarium along the Detroit River"}]'
-              ></div>
-            </div>
-            <div class="map-key">
-              <h3>Highlights</h3>
-              <ul>
-                <li><strong>DIA</strong> — Rivera Court murals inspire new reflection prompts.</li>
-                <li><strong>Motown Museum</strong> — Stories of sound, organizing, and creative labor.</li>
-                <li><strong>Belle Isle</strong> — Nature, architecture, and riverfront history entwined.</li>
-              </ul>
+          <p class="hero-slider__credit city-hero__credit">
+            Photo:
+            <a href="https://unsplash.com/@nhuenerfuerst" target="_blank" rel="noreferrer">Nils Hünerfürst</a>
+            &middot;
+            <a href="https://unsplash.com/photos/the-ambassador-bridge-stands-tall-over-the-water-g4bEMwXYYGw" target="_blank" rel="noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </section>
+      <!-- Atlas: City search and location row -->
+      <section class="city-search-row" data-atlas-section="city-search">
+        <div class="container city-search-row__inner">
+          <div class="city-search-row__left">
+            <label for="detroit-search" class="city-search-row__label">Search Detroit institutions and reflections</label>
+            <form class="city-search-row__form" data-js="search-form" action="#" method="get" role="search" aria-label="Search Detroit institutions">
+              <div class="city-search-row__field-wrapper">
+                <input id="detroit-search" name="q" type="search" class="city-search-row__input" placeholder="Search museums, galleries, historic sites, and more..." aria-label="Search institutions and reflections in Detroit" autocomplete="off">
+                <button class="sr-only" type="submit">Search</button>
+              </div>
+              <p class="sr-only" data-js="search-feedback" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+          <div class="city-search-row__right" aria-label="Location">
+            <div class="city-location">
+              <span class="city-location__icon" aria-hidden="true">
+                <i class="icon icon--sm" data-lucide="map-pin"></i>
+              </span>
+              <span class="city-location__text">Michigan, USA</span>
             </div>
           </div>
-        </section>
-
-        <section class="section" aria-labelledby="detroit-reflections-heading">
-          <div class="container">
-            <div class="section-heading">
-              <h2 id="detroit-reflections-heading">Reflections in progress</h2>
-              <p class="lead">Prototype cards show how Detroit reflections will pair visitor prompts with visit cues.</p>
-            </div>
-            <div class="card-grid place-grid">
-              <article class="card place-card">
-                <h3>Detroit Institute of Arts</h3>
-                <p>Visitors share how the Rivera Court murals connect labor history with present-day organizing.</p>
-                <div class="place-card-meta">
-                  <span>Neighborhood: Cultural Center</span>
-                  <span>Reflection cue: What stories do you carry forward after seeing this gallery?</span>
-                </div>
-                <div class="place-card-tags">
-                  <span class="tag">Art</span>
-                  <span class="tag">Global narratives</span>
-                </div>
-              </article>
-              <article class="card place-card">
-                <h3>Motown Museum</h3>
-                <p>Stage the sound board, feel the rhythm, and reflect on how music moves social change.</p>
-                <div class="place-card-meta">
-                  <span>Neighborhood: New Center</span>
-                  <span>Reflection cue: Which track or story resonates with your own community?</span>
-                </div>
-                <div class="place-card-tags">
-                  <span class="tag">Music</span>
-                  <span class="tag">Storytelling</span>
-                </div>
-              </article>
-              <article class="card place-card">
-                <h3>College for Creative Studies Galleries</h3>
-                <p>Student-led exhibits highlight design futures, material experimentation, and cross-border collaboration.</p>
-                <div class="place-card-meta">
-                  <span>Neighborhood: Midtown</span>
-                  <span>Reflection cue: How does this work expand your sense of Detroit design?</span>
-                </div>
-                <div class="place-card-tags">
-                  <span class="tag">Design</span>
-                  <span class="tag">Emerging artists</span>
-                </div>
-              </article>
-              <article class="card place-card">
-                <h3>Belle Isle Conservatory</h3>
-                <p>Nature and restorative experiences anchor reflections on access, environment, and stewardship.</p>
-                <div class="place-card-meta">
-                  <span>Neighborhood: Belle Isle Park</span>
-                  <span>Reflection cue: What feelings surface when you slow down here?</span>
-                </div>
-                <div class="place-card-tags">
-                  <span class="tag">Nature</span>
-                  <span class="tag">Reflection</span>
-                </div>
-              </article>
-            </div>
+        </div>
+      </section>
+      <!-- Atlas: Detroit intro copy -->
+      <section class="section city-intro" data-atlas-section="city-intro">
+        <div class="container">
+          <p class="city-intro__text">Detroit is a city of stories: of makers and musicians, riverfront walks and neighborhood galleries, grand museums and hidden studio spaces. From the Detroit Institute of Arts and the Motown Museum to grassroots cultural centers, the city invites you to explore how art, history, and community shape everyday life. Use Curio to find the places that spark your curiosity, then add your own reflections to help others see Detroit through your eyes.</p>
+        </div>
+      </section>
+      <!-- Atlas: Detroit city map -->
+      <section id="detroit-map" class="section section-map section-map--city" aria-labelledby="detroit-map-heading" data-atlas-section="city-map">
+        <div class="container">
+          <div class="section-intro section-intro--center">
+            <p class="section-eyebrow">Detroit network</p>
+            <h2 id="detroit-map-heading">Explore Detroit on the map</h2>
+            <p class="section-lead">See museums, galleries, historic sites, and cultural spaces across the city at a glance.</p>
           </div>
-        </section>
-
-        <section class="section city-institutions" aria-labelledby="detroit-institutions-heading">
-          <div class="container">
-            <div class="section-heading">
-              <h2 id="detroit-institutions-heading">Institution partners (coming soon)</h2>
-              <p class="lead">Phase 2 will spotlight Detroit institutions collaborating on Curio reflections. We’ll publish partner profiles and accessibility highlights here.</p>
-            </div>
-            <div class="card-grid place-grid">
-              <article class="card place-card">
-                <h3>Partner roster coming soon</h3>
-                <p>We’ll publish partner spotlights, accessibility notes, and wish-loop contact info once Phase 2 onboarding begins.</p>
-              </article>
-            </div>
+          <div class="map-shell map-shell--city">
+            <div
+              id="detroit-city-map"
+              class="map-canvas js-city-map"
+              role="region"
+              aria-label="Map of cultural institutions in Detroit"
+              data-lat="42.3314"
+              data-lng="-83.0458"
+              data-zoom="12"
+              data-places='[
+                {"name":"Detroit Institute of Arts","lat":42.3594,"lng":-83.0645,"description":"Rivera Court, Art &amp; stories"},
+                {"name":"Motown Museum","lat":42.3652,"lng":-83.0875,"description":"Hitsville U.S.A. and listening salons"},
+                {"name":"Charles H. Wright Museum","lat":42.3590,"lng":-83.0640,"description":"African American history &amp; reflection"},
+                {"name":"Detroit Historical Museum","lat":42.3593,"lng":-83.0660,"description":"Neighborhood histories &amp; maker labs"},
+                {"name":"Henry Ford Museum","lat":42.3003,"lng":-83.2310,"description":"Mobility, innovation, and massive collections"},
+                {"name":"Belle Isle Aquarium","lat":42.3430,"lng":-82.9830,"description":"River ecology on Belle Isle"}
+              ]'
+            ></div>
           </div>
-        </section>
-      </article>
+        </div>
+      </section>
+      <!-- Atlas: City spotlight carousel -->
+      <section id="detroit-spotlight" class="section city-spotlight" aria-labelledby="detroit-spotlight-heading" data-atlas-section="city-spotlight">
+        <div class="container">
+          <div class="section-intro">
+            <p class="section-eyebrow">City spotlight</p>
+            <h2 id="detroit-spotlight-heading">Explore Detroit's most prominent museums &amp; cultural experiences</h2>
+            <p class="section-lead">Begin with the institutions that define Detroit’s creative and historic identity, then follow your curiosity into the neighborhoods around them.</p>
+          </div>
+          <div class="atlas-carousel js-atlas-carousel" data-carousel="spotlight">
+            <button class="carousel-button carousel-button--prev" type="button" aria-label="Scroll spotlight cards left">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="atlas-carousel__viewport">
+              <div class="atlas-carousel__track">
+                <article class="spotlight-card" data-theme="dark">
+                  <img src="../assets/images/hero/IMG_20170526_114229.jpg" alt="Detroit Institute of Arts Rivera Court" loading="lazy">
+                  <div class="spotlight-card__content">
+                    <h3>Detroit Institute of Arts</h3>
+                    <p>Rivera Court murals, maker studios, and quiet galleries connect labor history with today’s organizing energy.</p>
+                    <a class="spotlight-card__cta" href="../places/sample-institution.html">
+                      <span>View guide</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 17L17 7M17 7H9M17 7V15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+                <article class="spotlight-card" data-theme="dark">
+                  <img src="../assets/images/seasonal/night_market.jpg" alt="Visitors outside Motown Museum" loading="lazy">
+                  <div class="spotlight-card__content">
+                    <h3>Motown Museum</h3>
+                    <p>Step into Hitsville U.S.A. for curated listening salons and stories about how music fuels social change.</p>
+                    <a class="spotlight-card__cta" href="../places/sample-institution.html">
+                      <span>View guide</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 17L17 7M17 7H9M17 7V15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+                <article class="spotlight-card" data-theme="dark">
+                  <img src="../assets/images/seasonal/fossils.jpg" alt="Charles H. Wright Museum interior" loading="lazy">
+                  <div class="spotlight-card__content">
+                    <h3>Charles H. Wright Museum</h3>
+                    <p>Immersive exhibits and community events celebrate the resilience of African American stories in Detroit.</p>
+                    <a class="spotlight-card__cta" href="../places/sample-institution.html">
+                      <span>View guide</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 17L17 7M17 7H9M17 7V15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+                <article class="spotlight-card" data-theme="dark">
+                  <img src="../assets/images/hero/note-thanun-zNzzulArQdc-unsplash.jpg" alt="Michigan Science Center visitors" loading="lazy">
+                  <div class="spotlight-card__content">
+                    <h3>Michigan Science Center</h3>
+                    <p>Hands-on STEM labs, star shows, and accessibility-forward programming welcome curious families year-round.</p>
+                    <a class="spotlight-card__cta" href="../places/sample-institution.html">
+                      <span>View guide</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 17L17 7M17 7H9M17 7V15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+                <article class="spotlight-card" data-theme="dark">
+                  <img src="../assets/images/seasonal/archaeology.jpg" alt="Detroit Historical Museum exhibit" loading="lazy">
+                  <div class="spotlight-card__content">
+                    <h3>Detroit Historical Museum</h3>
+                    <p>Neighborhood stories, maker labs, and oral history booths document the city’s past and future.</p>
+                    <a class="spotlight-card__cta" href="../places/sample-institution.html">
+                      <span>View guide</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 17L17 7M17 7H9M17 7V15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+                <article class="spotlight-card" data-theme="light">
+                  <img src="../assets/images/hero/alec-krum-Y8Xvlz2lP5k-unsplash.jpg" alt="Belle Isle Conservatory" loading="lazy">
+                  <div class="spotlight-card__content">
+                    <h3>Belle Isle Conservatory</h3>
+                    <p>Island greenhouses, quiet trails, and river views offer restorative experiences rooted in stewardship.</p>
+                    <a class="spotlight-card__cta" href="../places/sample-institution.html">
+                      <span>View guide</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 17L17 7M17 7H9M17 7V15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <button class="carousel-button carousel-button--next" type="button" aria-label="Scroll spotlight cards right">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Atlas: Featured Detroit experiences -->
+      <section id="detroit-experiences" class="section featured-experiences" aria-labelledby="detroit-experiences-heading" data-atlas-section="featured-experiences">
+        <div class="container">
+          <div class="section-intro">
+            <p class="section-eyebrow">Seasonal picks</p>
+            <h2 id="detroit-experiences-heading">Unforgettable Detroit experiences</h2>
+            <p class="section-lead">Seasonal and featured experiences that showcase Detroit’s museums, music, and riverfront — perfect for planning your next visit or weekend adventure.</p>
+          </div>
+          <div class="atlas-carousel js-atlas-carousel" data-carousel="experiences">
+            <button class="carousel-button carousel-button--prev" type="button" aria-label="Scroll featured experiences left">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="atlas-carousel__viewport">
+              <div class="atlas-carousel__track">
+                <article class="experience-card" data-status="live" data-kind="event">
+                  <img src="../assets/images/seasonal/night_market.jpg" alt="Motown listening session" loading="lazy">
+                  <span class="badge experience-card__status">Live now</span>
+                  <div class="experience-card__content" data-kind="event">
+                    <div>
+                      <h3>Motown Listening Salon</h3>
+                      <p>Detroit Sound Conservancy spins rare tracks while historians unpack how music carries community memory.</p>
+                    </div>
+                    <div class="experience-card__location">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 21s6-5.33 6-10a6 6 0 0 0-12 0c0 4.67 6 10 6 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <circle cx="12" cy="11" r="2.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle>
+                      </svg>
+                      <span>North End · Detroit</span>
+                    </div>
+                    <a class="experience-card__cta" href="mailto:hello@curio.city?subject=Motown%20Salon">
+                      Reserve seat<span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </article>
+                <article class="experience-card" data-status="live" data-kind="event">
+                  <img src="../assets/images/seasonal/china.jpg" alt="Sketching at the DIA" loading="lazy">
+                  <span class="badge experience-card__status">Live now</span>
+                  <div class="experience-card__content" data-kind="event">
+                    <div>
+                      <h3>DIA Sketch + Sound</h3>
+                      <p>Evening drawing circles meet small-ensemble concerts under the Rivera Court ceiling for reflective nights.</p>
+                    </div>
+                    <div class="experience-card__location">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 21s6-5.33 6-10a6 6 0 0 0-12 0c0 4.67 6 10 6 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <circle cx="12" cy="11" r="2.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle>
+                      </svg>
+                      <span>Midtown · Detroit</span>
+                    </div>
+                    <a class="experience-card__cta" href="mailto:hello@curio.city?subject=DIA%20Sketch">
+                      Join waitlist<span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </article>
+                <article class="experience-card" data-status="live" data-kind="event">
+                  <img src="../assets/images/hero/alec-krum-Y8Xvlz2lP5k-unsplash.jpg" alt="Belle Isle forest walk" loading="lazy">
+                  <span class="badge experience-card__status">Live now</span>
+                  <div class="experience-card__content" data-kind="event">
+                    <div>
+                      <h3>Belle Isle Forest Bathing</h3>
+                      <p>Guided sensory walks pair ecology notes with reflection prompts about care, rest, and stewardship.</p>
+                    </div>
+                    <div class="experience-card__location">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 21s6-5.33 6-10a6 6 0 0 0-12 0c0 4.67 6 10 6 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <circle cx="12" cy="11" r="2.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle>
+                      </svg>
+                      <span>Belle Isle Park</span>
+                    </div>
+                    <a class="experience-card__cta" href="mailto:hello@curio.city?subject=Belle%20Isle%20Walk">
+                      Plan visit<span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </article>
+                <article class="experience-card" data-status="coming-soon" data-kind="event">
+                  <img src="../assets/images/seasonal/whale.jpg" alt="African World Festival" loading="lazy">
+                  <span class="badge experience-card__status">Coming soon</span>
+                  <div class="experience-card__content" data-kind="event">
+                    <div>
+                      <h3>African World Festival</h3>
+                      <p>Charles H. Wright Museum’s signature gathering returns with foodways, music, artisans, and youth workshops.</p>
+                    </div>
+                    <div class="experience-card__location">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 21s6-5.33 6-10a6 6 0 0 0-12 0c0 4.67 6 10 6 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <circle cx="12" cy="11" r="2.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle>
+                      </svg>
+                      <span>Cultural Center · Detroit</span>
+                    </div>
+                    <a class="experience-card__cta" href="mailto:partners@curio.city?subject=African%20World%20Festival">
+                      Get updates<span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </article>
+                <article class="experience-card" data-status="live" data-kind="collection" data-theme="light">
+                  <span class="badge experience-card__status">Live now</span>
+                  <div class="experience-card__content" data-kind="collection">
+                    <div>
+                      <h3>Neighborhood Studio Crawl</h3>
+                      <p>Curio ambassadors mapped Hamtramck and Southwest Detroit studios with prompts about collaboration and care.</p>
+                    </div>
+                    <a class="experience-card__cta" href="mailto:hello@curio.city?subject=Studio%20Crawl">
+                      Download guide<span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </article>
+                <article class="experience-card" data-status="live" data-kind="collection" data-theme="light">
+                  <span class="badge experience-card__status">Live now</span>
+                  <div class="experience-card__content" data-kind="collection">
+                    <div>
+                      <h3>Detroit Riverfront Playlist</h3>
+                      <p>Pair walking prompts with Motown, techno, and gospel tracks crowdsourced from Curio community reflections.</p>
+                    </div>
+                    <a class="experience-card__cta" href="mailto:hello@curio.city?subject=Riverfront%20Playlist">
+                      Listen in<span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <button class="carousel-button carousel-button--next" type="button" aria-label="Scroll featured experiences right">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Atlas: Detroit institution grid -->
+      <section id="detroit-institutions" class="section institution-grid" aria-labelledby="detroit-institution-heading" data-atlas-section="institution-grid">
+        <div class="container">
+          <div class="section-intro">
+            <p class="section-eyebrow">Institutions</p>
+            <h2 id="detroit-institution-heading">All Detroit institutions on Curio</h2>
+            <p class="section-lead">Browse museums, galleries, archives, historic sites, cultural centers, and more — all based in Detroit.</p>
+          </div>
+          <div class="card-grid place-grid">
+            <article class="card place-card">
+              <h3>Detroit Institute of Arts</h3>
+              <p>Collection tours, Rivera Court reflections, and multilingual access guides anchor Detroit’s flagship museum.</p>
+              <div class="place-card-meta">
+                <span>Neighborhood: Cultural Center</span>
+                <span>Focus: Art · Global narratives</span>
+              </div>
+              <div class="place-card-tags">
+                <span class="tag">Reflection Index</span>
+                <span class="tag">Workshops</span>
+              </div>
+            </article>
+            <article class="card place-card">
+              <h3>Motown Museum</h3>
+              <p>Hitsville U.S.A. preserves the sound of Detroit with small-group storytelling, songwriting labs, and youth residencies.</p>
+              <div class="place-card-meta">
+                <span>Neighborhood: New Center</span>
+                <span>Focus: Music · Social change</span>
+              </div>
+              <div class="place-card-tags">
+                <span class="tag">Soundscapes</span>
+                <span class="tag">Community</span>
+              </div>
+            </article>
+            <article class="card place-card">
+              <h3>Charles H. Wright Museum</h3>
+              <p>One of the world’s largest African American history museums, pairing anchor exhibitions with neighborhood dialogues.</p>
+              <div class="place-card-meta">
+                <span>Neighborhood: Cultural Center</span>
+                <span>Focus: History · Belonging</span>
+              </div>
+              <div class="place-card-tags">
+                <span class="tag">Accessibility</span>
+                <span class="tag">Wish loops</span>
+              </div>
+            </article>
+            <article class="card place-card">
+              <h3>Detroit Historical Museum</h3>
+              <p>Detroit Stories, The Streets of Old Detroit, and maker labs highlight intergenerational knowledge and civic pride.</p>
+              <div class="place-card-meta">
+                <span>Neighborhood: Midtown</span>
+                <span>Focus: History · Community</span>
+              </div>
+              <div class="place-card-tags">
+                <span class="tag">Neighborhood labs</span>
+                <span class="tag">Student prompts</span>
+              </div>
+            </article>
+            <article class="card place-card">
+              <h3>Michigan Science Center</h3>
+              <p>STEM floors, accessibility-forward shows, and rotating design challenges keep curiosity alive across generations.</p>
+              <div class="place-card-meta">
+                <span>Neighborhood: Midtown</span>
+                <span>Focus: Science · Accessibility</span>
+              </div>
+              <div class="place-card-tags">
+                <span class="tag">Family friendly</span>
+                <span class="tag">Sensory mornings</span>
+              </div>
+            </article>
+            <article class="card place-card">
+              <h3>Belle Isle Conservatory &amp; Aquarium</h3>
+              <p>An island campus blending heritage architecture with restorative ecology tours and community garden programming.</p>
+              <div class="place-card-meta">
+                <span>Neighborhood: Belle Isle</span>
+                <span>Focus: Nature · Stewardship</span>
+              </div>
+              <div class="place-card-tags">
+                <span class="tag">Nature</span>
+                <span class="tag">Slow looking</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="footer" role="contentinfo">
+    <footer class="footer" id="contact" role="contentinfo">
       <div class="container footer-inner">
         <div class="footer-brand">
           <a class="logo" href="../index.html">
             curio<span class="logo-accent">.</span>
           </a>
-          <p>Curio helps explorers find cultural places that resonate — and gives institutions thoughtful ways to connect with their communities.</p>
+          <p>Discover and share cultural experiences that inspire curiosity, reflection, and community.</p>
+          <p class="footer-tagline">Reflections, not reviews.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
+          <h3>Explore</h3>
           <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="detroit.html" aria-current="page">Cities</a></li>
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../partners.html">Partners</a></li>
-            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="index.html" aria-current="page">Cities</a></li>
+            <li><a href="../index.html#map">Map</a></li>
+            <li><a href="../index.html#partners">Partner With Us</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
           </ul>
         </nav>
         <nav class="footer-nav" aria-label="Institutions navigation">
@@ -218,23 +519,53 @@
           <ul>
             <li><a href="mailto:partners@curio.city?subject=Add%20Institution">Add your Institution</a></li>
             <li><a href="mailto:partners@curio.city?subject=Claim%20Institution">Claim your Institution</a></li>
-            <li><a href="partners.html#partner">Partner with Curio</a></li>
+            <li><a href="../partners.html#partner">Partner with Curio</a></li>
             <li><a href="https://curio.city/dashboard">Log in to Dashboard</a></li>
-            <li><a href="partners.html#curio-for-culture">Apply to Curio for Culture</a></li>
-            <li><a href="partners.html#tiers">Pricing &amp; Plans</a></li>
+            <li><a href="../partners.html#curio-for-culture">Apply to Curio for Culture</a></li>
+            <li><a href="../partners.html#tiers">Pricing &amp; Plans</a></li>
           </ul>
         </nav>
-        <div class="footer-meta">
-          <p><strong>Stay curious.</strong> <span class="highlight">Reflections, not reviews.</span></p>
-          <p>Email <a href="mailto:hello@curio.city">hello@curio.city</a> or <a href="mailto:partners@curio.city">partners@curio.city</a>.</p>
-          <p><a href="../robots.txt">Robots directives</a> · <a href="../sitemap.xml">Sitemap</a></p>
+        <div class="footer-connect">
+          <h3>Connect</h3>
+          <div class="footer-links">
+            <a href="mailto:hello@curio.city">
+              <i class="icon icon--sm" data-lucide="mail" aria-hidden="true"></i>
+              hello@curio.city
+            </a>
+            <a href="mailto:partners@curio.city">
+              <i class="icon icon--sm" data-lucide="mail" aria-hidden="true"></i>
+              partners@curio.city
+            </a>
+            <a href="https://instagram.com/curio.city">
+              <i class="icon icon--sm" data-lucide="instagram" aria-hidden="true"></i>
+              @curio.city
+            </a>
+            <a href="https://bsky.app/profile/curio.city">
+              <i class="icon icon--sm" data-lucide="cloud" aria-hidden="true"></i>
+              @curiocity.bsky
+            </a>
+            <a href="https://mastodon.social/@curiocity">
+              <i class="icon icon--sm" data-lucide="message-circle" aria-hidden="true"></i>
+              @curiocity@mastodon.social
+            </a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
+        <div class="container footer-bottom-inner">
+          <small>&copy; <span id="copyright-year"></span> Curio. All rights reserved.</small>
+          <div class="footer-bottom-links">
+            <a href="../sitemap.xml">Sitemap</a>
+            <span aria-hidden="true">·</span>
+            <a href="../robots.txt">Robots</a>
+            <span aria-hidden="true">·</span>
+            <span>Made with <span class="footer-heart" aria-hidden="true">♥</span> for museum nerds by museum nerds</span>
+          </div>
+        </div>
       </div>
     </footer>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="../assets/js/HeroSlider.js" defer></script>
     <script src="../assets/js/map.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
   </body>
