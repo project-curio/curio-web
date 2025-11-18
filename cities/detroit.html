@@ -114,7 +114,6 @@
       <section id="detroit-hero" class="city-hero city-hero--detroit" aria-labelledby="detroit-hero-heading" data-atlas-section="city-hero">
         <div class="city-hero__content container">
           <div class="city-hero__text city-hero__text--bottom-left">
-            <p class="eyebrow">Pilot city</p>
             <h1 id="detroit-hero-heading">Detroit</h1>
             <p class="city-hero__tagline">Where industrial grit meets world-class art and music.</p>
           </div>
@@ -411,90 +410,126 @@
         </div>
       </section>
       <!-- Atlas: Detroit institution grid -->
-      <section id="detroit-institutions" class="section institution-grid" aria-labelledby="detroit-institution-heading" data-atlas-section="institution-grid">
+      <section id="detroit-institutions" class="section institution-grid" aria-labelledby="detroit-institution-heading" data-atlas-component="institution-type-grid" data-atlas-section="institution-grid">
         <div class="container">
           <div class="section-intro">
             <p class="section-eyebrow">Institutions</p>
             <h2 id="detroit-institution-heading">All Detroit institutions on Curio</h2>
             <p class="section-lead">Browse museums, galleries, archives, historic sites, cultural centers, and more — all based in Detroit.</p>
           </div>
-          <div class="card-grid place-grid">
-            <article class="card place-card">
-              <h3>Detroit Institute of Arts</h3>
-              <p>Collection tours, Rivera Court reflections, and multilingual access guides anchor Detroit’s flagship museum.</p>
-              <div class="place-card-meta">
-                <span>Neighborhood: Cultural Center</span>
-                <span>Focus: Art · Global narratives</span>
+          <div class="type-grid" id="type-grid">
+            <a class="type-tile" data-visible="true" href="types/museum.html" style="--tile-image: url('../assets/images/institution_type/museum.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Museums</h4>
+                <p class="type-tile__tagline">Collection-driven galleries &amp; interpretive centers.</p>
               </div>
-              <div class="place-card-tags">
-                <span class="tag">Reflection Index</span>
-                <span class="tag">Workshops</span>
+            </a>
+            <a class="type-tile" data-visible="true" href="types/art-gallery.html" style="--tile-image: url('../assets/images/institution_type/art_gallery.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Art Galleries</h4>
+                <p class="type-tile__tagline">Contemporary studios, design houses, artist-run spaces.</p>
               </div>
-            </article>
-            <article class="card place-card">
-              <h3>Motown Museum</h3>
-              <p>Hitsville U.S.A. preserves the sound of Detroit with small-group storytelling, songwriting labs, and youth residencies.</p>
-              <div class="place-card-meta">
-                <span>Neighborhood: New Center</span>
-                <span>Focus: Music · Social change</span>
+            </a>
+            <a class="type-tile" data-visible="true" href="types/archive.html" style="--tile-image: url('../assets/images/institution_type/arrchive.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Archives</h4>
+                <p class="type-tile__tagline">Records, oral histories, and preservation labs.</p>
               </div>
-              <div class="place-card-tags">
-                <span class="tag">Soundscapes</span>
-                <span class="tag">Community</span>
+            </a>
+            <a class="type-tile" data-visible="true" href="types/library.html" style="--tile-image: url('../assets/images/institution_type/library.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Libraries</h4>
+                <p class="type-tile__tagline">Public reading rooms, research stacks, maker hubs.</p>
               </div>
-            </article>
-            <article class="card place-card">
-              <h3>Charles H. Wright Museum</h3>
-              <p>One of the world’s largest African American history museums, pairing anchor exhibitions with neighborhood dialogues.</p>
-              <div class="place-card-meta">
-                <span>Neighborhood: Cultural Center</span>
-                <span>Focus: History · Belonging</span>
+            </a>
+            <a class="type-tile" data-visible="true" href="types/historic-site.html" style="--tile-image: url('../assets/images/institution_type/historic_site.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Historic Sites &amp; Monuments</h4>
+                <p class="type-tile__tagline">Landmarks preserving turning points in civic memory.</p>
               </div>
-              <div class="place-card-tags">
-                <span class="tag">Accessibility</span>
-                <span class="tag">Wish loops</span>
+            </a>
+            <a class="type-tile" data-visible="true" href="types/open-air.html" style="--tile-image: url('../assets/images/institution_type/open_air.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Open-Air Museums</h4>
+                <p class="type-tile__tagline">Living history villages, heritage farms, and forts.</p>
               </div>
-            </article>
-            <article class="card place-card">
-              <h3>Detroit Historical Museum</h3>
-              <p>Detroit Stories, The Streets of Old Detroit, and maker labs highlight intergenerational knowledge and civic pride.</p>
-              <div class="place-card-meta">
-                <span>Neighborhood: Midtown</span>
-                <span>Focus: History · Community</span>
+            </a>
+            <a class="type-tile" data-visible="true" href="types/house-museum.html" style="--tile-image: url('../assets/images/institution_type/house_museum.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">House Museums</h4>
+                <p class="type-tile__tagline">Residences turned storytelling spaces.</p>
               </div>
-              <div class="place-card-tags">
-                <span class="tag">Neighborhood labs</span>
-                <span class="tag">Student prompts</span>
+            </a>
+            <a class="type-tile" data-visible="false" href="types/science-center.html" style="--tile-image: url('../assets/images/institution_type/science_center.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Science Centers</h4>
+                <p class="type-tile__tagline">Hands-on labs, planetaria, and STEM play.</p>
               </div>
-            </article>
-            <article class="card place-card">
-              <h3>Michigan Science Center</h3>
-              <p>STEM floors, accessibility-forward shows, and rotating design challenges keep curiosity alive across generations.</p>
-              <div class="place-card-meta">
-                <span>Neighborhood: Midtown</span>
-                <span>Focus: Science · Accessibility</span>
+            </a>
+            <a class="type-tile" data-visible="false" href="types/natural-history.html" style="--tile-image: url('../assets/images/institution_type/natural_history.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Natural History Centers</h4>
+                <p class="type-tile__tagline">Earth, ecology, and evolutionary storytelling.</p>
               </div>
-              <div class="place-card-tags">
-                <span class="tag">Family friendly</span>
-                <span class="tag">Sensory mornings</span>
+            </a>
+            <a class="type-tile" data-visible="false" href="types/botanical-garden.html" style="--tile-image: url('../assets/images/institution_type/botanical.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Botanical Gardens</h4>
+                <p class="type-tile__tagline">Living plant collections &amp; urban ecology labs.</p>
               </div>
-            </article>
-            <article class="card place-card">
-              <h3>Belle Isle Conservatory &amp; Aquarium</h3>
-              <p>An island campus blending heritage architecture with restorative ecology tours and community garden programming.</p>
-              <div class="place-card-meta">
-                <span>Neighborhood: Belle Isle</span>
-                <span>Focus: Nature · Stewardship</span>
+            </a>
+            <a class="type-tile" data-visible="false" href="types/zoo-aquarium.html" style="--tile-image: url('../assets/images/institution_type/aquarium.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Zoos &amp; Aquariums</h4>
+                <p class="type-tile__tagline">Animal care, biodiversity, and conservation centers.</p>
               </div>
-              <div class="place-card-tags">
-                <span class="tag">Nature</span>
-                <span class="tag">Slow looking</span>
+            </a>
+            <a class="type-tile" data-visible="false" href="types/cultural-center.html" style="--tile-image: url('../assets/images/institution_type/cultural_center.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Cultural Centers</h4>
+                <p class="type-tile__tagline">Community-led performance, festivals, and studios.</p>
               </div>
-            </article>
+            </a>
+            <a class="type-tile" data-visible="false" href="types/university-collection.html" style="--tile-image: url('../assets/images/institution_type/university_collection.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">University Collections</h4>
+                <p class="type-tile__tagline">Campus museums, teaching archives, and labs.</p>
+              </div>
+            </a>
+            <a class="type-tile" data-visible="false" href="types/heritage-landscape.html" style="--tile-image: url('../assets/images/institution_type/heritage_landscape.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Heritage Landscapes</h4>
+                <p class="type-tile__tagline">Gardens, cultural districts, and protected vistas.</p>
+              </div>
+            </a>
+            <button class="type-tile type-tile--more" id="type-more" data-visible="true">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Explore more types of institutions</h4>
+              </div>
+            </button>
+            <a class="type-tile" data-visible="false" href="types/visitor-center.html" style="--tile-image: url('../assets/images/institution_type/visitor_center.jpg');">
+              <div class="type-tile__content">
+                <h4 class="type-tile__title">Visitor Centers</h4>
+                <p class="type-tile__tagline">Orientation hubs for parks, preserves, and trails.</p>
+              </div>
+            </a>
           </div>
         </div>
       </section>
     </main>
+    <script>
+      const moreBtn = document.getElementById('type-more');
+      const grid = document.getElementById('type-grid');
+
+      if (moreBtn && grid) {
+        moreBtn.addEventListener('click', () => {
+          grid.querySelectorAll('[data-visible="false"]').forEach((tile) => {
+            tile.setAttribute('data-visible', 'true');
+          });
+          moreBtn.remove();
+        });
+      }
+    </script>
     <footer class="footer" id="contact" role="contentinfo">
       <div class="container footer-inner">
         <div class="footer-brand">
