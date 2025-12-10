@@ -1,0 +1,144 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2025-01-06T00:00:00Z",
+  "default_locale": "en",
+  "notes": "Homepage layout configuration focused on the Atlas footer component.",
+  "sections": [
+    {
+      "id": "site-footer",
+      "type": "footer",
+      "props": {
+        "brand": {
+          "name": "curio.",
+          "href": "index.html",
+          "description": {
+            "en": "Discover and share moments of curiosity and connection at museums, science & nature spaces, and cultural heritage places.",
+            "fr": ""
+          },
+          "tagline": {
+            "en": "Reflections, not reviews.",
+            "fr": ""
+          }
+        },
+        "columns": [
+          {
+            "title": {
+              "en": "Explore",
+              "fr": ""
+            },
+            "links": [
+              {
+                "label": { "en": "Home", "fr": "" },
+                "href": "#home"
+              },
+              {
+                "label": { "en": "Map", "fr": "" },
+                "href": "#map"
+              },
+              {
+                "label": { "en": "Partner With Us", "fr": "" },
+                "href": "#partners"
+              },
+              {
+                "label": { "en": "Contact", "fr": "" },
+                "href": "#contact"
+              }
+            ]
+          },
+          {
+            "title": {
+              "en": "Institutions",
+              "fr": ""
+            },
+            "links": [
+              {
+                "label": { "en": "Add your Institution", "fr": "" },
+                "href": "mailto:partners@hellocurio.us?subject=Add%20Institution"
+              },
+              {
+                "label": { "en": "Claim your Institution", "fr": "" },
+                "href": "mailto:partners@hellocurio.us?subject=Claim%20Institution"
+              },
+              {
+                "label": { "en": "Partner with Curio", "fr": "" },
+                "href": "partners.html#partner"
+              },
+              {
+                "label": { "en": "Log in to Dashboard", "fr": "" },
+                "href": "https://curio.city/dashboard"
+              },
+              {
+                "label": { "en": "Apply to Curio for Culture", "fr": "" },
+                "href": "partners.html#curio-for-culture"
+              },
+              {
+                "label": { "en": "Pricing & Plans", "fr": "" },
+                "href": "partners.html#tiers"
+              }
+            ]
+          },
+          {
+            "title": {
+              "en": "Connect",
+              "fr": ""
+            },
+            "links": [
+              {
+                "label": { "en": "hi@hellocurio.us", "fr": "" },
+                "href": "mailto:hi@hellocurio.us",
+                "icon": "mail"
+              },
+              {
+                "label": { "en": "partners@hellocurio.us", "fr": "" },
+                "href": "mailto:partners@hellocurio.us",
+                "icon": "mail"
+              },
+              {
+                "label": { "en": "@hellocurio", "fr": "" },
+                "href": "https://instagram.com/hellocurio",
+                "icon": "instagram"
+              },
+              {
+                "label": { "en": "@hellocurio.us", "fr": "" },
+                "href": "https://bsky.app/profile/hellocurio.us",
+                "icon": "cloud"
+              },
+              {
+                "label": { "en": "@hellocurio@mastodon.social", "fr": "" },
+                "href": "https://mastodon.social/@hellocurio",
+                "icon": "message-circle"
+              }
+            ]
+          }
+        ],
+        "bottom": {
+          "copyright": {
+            "owner": "Curio",
+            "auto_year": true,
+            "text": {
+              "en": "Curio. All rights reserved.",
+              "fr": ""
+            }
+          },
+          "links": [
+            {
+              "label": { "en": "Sitemap", "fr": "" },
+              "href": "sitemap.xml"
+            },
+            {
+              "label": { "en": "Robots", "fr": "" },
+              "href": "robots.txt"
+            }
+          ],
+          "closing": {
+            "text": {
+              "en": "Made with love for museum nerds by museum nerds",
+              "fr": ""
+            },
+            "icon": "heart"
+          }
+        }
+      }
+    }
+  ]
+}
